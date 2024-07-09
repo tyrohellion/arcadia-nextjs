@@ -1,8 +1,16 @@
-'use client'
+"use client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import SearchButton from "./SearchButton";
 
 const NavBar = () => {
   const router = useRouter();
+  const [toggleOverlay, setToggleOverlay] = useState(false);
+
+  const showOverlay = () => {
+    setToggleOverlay(!setToggleOverlay);
+  };
+
 
   return (
     <>
@@ -23,14 +31,7 @@ const NavBar = () => {
         >
           Players
         </div>
-        <div
-          className="nav-item"
-          onClick={(handleClick) => {
-            router.push("/players");
-          }}
-        >
-          Search
-        </div>
+          <SearchButton />
         <div
           className="nav-item"
           onClick={(handleClick) => {

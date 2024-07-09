@@ -29,11 +29,35 @@ body {
   background-color: var(--main-background-color);
 }
 
-.global-search-wrapper {
+.loading-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loading-text {
+  color: rgba(190, 199, 228, 0.5);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.global-search-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+}
+
+.fullscreen-search-backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(26, 27, 32, 0.95);
+  z-index: 10;
 }
 
 .global-search-bar {
@@ -42,6 +66,7 @@ body {
   background-color: var(--results-background-color);
   color: var(--font-color-blue);
   font-weight: 600;
+  margin-top: 2rem;
   font-size: 1rem;
   width: 35%;
   min-width: 20rem;
@@ -49,13 +74,15 @@ body {
   border-radius: 0.7rem;
   padding: 1.3rem;
   outline: none;
+  z-index: 11;
 }
 
 .results-wrapper {
   display: flex;
   justify-content: center;
   gap: 3rem;
-  padding-top: 3rem;
+  margin-top: 3rem;
+  z-index: 11;
 }
 
 .nav-wrapper {
@@ -238,14 +265,16 @@ body {
 }
 
 .player-header-wrapper,
-.team-header-wrapper {
+.team-header-wrapper,
+.event-header-wrapper {
   display: flex;
   justify-content: center;
   margin: 0;
 }
 
 .player-img-name-wrapper,
-.team-img-name-wrapper {
+.team-img-name-wrapper,
+.event-img-tags-wrapper {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -263,33 +292,40 @@ body {
 }
 
 .player-names-wrapper,
-.team-names-wrapper {
+.team-names-wrapper,
+.event-names-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
 }
 
-.player-names-wrapper p,
-.player-header-wrapper p,
-.team-header-wrapper p {
+.global-body-text {
   margin: 0;
   color: rgb(183, 189, 202);
   font-weight: 600;
 }
 
-.team-names-wrapper h1,
-.player-names-wrapper h1 {
+.global-heading-text {
   color: var(--font-color-blue);
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
-  padding-bottom: 0.4rem;
 }
 
-.player-name-team-wrapper {
+.global-secondary-heading-text {
+  color: var(--font-color-blue);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.player-name-team-wrapper,
+.event-name-tag-wrapper {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  margin-left: 0.3rem;
+  margin-left: 0.1rem;
 }
 
 .player-team-name-page {
@@ -299,19 +335,56 @@ body {
   width: fit-content;
 }
 
-.player-region-page,
-.team-names-wrapper p {
+.global-tags {
   background-color: var(--button-color);
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: fit-content;
+  font-weight: 600;
   text-transform: uppercase;
   transition: all 150ms;
+  color: var(--font-color-blue);
+  margin: 0;
 }
 
-.player-team-name-page:hover {
+.button-small,
+.tier-tag,
+.date-tag {
+  background-color: var(--button-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: fit-content;
+  font-weight: 600;
+  transition: all 150ms;
+  color: var(--font-color-blue);
+  margin: 0;
+}
+
+.button-large {
+  background-color: var(--button-color);
+  border-radius: 0.7rem;
+  padding: 0.8rem;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 150ms;
+  color: var(--font-color-blue);
+  margin: 0;
+}
+
+.button-small:hover {
   background-color: var(--font-color-blue);
   color: var(--font-color-dark);
   transition: all 150ms;
   cursor: pointer;
+}
+
+.global-image {
+  min-width: 100px;
+  min-height: 100px;
+  height: 100px;
+  width: 100px;
+  background-color: var(--img-background-color);
+  border-radius: 0.7rem;
+  padding: 0.8rem;
 }
