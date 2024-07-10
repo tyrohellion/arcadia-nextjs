@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import { useRouter } from "next/navigation";
 import GlobalImage from "@/app/components/ui/img/GlobalImage";
-import MainHeading from "@/app/components/ui/text/MainHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
 import GlobalTag from "@/app/components/ui/tags/GlobalTag";
 import ButtonSmall from "@/app/components/ui/buttons/ButtonSmall";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
+import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
+import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -35,6 +36,18 @@ const PlayerPage = ({ params }) => {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    const fetchDate = async (monthFilter) => {
+      try {
+        const date = getLocalDateMinusMonths(monthFilter);
+        console.log(date);
+      } catch (error) {
+        console.error("Error fetching date:", error);
+      }
+    };
+    fetchDate();
+  }, []);
+
   return (
     <>
       {isLoading ? (
@@ -58,7 +71,7 @@ const PlayerPage = ({ params }) => {
                   )}
                 </div>
                 <div className="player-names-wrapper">
-                  <MainHeading text={player.tag} />
+                  <SecondaryHeading text={player.tag} />
                   <div className="player-name-team-wrapper">
                     {player.name ? <NormalText text={player.name} /> : null}
                     {player.country ? (

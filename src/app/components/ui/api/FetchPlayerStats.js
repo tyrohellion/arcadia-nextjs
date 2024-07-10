@@ -1,6 +1,6 @@
 const url = "https://zsr.octane.gg/";
 
-const getPlayerStats = async (stat) => {
+const getPlayerStats = async (id, stat) => {
 
   try {
     let response = await fetch(url + "stats/players");

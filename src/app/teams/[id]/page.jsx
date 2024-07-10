@@ -9,6 +9,7 @@ import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import SkeletonRosterBox from "@/app/components/ui/skeletons/SkeletonRosterBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
+import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -35,6 +36,17 @@ const TeamPage = ({ params }) => {
 
     fetchData();
   }, [id]);
+
+  useEffect(() => {
+    const fetchDate = async (filterMonths) => {
+      try {
+        const date = getLocalDateMinusMonths(filterMonths);
+      } catch (error) {
+        console.error("Error fetching date:", error);
+      }
+    };
+    fetchDate();
+  }, []);
 
   return (
     <>
