@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import EventFetchAPI from "./FetchEvents";
+import EventFetchAPI from "../api/FetchEvents";
 import { useRouter } from "next/navigation";
 
 const EventFetch = (props) => {

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import SearchButton from "./SearchButton";
+import SearchButton from "../globalsearch/SearchButton";
 
 const NavBar = () => {
   const router = useRouter();

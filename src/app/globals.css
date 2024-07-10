@@ -10,6 +10,7 @@ input {
 :root {
   --overlay-color: rgba(0, 0, 0, 0.5);
   --font-color-blue: rgb(190, 199, 228);
+  --font-color-white: rgb(221, 224, 231);
   --button-color: rgb(45, 46, 56);
   --font-color-dark: rgb(45, 46, 56);
   --main-background-color: rgb(26, 27, 32);
@@ -20,6 +21,7 @@ input {
   --card-shrink-before: translate3D(0, -1px, 0) scale(0.9);
   --button-grow: translate(0px, 0px) scale(1.1, 1.1);
   --img-background-color: rgb(66, 67, 82);
+  --chip-gradient: linear-gradient(to left,var(var(--main-background-color)) 20%,rgba(255,255,255,0) 80%);
 }
 
 body {
@@ -40,6 +42,40 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
+}
+
+.skeleton-header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.skeleton-image {
+  width: 100px;
+  height: 100px;
+  background-color: var(--button-color);
+  border-radius: 0.7rem;
+}
+
+.skeleton-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skeleton-details-large {
+  width: 200px;
+  height: 1.2rem;
+  background-color: var(--button-color);
+  border-radius: 16px;
+}
+
+.skeleton-details-small {
+  width: 150px;
+  height: 1.2rem;
+  background-color: var(--button-color);
+  border-radius: 16px;
 }
 
 .global-search-wrapper {
@@ -137,6 +173,14 @@ body {
   font-weight: 600;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
+}
+
+.global-card-header {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .player-list-item,
@@ -336,10 +380,33 @@ body {
 }
 
 .global-tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--button-color);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   padding: 0.5rem;
   width: fit-content;
+  height: fit-content;
+  min-width: 36px;
+  min-height: 38px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 150ms;
+  color: var(--font-color-blue);
+  margin: 0;
+}
+
+.global-small-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  min-width: 25px;
+  min-height: 30px;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   transition: all 150ms;
@@ -351,7 +418,7 @@ body {
 .tier-tag,
 .date-tag {
   background-color: var(--button-color);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   padding: 0.5rem;
   width: fit-content;
   font-weight: 600;
@@ -387,4 +454,96 @@ body {
   background-color: var(--img-background-color);
   border-radius: 0.7rem;
   padding: 0.8rem;
+}
+
+.header-chip-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.chip-carousel {
+  display: flex;
+  gap: 0.5rem;
+  width: 100vw;
+  justify-content: center;
+  margin: 3rem 0 2rem 0;
+}
+
+.chip-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+  font-size: 1rem;
+  height: fit-content;
+  width: fit-content;
+  font-weight: 600;
+  color: var(--font-color-blue);
+  background-color: var(--button-color);
+  border-radius: 0.5rem;
+  transition: all 150ms;
+}
+
+.chip-button:hover {
+  background-color: var(--font-color-blue);
+  color: var(--font-color-dark);
+  transition: all 150ms;
+  cursor: pointer;
+}
+
+/* Active roster team pages */
+
+.boxes-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.global-small-box {
+  display: flex;
+  width: 340px;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.small-box-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--font-color-white);
+  white-space: wrap;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.player-tag-coach-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  white-space: wrap;
+}
+
+.player-tag-roster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.small-box-list-item:hover {
+  background-color: var(--font-color-blue);
+  color: var(--font-color-dark);
+  cursor: pointer;
+}
+
+.empty-pill {
+  width: 90px;
+  height: 1rem;
+  background-color: var(--button-color);
+  border-radius: 30px;
 }

@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import getPlayerByID from "@/app/components/ui/Fetchplayer";
-import NavBar from "@/app/components/ui/NavBar";
+import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import { useRouter } from "next/navigation";
-import GlobalImage from "@/app/components/ui/GlobalImage";
-import MainHeading from "@/app/components/ui/MainHeading";
-import NormalText from "@/app/components/ui/NormalText";
-import GlobalTag from "@/app/components/ui/GlobalTag";
-import ButtonSmall from "@/app/components/ui/ButtonSmall";
-import Loading from "@/app/loading";
+import GlobalImage from "@/app/components/ui/img/GlobalImage";
+import MainHeading from "@/app/components/ui/text/MainHeading";
+import NormalText from "@/app/components/ui/text/NormalText";
+import GlobalTag from "@/app/components/ui/tags/GlobalTag";
+import ButtonSmall from "@/app/components/ui/buttons/ButtonSmall";
+import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -38,9 +37,8 @@ const PlayerPage = ({ params }) => {
 
   return (
     <>
-      <NavBar />
       {isLoading ? (
-        <Loading />
+        <SkeletonHeader />
       ) : (
         <div className="player-header-wrapper">
           {player ? (

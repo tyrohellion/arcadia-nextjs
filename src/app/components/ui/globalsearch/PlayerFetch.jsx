@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import PlayerFetchAPI from "./FetchPlayers";
+import PlayerFetchAPI from "../api/FetchPlayers";
 import { useRouter } from "next/navigation";
 
 const PlayerFetch = (props) => {

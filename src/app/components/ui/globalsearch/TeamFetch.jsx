@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import TeamFetchAPI from "./FetchTeams";
+import TeamFetchAPI from "../api/FetchTeams";
 import { useRouter } from "next/navigation";
 
 const TeamFetch = (props) => {

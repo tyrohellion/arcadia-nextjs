@@ -29,7 +29,7 @@ const GlobalSearch = ({ onClose }) => {
             setSearchInput(e.target.value);
           }}
         />
-        <div className="results-wrapper">
+        <div className="results-wrapper" onClick={onClose}>
           <PlayerFetch searchValue={searchInput} />
           <TeamFetch searchValue={searchInput} />
           <EventFetch searchValue={searchInput} />
