@@ -5,6 +5,7 @@ import getLocalDateMinusMonths from "../api/getLocalTime";
 import getPlayerStatsOverview from "../api/FetchPlayerStatsOverview";
 import NormalText from "../text/NormalText";
 import FinePrint from "../text/FinePrint";
+import SkeletonPlayerStatsLoading from "../skeletons/SkeletonPlayerStatsLoading";
 
 const PlayerStatsBox = ({ id }) => {
   const [time, setTime] = useState("");
@@ -51,7 +52,7 @@ const PlayerStatsBox = ({ id }) => {
   return (
     <>
       {isloading ? (
-        <SkeletonPlayerStatsBox />
+        <SkeletonPlayerStatsLoading />
       ) : (
         <div className="heading-small-box-wrapper">
           <div className="headings-wrapper">
@@ -77,8 +78,8 @@ const PlayerStatsBox = ({ id }) => {
                           <FinePrint text="RATING" />
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
-                          <FinePrint text="GAMES" />
-                          <div className="stat-label">{stats.games.total}</div>
+                          <FinePrint text="MATCHES" />
+                          <div className="stat-label">{stats.matches.total}</div>
                         </div>
                       </div>
                       <div className="empty-rating-pill"></div>
@@ -121,8 +122,8 @@ const PlayerStatsBox = ({ id }) => {
                           <FinePrint text="GOALS PER GAME" />
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
-                          <FinePrint text="GAMES" />
-                          <div className="stat-label">{stats.games.total}</div>
+                          <FinePrint text="GOALS" />
+                          <div className="stat-label">{stats.stats.goals}</div>
                         </div>
                       </div>
                       <div className="empty-rating-pill"></div>
@@ -162,14 +163,14 @@ const PlayerStatsBox = ({ id }) => {
                         <div className="player-tag-roster">
                           <NormalText
                             text={
-                              stats.stats.goalParticipation.toFixed(2) + "%"
+                              stats.stats.goalParticipation.toFixed(2) + "%" 
                             }
                           />
                           <FinePrint text="GOAL PART." />
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
-                          <FinePrint text="GAMES" />
-                          <div className="stat-label">{stats.games.total}</div>
+                          <FinePrint text="ASSISTS" />
+                          <div className="stat-label">{stats.stats.assists}</div>
                         </div>
                       </div>
                       <div className="empty-rating-pill"></div>
