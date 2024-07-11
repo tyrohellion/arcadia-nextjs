@@ -79,10 +79,20 @@ const PlayerStatsBox = ({ id }) => {
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
                           <FinePrint text="MATCHES" />
-                          <div className="stat-label">{stats.matches.total}</div>
+                          <div className="stat-label">
+                            {stats.matches.total}
+                          </div>
                         </div>
                       </div>
-                      <div className="empty-rating-pill"></div>
+                      <div
+                        className="rating-pill"
+                        style={{
+                          "--progress":
+                            (stats.stats.rating / stats.games.total / 2.0) *
+                              100 +
+                            "%",
+                        }}
+                      ></div>
                     </div>
                   </li>
                   <li
@@ -104,7 +114,15 @@ const PlayerStatsBox = ({ id }) => {
                           <div className="stat-label">{stats.games.total}</div>
                         </div>
                       </div>
-                      <div className="empty-rating-pill"></div>
+                      <div
+                        className="score-pill"
+                        style={{
+                          "--progress":
+                            (stats.stats.score / stats.games.total / 700) *
+                              100 +
+                            "%",
+                        }}
+                      ></div>
                     </div>
                   </li>
                   <li
@@ -126,7 +144,15 @@ const PlayerStatsBox = ({ id }) => {
                           <div className="stat-label">{stats.stats.goals}</div>
                         </div>
                       </div>
-                      <div className="empty-rating-pill"></div>
+                      <div
+                        className="goals-pill"
+                        style={{
+                          "--progress":
+                            (stats.stats.goals / stats.games.total / 1.5) *
+                              100 +
+                            "%",
+                        }}
+                      ></div>
                     </div>
                   </li>
                   <li
@@ -151,7 +177,13 @@ const PlayerStatsBox = ({ id }) => {
                           <div className="stat-label">{stats.stats.shots}</div>
                         </div>
                       </div>
-                      <div className="empty-rating-pill"></div>
+                      <div
+                        className="shooting-pill"
+                        style={{
+                          "--progress":
+                            (stats.stats.goals / stats.stats.shots) * 100 + "%",
+                        }}
+                      ></div>
                     </div>
                   </li>
                   <li
@@ -163,17 +195,25 @@ const PlayerStatsBox = ({ id }) => {
                         <div className="player-tag-roster">
                           <NormalText
                             text={
-                              stats.stats.goalParticipation.toFixed(2) + "%" 
+                              stats.stats.goalParticipation.toFixed(2) + "%"
                             }
                           />
                           <FinePrint text="GOAL PART." />
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
                           <FinePrint text="ASSISTS" />
-                          <div className="stat-label">{stats.stats.assists}</div>
+                          <div className="stat-label">
+                            {stats.stats.assists}
+                          </div>
                         </div>
                       </div>
-                      <div className="empty-rating-pill"></div>
+                      <div
+                        className="goalpart-pill"
+                        style={{
+                          "--progress":
+                            stats.stats.goalParticipation.toFixed(2) + "%",
+                        }}
+                      ></div>
                     </div>
                   </li>
                 </React.Fragment>

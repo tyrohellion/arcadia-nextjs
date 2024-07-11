@@ -9,7 +9,6 @@ import ButtonSmall from "@/app/components/ui/buttons/ButtonSmall";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
-import SkeletonPlayerStatsBox from "@/app/components/ui/skeletons/SkeletonPlayerStatsBox";
 import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";

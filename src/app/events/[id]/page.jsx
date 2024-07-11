@@ -6,10 +6,10 @@ import GlobalImage from "@/app/components/ui/img/GlobalImage";
 import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
 import GlobalTag from "@/app/components/ui/tags/GlobalTag";
-import Loading from "@/app/loading";
 import PrizePoolTag from "@/app/components/ui/tags/PrizePoolTag";
 import TierTag from "@/app/components/ui/tags/TierTag";
 import PrettyDate from "@/app/components/ui/formatters/PrettyDate";
+import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 
 const EventPage = ({ params }) => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const EventPage = ({ params }) => {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <SkeletonHeader />
       ) : (
         <div className="event-header-wrapper">
           {event ? (
