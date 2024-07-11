@@ -9,6 +9,9 @@ import ButtonSmall from "@/app/components/ui/buttons/ButtonSmall";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
+import SkeletonPlayerStatsBox from "@/app/components/ui/skeletons/SkeletonPlayerStatsBox";
+import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
+import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -37,9 +40,9 @@ const PlayerPage = ({ params }) => {
   }, [id]);
 
   useEffect(() => {
-    const fetchDate = async (monthFilter) => {
+    const fetchDate = async () => {
       try {
-        const date = getLocalDateMinusMonths(monthFilter);
+        const date = getLocalDateMinusMonths(12);
         console.log(date);
       } catch (error) {
         console.error("Error fetching date:", error);
@@ -51,47 +54,60 @@ const PlayerPage = ({ params }) => {
   return (
     <>
       {isLoading ? (
-        <SkeletonHeader />
+        <>
+          <SkeletonHeader />
+          <ChipCarousel />
+        </>
       ) : (
-        <div className="player-header-wrapper">
-          {player ? (
-            <>
-              <div className="player-img-name-wrapper">
-                <div className="player-image-wrapper">
-                  {player.team && player.team.image ? (
-                    <GlobalImage
-                      imageSrc={player.team.image}
-                      altText={player.team.name}
-                    />
-                  ) : (
-                    <GlobalImage
-                      imageSrc="/static/images/rocketleague.svg"
-                      altText={player.tag}
-                    />
-                  )}
-                </div>
-                <div className="player-names-wrapper">
-                  <SecondaryHeading text={player.tag} />
-                  <div className="player-name-team-wrapper">
-                    {player.name ? <NormalText text={player.name} /> : null}
-                    {player.country ? (
-                      <GlobalTag text={player.country} />
-                    ) : null}
-                    {player.team ? (
-                      <ButtonSmall
-                        text={player.team.name}
-                        onClick={() => goToTeam(player.team._id)}
+        <div className="header-chip-wrapper">
+          <div className="player-header-wrapper">
+            {player ? (
+              <>
+                <div className="player-img-name-wrapper">
+                  <div className="player-image-wrapper">
+                    {player.team && player.team.image ? (
+                      <GlobalImage
+                        imageSrc={player.team.image}
+                        altText={player.team.name}
                       />
-                    ) : null}
+                    ) : (
+                      <GlobalImage
+                        imageSrc="/static/images/rocketleague.svg"
+                        altText={player.tag}
+                      />
+                    )}
+                  </div>
+                  <div className="player-names-wrapper">
+                    <SecondaryHeading text={player.tag} />
+                    <div className="player-name-team-wrapper">
+                      {player.name ? <NormalText text={player.name} /> : null}
+                      {player.country ? (
+                        <GlobalTag text={player.country} />
+                      ) : null}
+                      {player.team ? (
+                        <ButtonSmall
+                          text={player.team.name}
+                          onClick={() => goToTeam(player.team._id)}
+                        />
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </>
-          ) : (
-            <NormalText text={"We can't find that player :'("} />
-          )}
+              </>
+            ) : (
+              <NormalText text={"We can't find that player :'("} />
+            )}
+          </div>
+          <ChipCarousel />
         </div>
       )}
+      <div className="boxes-wrapper">
+        {player ? (
+          <PlayerStatsBox id={player._id} />
+        ) : (
+          <SkeletonPlayerStatsBox />
+        )}
+      </div>
     </>
   );
 };

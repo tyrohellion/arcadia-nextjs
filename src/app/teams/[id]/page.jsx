@@ -38,9 +38,10 @@ const TeamPage = ({ params }) => {
   }, [id]);
 
   useEffect(() => {
-    const fetchDate = async (filterMonths) => {
+    const fetchDate = async () => {
       try {
-        const date = getLocalDateMinusMonths(filterMonths);
+        const date = getLocalDateMinusMonths(12);
+        console.log(date);
       } catch (error) {
         console.error("Error fetching date:", error);
       }

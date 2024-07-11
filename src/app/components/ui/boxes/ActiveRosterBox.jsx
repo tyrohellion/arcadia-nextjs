@@ -39,7 +39,9 @@ const ActiveRosterBox = ({ id }) => {
         <SkeletonRosterBox text="" />
       ) : (
         <div className="heading-small-box-wrapper">
-          <CardHeader text="Active Roster" />
+          <div className="headings-wrapper">
+            <CardHeader text="Active Roster" />
+          </div>
           {Array.isArray(results) && results.length > 0 ? (
             <ul className="global-small-box">
               {results.map((player) => (
