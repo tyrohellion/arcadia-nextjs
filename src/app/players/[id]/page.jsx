@@ -12,6 +12,11 @@ import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
+import PlayerEventsBox from "@/app/components/ui/boxes/PlayerEventsBox";
+import SkeletonPlayerEventsBox from "@/app/components/ui/skeletons/SkeletonPlayerEventsBox";
+import SkeletonPlayerEventsLoading from "@/app/components/ui/skeletons/SkeletonPlayerEventsLoading";
+import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
+import SkeletonRosterBox from "@/app/components/ui/skeletons/SkeletonRosterBox";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -106,6 +111,18 @@ const PlayerPage = ({ params }) => {
           <PlayerStatsBox id={player._id} />
         ) : (
           <SkeletonPlayerStatsLoading />
+        )}
+
+        {player ? (
+          <PlayerEventsBox id={player._id} />
+        ) : (
+          <SkeletonPlayerEventsLoading />
+        )}
+
+        {player && player.team ? (
+          <ActiveRosterBox id={player.team._id} heading="Active Teammates" />
+        ) : (
+          <SkeletonRosterBox text="N/A" heading="Active Teammates" finePrintHeading="COUNTRY"/>
         )}
       </div>
     </>

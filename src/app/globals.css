@@ -21,7 +21,11 @@ input {
   --card-shrink-before: translate3D(0, -1px, 0) scale(0.9);
   --button-grow: translate(0px, 0px) scale(1.1, 1.1);
   --img-background-color: rgb(66, 67, 82);
-  --chip-gradient: linear-gradient(to left,var(var(--main-background-color)) 20%,rgba(255,255,255,0) 80%);
+  --chip-gradient: linear-gradient(
+    to left,
+    var(var(--main-background-color)) 20%,
+    rgba(255, 255, 255, 0) 80%
+  );
 }
 
 body {
@@ -49,6 +53,13 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0.7rem;
+}
+
+.empty-rating-tag {
+  width: 56px;
+  height: 28px;
+  background-color: var(--button-color);
+  border-radius: 0.4rem;
 }
 
 .skeleton-image {
@@ -87,7 +98,12 @@ body {
 }
 
 .rating-pill {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) var(--progress, 0), rgba(9,9,121,0) var(--progress, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) var(--progress, 0),
+    rgba(9, 9, 121, 0) var(--progress, 0)
+  );
 
   width: 308px;
   height: 0.35rem;
@@ -97,7 +113,12 @@ body {
 }
 
 .score-pill {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) var(--progress, 0), rgba(9,9,121,0) var(--progress, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) var(--progress, 0),
+    rgba(9, 9, 121, 0) var(--progress, 0)
+  );
 
   width: 308px;
   height: 0.35rem;
@@ -107,7 +128,12 @@ body {
 }
 
 .goals-pill {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) var(--progress, 0), rgba(9,9,121,0) var(--progress, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) var(--progress, 0),
+    rgba(9, 9, 121, 0) var(--progress, 0)
+  );
 
   width: 308px;
   height: 0.35rem;
@@ -117,7 +143,12 @@ body {
 }
 
 .shooting-pill {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) var(--progress, 0), rgba(9,9,121,0) var(--progress, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) var(--progress, 0),
+    rgba(9, 9, 121, 0) var(--progress, 0)
+  );
 
   width: 308px;
   height: 0.35rem;
@@ -127,7 +158,12 @@ body {
 }
 
 .goalpart-pill {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) var(--progress, 0), rgba(9,9,121,0) var(--progress, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) var(--progress, 0),
+    rgba(9, 9, 121, 0) var(--progress, 0)
+  );
 
   width: 308px;
   height: 0.35rem;
@@ -135,9 +171,18 @@ body {
   border-radius: 30px;
   overflow: hidden;
 }
+
 .small-box-list-item-skeleton-stats {
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 66px;
+}
+
+.small-box-list-item-skeleton-events {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem;
   height: 66px;
@@ -421,12 +466,30 @@ body {
   font-weight: 600;
 }
 
+.global-small-text {
+  margin: 0;
+  color: var(--font-color-white);
+  font-weight: 550;
+  font-size: 0.95rem;
+}
+
 .global-fine-print {
   margin: 0;
   color: rgb(183, 189, 202);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   width: fit-content;
+}
+
+.global-fine-print-wrapped-tag {
+  margin: 0;
+  color: rgb(183, 189, 202);
+  font-weight: 600;
+  font-size: 0.75rem;
+  width: fit-content;
+  background-color: var(--button-color);
+  padding: 0.4rem;
+  border-radius: 0.4rem;
 }
 
 .headings-wrapper {
@@ -490,7 +553,6 @@ body {
   background-color: var(--button-color);
   border-radius: 0.4rem;
   padding: 0.4rem;
-  min-width: 25px;
   min-height: 30px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -498,6 +560,7 @@ body {
   transition: all 150ms;
   color: var(--font-color-blue);
   margin: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .button-small,
@@ -590,6 +653,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 2rem 1rem 0 1rem;
+  gap: 2rem;
 }
 
 .global-small-box {
@@ -622,6 +686,25 @@ body {
   white-space: wrap;
 }
 
+.separator-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--font-color-dark);
+  border-radius: 5px;
+}
+
+.player-event-overview-name-tier-wrapper {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  padding-right: 1rem;
+}
+
+.overview-event-tier-region-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .player-tag-roster {
   display: flex;
   align-items: flex-end;
@@ -634,8 +717,55 @@ body {
   color: var(--font-color-dark);
   cursor: pointer;
 
-  .global-body-text, .global-fine-print {
+  .global-body-text,
+  .global-fine-print,
+  .global-small-text {
     color: var(--font-color-dark);
+  }
+
+  .rating-pill {
+    background: linear-gradient(
+      90deg,
+      var(--font-color-dark) 0%,
+      var(--font-color-dark) var(--progress, 0),
+      rgb(121, 128, 141) var(--progress, 0)
+    );
+  }
+  
+  .score-pill {
+    background: linear-gradient(
+      90deg,
+      var(--font-color-dark) 0%,
+      var(--font-color-dark) var(--progress, 0),
+      rgb(121, 128, 141) var(--progress, 0)
+    );
+  }
+  
+  .goals-pill {
+    background: linear-gradient(
+      90deg,
+      var(--font-color-dark) 0%,
+      var(--font-color-dark) var(--progress, 0),
+      rgb(121, 128, 141) var(--progress, 0)
+    );
+  }
+  
+  .shooting-pill {
+    background: linear-gradient(
+      90deg,
+      var(--font-color-dark) 0%,
+      var(--font-color-dark) var(--progress, 0),
+      rgb(121, 128, 141) var(--progress, 0)
+    );
+  }
+  
+  .goalpart-pill {
+    background: linear-gradient(
+      90deg,
+      var(--font-color-dark) 0%,
+      var(--font-color-dark) var(--progress, 0),
+      rgb(121, 128, 141) var(--progress, 0)
+    );
   }
 }
 

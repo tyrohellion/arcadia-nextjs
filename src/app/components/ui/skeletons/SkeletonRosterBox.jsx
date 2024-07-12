@@ -1,23 +1,29 @@
 import React from "react";
-import SmallTag from "../tags/SmallTag";
 import GlobalTag from "../tags/GlobalTag";
+import CardHeader from "../text/CardHeader";
+import FinePrint from "../text/FinePrint";
+import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 
-const SkeletonRosterBox = ({ text }) => {
+const SkeletonRosterBox = ({ text, heading, finePrintHeading }) => {
   return (
     <>
       <div className="heading-small-box-wrapper">
+        <div className="headings-wrapper">
+          <CardHeader text={heading} />
+          <FinePrint text={finePrintHeading} />
+        </div>
         <ul className="global-small-box">
           <li className="small-box-list-item">
             <div className="player-tag-coach-wrapper">
               <div className="empty-pill"></div>
-              <SmallTag text="C" />
+              <FinePrintTagWrapped text="COACH" />
             </div>
             <GlobalTag text={text} />
           </li>
           <li className="small-box-list-item">
             <div className="player-tag-coach-wrapper">
               <div className="empty-pill"></div>
-              <SmallTag text="S" />
+              <FinePrintTagWrapped text="SUB" />
             </div>
             <GlobalTag text={text} />
           </li>
