@@ -6,10 +6,10 @@ import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
 import GlobalTag from "@/app/components/ui/tags/GlobalTag";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import SkeletonRosterBox from "@/app/components/ui/skeletons/SkeletonRosterBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
+import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -89,13 +89,9 @@ const TeamPage = ({ params }) => {
       )}
       <div className="boxes-wrapper">
         {team ? (
-          <ActiveRosterBox id={team._id} heading="Active Roster" />
+          <ActiveRosterBox id={team._id} />
         ) : (
-          <SkeletonRosterBox
-            text="N/A"
-            heading="Active Roster"
-            finePrintHeading="COUNTRY"
-          />
+          <SkeletonRosterBoxLoading text="N/A" />
         )}
       </div>
     </>

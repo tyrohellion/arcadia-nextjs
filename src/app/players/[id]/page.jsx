@@ -13,10 +13,9 @@ import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
 import PlayerEventsBox from "@/app/components/ui/boxes/PlayerEventsBox";
-import SkeletonPlayerEventsBox from "@/app/components/ui/skeletons/SkeletonPlayerEventsBox";
 import SkeletonPlayerEventsLoading from "@/app/components/ui/skeletons/SkeletonPlayerEventsLoading";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import SkeletonRosterBox from "@/app/components/ui/skeletons/SkeletonRosterBox";
+import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -47,7 +46,7 @@ const PlayerPage = ({ params }) => {
   useEffect(() => {
     const fetchDate = async () => {
       try {
-        const date = getLocalDateMinusMonths(12);
+        const date = getLocalDateMinusMonths(6);
         console.log(date);
       } catch (error) {
         console.error("Error fetching date:", error);
@@ -120,9 +119,9 @@ const PlayerPage = ({ params }) => {
         )}
 
         {player && player.team ? (
-          <ActiveRosterBox id={player.team._id} heading="Active Teammates" />
+          <ActiveRosterBox id={player.team._id} />
         ) : (
-          <SkeletonRosterBox text="N/A" heading="Active Teammates" finePrintHeading="COUNTRY"/>
+          <SkeletonRosterBoxLoading text="N/A" />
         )}
       </div>
     </>
