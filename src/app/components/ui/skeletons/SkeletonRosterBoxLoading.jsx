@@ -13,6 +13,7 @@ const SkeletonRosterBoxLoading = ({ countryText }) => {
           <FinePrint text="COUNTRY" />
         </div>
         <ul className="global-small-box">
+          <li className="small-box-list-item-title">No Team Found</li>
           <li className="small-box-list-item">
             <div className="player-tag-coach-wrapper">
               <div className="empty-pill"></div>

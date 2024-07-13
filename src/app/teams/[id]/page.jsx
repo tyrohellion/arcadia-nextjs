@@ -89,9 +89,9 @@ const TeamPage = ({ params }) => {
       )}
       <div className="boxes-wrapper">
         {team ? (
-          <ActiveRosterBox id={team._id} />
+          <ActiveRosterBox id={team._id} teamName={team.name}/>
         ) : (
-          <SkeletonRosterBoxLoading text="N/A" />
+          <SkeletonRosterBoxLoading />
         )}
       </div>
     </>

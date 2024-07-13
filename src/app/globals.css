@@ -473,12 +473,21 @@ body {
   font-size: 0.95rem;
 }
 
+.even-smaller-text {
+  margin: 0;
+  color: var(--font-color-white);
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 .global-fine-print {
   margin: 0;
   color: rgb(183, 189, 202);
   font-weight: 600;
   font-size: 0.75rem;
   width: fit-content;
+  white-space: nowrap;
 }
 
 .global-fine-print-wrapped-tag {
@@ -580,6 +589,7 @@ body {
   transition: all 150ms;
   color: var(--font-color-blue);
   margin: 0;
+  white-space: nowrap;
 }
 
 .button-large {
@@ -654,6 +664,7 @@ body {
   justify-content: center;
   margin: 2rem 1rem 0 1rem;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .global-small-box {
@@ -677,6 +688,22 @@ body {
   padding: 1rem;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.small-box-list-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color-white);
+  white-space: wrap;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.small-box-list-item-title:hover {
+  background-color: var(--button-color);
+  cursor: pointer;
 }
 
 .player-tag-coach-wrapper {
@@ -712,59 +739,68 @@ body {
   gap: 0.4rem;
 }
 
+.margin-right-text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
 .small-box-list-item:hover {
-  background-color: var(--font-color-blue);
-  color: var(--font-color-dark);
+  background-color: var(--button-color);
   cursor: pointer;
 
-  .global-body-text,
-  .global-fine-print,
-  .global-small-text {
-    color: var(--font-color-dark);
+  .global-small-tag,
+  .global-tags,
+  .global-fine-print-wrapped-tag,
+  .empty-pill {
+    background-color: var(--main-background-color);
   }
 
   .rating-pill {
     background: linear-gradient(
       90deg,
-      var(--font-color-dark) 0%,
-      var(--font-color-dark) var(--progress, 0),
-      rgb(121, 128, 141) var(--progress, 0)
+      white 0%,
+      white var(--progress, 0),
+      rgb(79, 84, 92) var(--progress, 0)
     );
   }
-  
+
   .score-pill {
     background: linear-gradient(
       90deg,
-      var(--font-color-dark) 0%,
-      var(--font-color-dark) var(--progress, 0),
-      rgb(121, 128, 141) var(--progress, 0)
+      white 0%,
+      white var(--progress, 0),
+      rgb(79, 84, 92) var(--progress, 0)
     );
   }
-  
+
   .goals-pill {
     background: linear-gradient(
       90deg,
-      var(--font-color-dark) 0%,
-      var(--font-color-dark) var(--progress, 0),
-      rgb(121, 128, 141) var(--progress, 0)
+      white 0%,
+      white var(--progress, 0),
+      rgb(79, 84, 92) var(--progress, 0)
     );
   }
-  
+
   .shooting-pill {
     background: linear-gradient(
       90deg,
-      var(--font-color-dark) 0%,
-      var(--font-color-dark) var(--progress, 0),
-      rgb(121, 128, 141) var(--progress, 0)
+      white 0%,
+      white var(--progress, 0),
+      rgb(79, 84, 92) var(--progress, 0)
     );
   }
-  
+
   .goalpart-pill {
     background: linear-gradient(
       90deg,
-      var(--font-color-dark) 0%,
-      var(--font-color-dark) var(--progress, 0),
-      rgb(121, 128, 141) var(--progress, 0)
+      white 0%,
+      white var(--progress, 0),
+      rgb(79, 84, 92) var(--progress, 0)
     );
   }
 }

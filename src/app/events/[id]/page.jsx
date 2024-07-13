@@ -5,11 +5,15 @@ import { useRouter } from "next/navigation";
 import GlobalImage from "@/app/components/ui/img/GlobalImage";
 import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
-import GlobalTag from "@/app/components/ui/tags/GlobalTag";
-import PrizePoolTag from "@/app/components/ui/tags/PrizePoolTag";
-import TierTag from "@/app/components/ui/tags/TierTag";
-import PrettyDate from "@/app/components/ui/formatters/PrettyDate";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
+import EventDetailsBox from "@/app/components/ui/boxes/EventDetailsBox";
+import prettyDate from "@/app/components/ui/api/prettyDate";
+import prettyTime from "@/app/components/ui/api/prettyTime";
+import regionFormatter from "@/app/components/ui/api/regionFormatter";
+import tierFormatter from "@/app/components/ui/api/tierFormatter";
+import modeFormatter from "@/app/components/ui/api/modeFormatter";
+import SkeletonEventDetailsLoading from "@/app/components/ui/skeletons/SkeletonEventDetailsLoading";
+import EventsChipCarousel from "@/app/components/ui/chips/EventsChipCarousel";
 
 const EventPage = ({ params }) => {
   const router = useRouter();
@@ -48,7 +52,9 @@ const EventPage = ({ params }) => {
   return (
     <>
       {isLoading ? (
-        <SkeletonHeader />
+        <>
+          <SkeletonHeader />
+        </>
       ) : (
         <div className="event-header-wrapper">
           {event ? (
@@ -66,22 +72,6 @@ const EventPage = ({ params }) => {
                 </div>
                 <div className="event-names-wrapper">
                   <SecondaryHeading text={event.name} />
-                  <div className="event-name-tag-wrapper">
-                    {event.startDate && event.endDate ? (
-                      <PrettyDate date={event.startDate} />
-                    ) : null}
-                    {event.startDate && event.endDate ? (
-                      <PrettyDate date={event.endDate} />
-                    ) : null}
-                    {event.prize.amount && event.prize.currency ? (
-                      <PrizePoolTag
-                        amount={event.prize.amount}
-                        unit={event.prize.currency}
-                      />
-                    ) : null}
-                    {event.tier ? <TierTag tier={event.tier} /> : null}
-                    {event.region ? <GlobalTag text={event.region} /> : null}
-                  </div>
                 </div>
               </div>
             </>
@@ -90,6 +80,22 @@ const EventPage = ({ params }) => {
           )}
         </div>
       )}
+      <EventsChipCarousel />
+      <div className="boxes-wrapper">
+        {event ? (
+          <EventDetailsBox
+            startDate={event.startDate ? prettyDate(event.startDate) : null}
+            endDate={event.endDate ? prettyDate(event.endDate) : null}
+            startTime={event.startDate ? prettyTime(event.startDate) : null}
+            endTime={event.endDate ? prettyTime(event.endDate) : null}
+            region={event.region ? regionFormatter(event.region) : null}
+            mode={event.mode ? modeFormatter(event.mode) : null}
+            tier={event.tier ? tierFormatter(event.tier) : null}
+          />
+        ) : (
+          <SkeletonEventDetailsLoading />
+        )}
+      </div>
     </>
   );
 };

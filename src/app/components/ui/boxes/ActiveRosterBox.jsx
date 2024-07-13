@@ -8,7 +8,7 @@ import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import FinePrint from "../text/FinePrint";
 import SkeletonRosterBoxLoading from "../skeletons/SkeletonRosterBoxLoading";
 
-const ActiveRosterBox = ({ id }) => {
+const ActiveRosterBox = ({ id, teamName }) => {
   const [results, setResults] = useState([]);
   const [isloading, setIsLoading] = useState(true);
   const router = useRouter();
@@ -34,39 +34,47 @@ const ActiveRosterBox = ({ id }) => {
     router.push(`/players/${key}`);
   };
 
+  const goToTeam = (key) => {
+    router.push(`/teams/${key}`);
+  };
+
   return (
     <>
       {isloading ? (
         <SkeletonRosterBoxLoading />
-      ) : (
+      ) : Array.isArray(results) && results.length > 0 ? (
         <div className="heading-small-box-wrapper">
           <div className="headings-wrapper">
             <CardHeader text="Active Roster" />
             <FinePrint text="COUNTRY" />
           </div>
-          {Array.isArray(results) && results.length > 0 ? (
-            <ul className="global-small-box">
-              {results.map((player) => (
-                <li
-                  className="small-box-list-item"
-                  key={player._id}
-                  onClick={() => handleClick(player._id)}
-                >
-                  <div className="player-tag-coach-wrapper">
-                    <div className="player-tag-roster">{player.tag}</div>
-                    {player.coach ? <FinePrintTagWrapped text="COACH" /> : null}
-                    {player.substitute ? (
-                      <FinePrintTagWrapped text="SUB" />
-                    ) : null}
-                  </div>
-                  {player.country ? <GlobalTag text={player.country} /> : null}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <SkeletonRosterBoxLoading countryText="N/A" />
-          )}
+          <ul className="global-small-box">
+            <li
+              className="small-box-list-item-title"
+              onClick={() => goToTeam(id)}
+            >
+              {teamName}
+            </li>
+            {results.map((player) => (
+              <li
+                className="small-box-list-item"
+                key={player._id}
+                onClick={() => handleClick(player._id)}
+              >
+                <div className="player-tag-coach-wrapper">
+                  <div className="player-tag-roster">{player.tag}</div>
+                  {player.coach ? <FinePrintTagWrapped text="COACH" /> : null}
+                  {player.substitute ? (
+                    <FinePrintTagWrapped text="SUB" />
+                  ) : null}
+                </div>
+                {player.country ? <GlobalTag text={player.country} /> : null}
+              </li>
+            ))}
+          </ul>
         </div>
+      ) : (
+        <SkeletonRosterBoxLoading countryText="N/A" />
       )}
     </>
   );

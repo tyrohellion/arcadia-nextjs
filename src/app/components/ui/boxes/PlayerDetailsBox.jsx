@@ -2,36 +2,26 @@ import React from "react";
 import CardHeader from "../text/CardHeader";
 import NormalText from "../text/NormalText";
 import FinePrint from "../text/FinePrint";
-import EvenSmallerText from "../text/EvenSmallerText";
+import SmallText from "../text/SmallText";
 
-const EventDetailsBox = ({
-  startDate,
-  endDate,
-  startTime,
-  endTime,
-  region,
-  mode,
-  tier,
-}) => {
+const PlayerDetailsBox = ({ name, country, team, level }) => {
   return (
     <>
       <div className="heading-small-box-wrapper">
         <div className="headings-wrapper">
-          <CardHeader text="Event Details" />
-          <FinePrint text="" />
+          <CardHeader text="Player Details" />
         </div>
 
         <ul className="global-small-box">
           <>
-            <li className="small-box-list-item" key={startDate}>
+            <li className="small-box-list-item" key={name}>
               <div className="player-stats-bar-wrapper">
                 <div className="stat-name-wrapper">
                   <div className="margin-right-text-box">
-                    <FinePrint text={startTime} />
-                    <EvenSmallerText text={startDate} />
+                    <SmallText text={name} />
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="START DATE" />
+                    <FinePrint text="NAME" />
                   </div>
                 </div>
                 <div
@@ -42,15 +32,14 @@ const EventDetailsBox = ({
                 ></div>
               </div>
             </li>
-            <li className="small-box-list-item" key={endDate}>
+            <li className="small-box-list-item" key={country}>
               <div className="player-stats-bar-wrapper">
                 <div className="stat-name-wrapper">
                   <div className="margin-right-text-box">
-                    <FinePrint text={endTime} />
-                    <EvenSmallerText text={endDate} />
+                    <SmallText text={country} />
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="START DATE" />
+                    <FinePrint text="COUNTRY" />
                   </div>
                 </div>
                 <div
@@ -61,14 +50,14 @@ const EventDetailsBox = ({
                 ></div>
               </div>
             </li>
-            <li className="small-box-list-item" key={region}>
+            <li className="small-box-list-item" key={team}>
               <div className="player-stats-bar-wrapper">
                 <div className="stat-name-wrapper">
                   <div className="margin-right-text-box">
-                    <NormalText text={region} />
+                    <SmallText text={team} />
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="REGION" />
+                    <FinePrint text="TEAM" />
                   </div>
                 </div>
                 <div
@@ -79,32 +68,14 @@ const EventDetailsBox = ({
                 ></div>
               </div>
             </li>
-            <li className="small-box-list-item" key={mode}>
+            <li className="small-box-list-item" key={level}>
               <div className="player-stats-bar-wrapper">
                 <div className="stat-name-wrapper">
                   <div className="margin-right-text-box">
-                    <NormalText text={mode} />
+                    <NormalText text={level} />
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="MODE" />
-                  </div>
-                </div>
-                <div
-                  className="rating-pill"
-                  style={{
-                    "--progress": 0 + "%",
-                  }}
-                ></div>
-              </div>
-            </li>
-            <li className="small-box-list-item" key={tier}>
-              <div className="player-stats-bar-wrapper">
-                <div className="stat-name-wrapper">
-                  <div className="margin-right-text-box">
-                    <NormalText text={tier} />
-                  </div>
-                  <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="TIER" />
+                    <FinePrint text="VERIFICATION" />
                   </div>
                 </div>
                 <div
@@ -122,4 +93,4 @@ const EventDetailsBox = ({
   );
 };
 
-export default EventDetailsBox;
+export default PlayerDetailsBox;

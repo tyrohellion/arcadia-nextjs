@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrettyDate = ({ date }) => {
+const PrettyDateBigTag = ({ date }) => {
   let dateParts = new Date(date);
 
   let year = dateParts.getFullYear();
@@ -71,4 +71,4 @@ const PrettyDate = ({ date }) => {
   return <p className="date-tag">{prettyDate}</p>;
 };
 
-export default PrettyDate;
+export default PrettyDateBigTag;
