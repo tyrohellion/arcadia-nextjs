@@ -50,7 +50,7 @@ const EventDetailsBox = ({
                     <EvenSmallerText text={endDate} />
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
-                    <FinePrint text="START DATE" />
+                    <FinePrint text="END DATE" />
                   </div>
                 </div>
                 <div

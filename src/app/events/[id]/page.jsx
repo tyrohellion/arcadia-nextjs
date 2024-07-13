@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react";
 import getEventByID from "@/app/components/ui/api/FetchEvent";
 import { useRouter } from "next/navigation";
-import GlobalImage from "@/app/components/ui/img/GlobalImage";
-import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import EventDetailsBox from "@/app/components/ui/boxes/EventDetailsBox";
@@ -14,6 +12,8 @@ import tierFormatter from "@/app/components/ui/api/tierFormatter";
 import modeFormatter from "@/app/components/ui/api/modeFormatter";
 import SkeletonEventDetailsLoading from "@/app/components/ui/skeletons/SkeletonEventDetailsLoading";
 import EventsChipCarousel from "@/app/components/ui/chips/EventsChipCarousel";
+import SmallHeading from "@/app/components/ui/text/SmallHeading";
+import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 
 const EventPage = ({ params }) => {
   const router = useRouter();
@@ -62,16 +62,16 @@ const EventPage = ({ params }) => {
               <div className="event-img-tags-wrapper">
                 <div className="event-image-wrapper">
                   {event.image ? (
-                    <GlobalImage imageSrc={event.image} altText={event.name} />
+                    <GlobalSmallImage imageSrc={event.image} altText={event.name} />
                   ) : (
-                    <GlobalImage
+                    <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
                       altText={event.name}
                     />
                   )}
                 </div>
                 <div className="event-names-wrapper">
-                  <SecondaryHeading text={event.name} />
+                  <SmallHeading text={event.name} />
                 </div>
               </div>
             </>

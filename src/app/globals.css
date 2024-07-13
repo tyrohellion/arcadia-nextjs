@@ -240,7 +240,8 @@ body {
 .nav-wrapper {
   display: flex;
   justify-content: center;
-  background-color: var(--main-background-color);
+  background-color: rgba(26, 27, 32, 0.6);
+  backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--button-color);
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
@@ -522,6 +523,13 @@ body {
   margin: 0;
 }
 
+.global-small-heading-text {
+  color: var(--font-color-blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
 .player-name-team-wrapper,
 .event-name-tag-wrapper {
   display: flex;
@@ -570,6 +578,24 @@ body {
   color: var(--font-color-blue);
   margin: 0;
   font-variant-numeric: tabular-nums;
+  width: fit-content;
+}
+
+.global-small-tag-lowercase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  min-height: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 150ms;
+  color: var(--font-color-blue);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  width: fit-content;
 }
 
 .button-small,
@@ -618,6 +644,16 @@ body {
   width: 100px;
   background-color: var(--img-background-color);
   border-radius: 0.7rem;
+  padding: 0.8rem;
+}
+
+.global-small-image {
+  min-width: 70px;
+  min-height: 70px;
+  height: 70px;
+  width: 70px;
+  background-color: var(--img-background-color);
+  border-radius: 0.5rem;
   padding: 0.8rem;
 }
 

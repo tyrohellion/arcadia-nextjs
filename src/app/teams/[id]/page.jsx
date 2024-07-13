@@ -1,15 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import getTeamByID from "@/app/components/ui/api/FetchTeam";
-import GlobalImage from "@/app/components/ui/img/GlobalImage";
-import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import NormalText from "@/app/components/ui/text/NormalText";
-import GlobalTag from "@/app/components/ui/tags/GlobalTag";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
+import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
+import SmallHeading from "@/app/components/ui/text/SmallHeading";
+import regionFormatter from "@/app/components/ui/api/regionFormatter";
+import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -63,20 +64,20 @@ const TeamPage = ({ params }) => {
               <div className="team-img-name-wrapper">
                 <div className="team-image-wrapper">
                   {team.image ? (
-                    <GlobalImage imageSrc={team.image} altText={team.name} />
+                    <GlobalSmallImage imageSrc={team.image} altText={team.name} />
                   ) : (
-                    <GlobalImage
+                    <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
                       altText={team.name}
                     />
                   )}
                 </div>
                 <div className="team-names-wrapper">
-                  <SecondaryHeading text={team.name} />
+                  <SmallHeading text={team.name} />
                   {team.region ? (
-                    <GlobalTag text={team.region} />
+                    <SmallTagLowercase text={regionFormatter(team.region)} />
                   ) : (
-                    <GlobalTag text="?" />
+                    <SmallTagLowercase text="No region data" />
                   )}
                 </div>
               </div>

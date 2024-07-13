@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import EventFetchAPI from "../api/FetchEvents";
 import { useRouter } from "next/navigation";
+import regionFormatter from "../api/regionFormatter";
 
 const EventFetch = (props) => {
   const value = props.searchValue;
@@ -42,7 +43,7 @@ const EventFetch = (props) => {
                 {event.name}
                 <div className="event-list-item-tags-wrapper">
                   {event.region ? (
-                    <p className="event-region-list-item">{event.region}</p>
+                    <p className="event-region-list-item">{regionFormatter(event.region)}</p>
                   ) : null}
                   {event.tier ? (
                     ["S", "A", "B", "C", "D"].includes(event.tier) ? (

@@ -2,10 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import { useRouter } from "next/navigation";
-import GlobalImage from "@/app/components/ui/img/GlobalImage";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
-import SecondaryHeading from "@/app/components/ui/text/SecondaryHeading";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
@@ -17,6 +15,8 @@ import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRost
 import PlayerDetailsBox from "@/app/components/ui/boxes/PlayerDetailsBox";
 import countryFormatter from "@/app/components/ui/api/countryFormatter";
 import getPlayerLevel from "@/app/components/ui/api/getPlayerLevel";
+import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
+import SmallHeading from "@/app/components/ui/text/SmallHeading";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -94,19 +94,19 @@ const PlayerPage = ({ params }) => {
                 <div className="player-img-name-wrapper">
                   <div className="player-image-wrapper">
                     {player.team && player.team.image ? (
-                      <GlobalImage
+                      <GlobalSmallImage
                         imageSrc={player.team.image}
                         altText={player.team.name}
                       />
                     ) : (
-                      <GlobalImage
+                      <GlobalSmallImage
                         imageSrc="/static/images/rocketleague.svg"
                         altText={player.tag}
                       />
                     )}
                   </div>
                   <div className="player-names-wrapper">
-                    <SecondaryHeading text={player.tag} />
+                    <SmallHeading text={player.tag} />
                   </div>
                 </div>
               </>
