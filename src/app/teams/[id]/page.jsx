@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import getTeamByID from "@/app/components/ui/api/FetchTeam";
 import NormalText from "@/app/components/ui/text/NormalText";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
@@ -11,12 +11,16 @@ import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import regionFormatter from "@/app/components/ui/api/regionFormatter";
 import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
+import RecentMatchesTeamBox from "@/app/components/ui/boxes/RecentMatchesTeamBox";
+import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
   const [team, setTeam] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showComponent, setShowComponent] = useState(true);
+  const [months, setMonths] = useState("");
+  const hasFetched = useRef(false);
 
   const displayComponent = () => {
     setShowComponent(false);
@@ -24,6 +28,8 @@ const TeamPage = ({ params }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (hasFetched.current) return;
+      hasFetched.current = true;
       try {
         const data = await getTeamByID(id);
         console.log(data);
@@ -41,8 +47,8 @@ const TeamPage = ({ params }) => {
   useEffect(() => {
     const fetchDate = async () => {
       try {
-        const date = getLocalDateMinusMonths(12);
-        console.log(date);
+        const date = getLocalDateMinusMonths(6);
+        setMonths(date)
       } catch (error) {
         console.error("Error fetching date:", error);
       }
@@ -64,7 +70,10 @@ const TeamPage = ({ params }) => {
               <div className="team-img-name-wrapper">
                 <div className="team-image-wrapper">
                   {team.image ? (
-                    <GlobalSmallImage imageSrc={team.image} altText={team.name} />
+                    <GlobalSmallImage
+                      imageSrc={team.image}
+                      altText={team.name}
+                    />
                   ) : (
                     <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
@@ -90,9 +99,15 @@ const TeamPage = ({ params }) => {
       )}
       <div className="boxes-wrapper">
         {team ? (
-          <ActiveRosterBox id={team._id} teamName={team.name}/>
+          <ActiveRosterBox id={team._id} teamName={team.name} />
         ) : (
           <SkeletonRosterBoxLoading />
+        )}
+
+        {team ? (
+          <RecentMatchesTeamBox id={team._id} />
+        ) : (
+          <SkeletonRecentMatchesOverviewLoading NoData="" />
         )}
       </div>
     </>

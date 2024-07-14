@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import getActiveRoster from "../api/ActiveRoster";
 import GlobalTag from "../tags/GlobalTag";
 import CardHeader from "../text/CardHeader";
@@ -12,9 +12,12 @@ const ActiveRosterBox = ({ id, teamName }) => {
   const [results, setResults] = useState([]);
   const [isloading, setIsLoading] = useState(true);
   const router = useRouter();
+  const hasFetched = useRef(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (hasFetched.current) return;
+      hasFetched.current = true;
       try {
         const data = await getActiveRoster(id);
         setResults(data);

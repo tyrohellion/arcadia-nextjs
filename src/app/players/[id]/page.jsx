@@ -17,6 +17,8 @@ import countryFormatter from "@/app/components/ui/api/countryFormatter";
 import getPlayerLevel from "@/app/components/ui/api/getPlayerLevel";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
+import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
 
 const PlayerPage = ({ params }) => {
   const router = useRouter();
@@ -118,36 +120,44 @@ const PlayerPage = ({ params }) => {
         </div>
       )}
       <div className="boxes-wrapper">
-        {player ? (
-          <PlayerDetailsBox
-            name={player.name ? player.name : "No Name Found"}
-            country={
-              player.country
-                ? countryFormatter(player.country)
-                : "No Country Found"
-            }
-            team={player.team ? player.team.name : "No Team Found"}
-            level={player ? playerLevel : null}
-          />
-        ) : (
-          <SkeletonPlayerStatsLoading />
-        )}
-        {player ? (
-          <PlayerStatsBox id={player._id} />
-        ) : (
-          <SkeletonPlayerStatsLoading />
-        )}
+        <div className="player-details-recent-matches-wrapper">
+          {player ? (
+            <PlayerDetailsBox
+              name={player.name ? player.name : "No Name Found"}
+              country={
+                player.country
+                  ? countryFormatter(player.country)
+                  : "No Country Found"
+              }
+              team={player.team ? player.team.name : "No Team Found"}
+              level={player ? playerLevel : null}
+            />
+          ) : (
+            <SkeletonPlayerStatsLoading />
+          )}
+          {player && player.team ? (
+            <ActiveRosterBox id={player.team._id} teamName={player.team.name} />
+          ) : (
+            <SkeletonRosterBoxLoading countryText="N/A" />
+          )}
+        </div>
+        <div className="player-stats-recent-matches-wrapper">
+          {player ? (
+            <PlayerStatsBox id={player._id} />
+          ) : (
+            <SkeletonPlayerStatsLoading />
+          )}
+          {player ? (
+            <RecentMatchesPlayerBox id={player._id} />
+          ) : (
+            <SkeletonRecentMatchesOverviewLoading NoData="" />
+          )}
+        </div>
 
         {player ? (
           <PlayerEventsBox id={player._id} />
         ) : (
           <SkeletonPlayerEventsLoading />
-        )}
-
-        {player && player.team ? (
-          <ActiveRosterBox id={player.team._id} teamName={player.team.name} />
-        ) : (
-          <SkeletonRosterBoxLoading countryText="N/A" />
         )}
       </div>
     </>
