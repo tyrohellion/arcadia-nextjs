@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
-import { useRouter } from "next/navigation";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
@@ -14,27 +13,21 @@ import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 import PlayerDetailsBox from "@/app/components/ui/boxes/PlayerDetailsBox";
 import countryFormatter from "@/app/components/ui/api/countryFormatter";
-import getPlayerLevel from "@/app/components/ui/api/getPlayerLevel";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
+import PlayerLinksBox from "@/app/components/ui/boxes/PlayerLinksBox";
+import SkeletonPlayerLinksLoading from "@/app/components/ui/skeletons/SkeletonPlayerLinksLoading";
+import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/SkeletonPlayerDetailsLoading";
 
 const PlayerPage = ({ params }) => {
-  const router = useRouter();
   const { id } = params;
   const [player, setPlayer] = useState(null);
   const [months, setMonths] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [results, setResults] = useState(true);
-  const [playerLevel, setPlayerLevel] = useState("");
   const hasFetched1 = useRef(false);
   const hasFetched2 = useRef(false);
-  const hasFetched3 = useRef(false);
-
-  const goToTeam = (id) => {
-    router.push(`/teams/${id}`);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,19 +60,6 @@ const PlayerPage = ({ params }) => {
     };
     fetchDate();
   }, []);
-
-  useEffect(() => {
-    const fetchPlayerVerification = async () => {
-      if (hasFetched3.current) return;
-      hasFetched3.current = true;
-      try {
-        setPlayerLevel(getPlayerLevel(id, months));
-      } catch (error) {
-        console.error("Error fetching date:", error);
-      }
-    };
-    fetchPlayerVerification();
-  }, [id]);
 
   return (
     <>
@@ -130,10 +110,9 @@ const PlayerPage = ({ params }) => {
                   : "No Country Found"
               }
               team={player.team ? player.team.name : "No Team Found"}
-              level={player ? playerLevel : null}
             />
           ) : (
-            <SkeletonPlayerStatsLoading />
+            <SkeletonPlayerDetailsLoading />
           )}
           {player && player.team ? (
             <ActiveRosterBox id={player.team._id} teamName={player.team.name} />
@@ -154,11 +133,18 @@ const PlayerPage = ({ params }) => {
           )}
         </div>
 
-        {player ? (
-          <PlayerEventsBox id={player._id} />
-        ) : (
-          <SkeletonPlayerEventsLoading />
-        )}
+        <div className="player-events-links-wrapper">
+          {player ? (
+            <PlayerEventsBox id={player._id} />
+          ) : (
+            <SkeletonPlayerEventsLoading />
+          )}
+          {player ? (
+            <PlayerLinksBox steamID={player.accounts[0].id} />
+          ) : (
+            <SkeletonPlayerLinksLoading />
+          )}
+        </div>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import fetchPlayerEventsOverview from "../api/FetchPlayerEventsOverview";
 import SmallTag from "../tags/SmallTag";
@@ -17,7 +17,6 @@ const PlayerEventsBox = ({ id }) => {
   const [time, setTime] = useState("");
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchTime = async () => {
@@ -53,10 +52,6 @@ const PlayerEventsBox = ({ id }) => {
     }
   }, [id, time]);
 
-  const handleClick = (key) => {
-    router.push(`/events/${key}`);
-  };
-
   const RatingTag = ({ playerId, eventId }) => {
     const [rating, setRating] = useState("");
 
@@ -72,7 +67,7 @@ const PlayerEventsBox = ({ id }) => {
     return <SmallTag text={rating} />;
   };
 
-  console.log(results)
+  console.log(results);
 
   return (
     <>
@@ -90,22 +85,19 @@ const PlayerEventsBox = ({ id }) => {
                 const event = result.events[0];
                 return (
                   event && (
-                    <li
-                      className="small-box-list-item"
-                      key={event._id}
-                      onClick={() => handleClick(event._id)}
-                    >
+                    <li className="small-box-list-item" key={event._id}>
                       <div className="player-event-overview-name-tier-wrapper">
                         <>
                           <SmallText text={event.name} />
                           <div className="overview-event-tier-region-wrapper">
                             <FinePrintTierTag tier={event.tier} />
-                            <FinePrintPrettyDate date={result.startDate}/>
+                            <FinePrintPrettyDate date={result.startDate} />
                             <FinePrint text={event.region} />
                           </div>
                         </>
                       </div>
                       <RatingTag playerId={id} eventId={event._id} />
+                      <Link href={`/events/${event._id}`} />
                     </li>
                   )
                 );

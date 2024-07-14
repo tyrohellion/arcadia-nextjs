@@ -1,16 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import PlayerFetchAPI from "../api/FetchPlayers";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const PlayerFetch = (props) => {
   const value = props.searchValue;
   const [results, setResults] = useState([]);
-  const router = useRouter();
-
-  const handleClick = (id) => {
-    router.push(`/players/${id}`);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +47,6 @@ const PlayerFetch = (props) => {
               <li
                 className="player-list-item"
                 key={player._id}
-                onClick={() => handleClick(player._id)}
               >
                 <div className="player-tag-name-list-wrapper">
                   {player.tag}
@@ -73,6 +67,7 @@ const PlayerFetch = (props) => {
                     />
                   ) : null}
                 </div>
+                <Link href={`/players/${player._id}`} />
               </li>
             ))}
         </ul>

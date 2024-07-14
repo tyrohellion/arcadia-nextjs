@@ -1,17 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import EventFetchAPI from "../api/FetchEvents";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import regionFormatter from "../api/regionFormatter";
 
 const EventFetch = (props) => {
   const value = props.searchValue;
   const [results, setResults] = useState([]);
-  const router = useRouter();
-
-  const handleClick = (id) => {
-    router.push(`/events/${id}`);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +33,6 @@ const EventFetch = (props) => {
               <li
                 className="event-list-item"
                 key={event._id}
-                onClick={() => handleClick(event._id)}
               >
                 {event.name}
                 <div className="event-list-item-tags-wrapper">
@@ -56,6 +50,7 @@ const EventFetch = (props) => {
                     <img src={event.image} alt={event.name}></img>
                   ) : null}
                 </div>
+                <Link href={`/events/${event._id}`} />
               </li>
             ))}
         </ul>

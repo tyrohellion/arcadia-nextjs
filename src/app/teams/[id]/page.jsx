@@ -5,7 +5,6 @@ import NormalText from "@/app/components/ui/text/NormalText";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
-import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
 import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
@@ -18,13 +17,7 @@ const TeamPage = ({ params }) => {
   const { id } = params;
   const [team, setTeam] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showComponent, setShowComponent] = useState(true);
-  const [months, setMonths] = useState("");
   const hasFetched = useRef(false);
-
-  const displayComponent = () => {
-    setShowComponent(false);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,18 +36,6 @@ const TeamPage = ({ params }) => {
 
     fetchData();
   }, [id]);
-
-  useEffect(() => {
-    const fetchDate = async () => {
-      try {
-        const date = getLocalDateMinusMonths(6);
-        setMonths(date)
-      } catch (error) {
-        console.error("Error fetching date:", error);
-      }
-    };
-    fetchDate();
-  }, []);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import CardHeader from "../text/CardHeader";
 import SmallText from "../text/SmallText";
@@ -13,7 +13,6 @@ import prettyDate from "../api/prettyDate";
 const RecentMatchesPlayerBox = ({ id }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -37,10 +36,6 @@ const RecentMatchesPlayerBox = ({ id }) => {
     fetchEvents();
   }, [id]);
 
-  const handleClick = (key) => {
-    router.push(`/matches/${key}`);
-  };
-
   console.log(results);
 
   return (
@@ -56,11 +51,7 @@ const RecentMatchesPlayerBox = ({ id }) => {
             <ul className="global-small-box-matches">
               {results.map((result) =>
                 result.blue.winner || result.orange.winner ? (
-                  <li
-                    className="small-box-list-item-matches"
-                    key={result._id}
-                    onClick={() => handleClick(result._id)}
-                  >
+                  <li className="small-box-list-item-matches" key={result._id}>
                     <div className="recent-matches-blue-wrapper">
                       <NormalTextBlue
                         text={result.blue.score ? result.blue.score : "0"}
@@ -79,8 +70,9 @@ const RecentMatchesPlayerBox = ({ id }) => {
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
-                    <FinePrint text={prettyDate(result.date)}/>
+                    <FinePrint text={prettyDate(result.date)} />
                     <div className="rating-pill"></div>
+                    <Link href={`/matches/${result._id}`} />
                   </li>
                 ) : null
               )}

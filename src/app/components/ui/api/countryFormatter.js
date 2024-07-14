@@ -185,6 +185,7 @@ const countryCodes = {
   UA: "Ukraine",
   AE: "United Arab Emirates",
   GB: "United Kingdom",
+  EN: "United Kingdom",
   US: "United States of America",
   UY: "Uruguay",
   UZ: "Uzbekistan",

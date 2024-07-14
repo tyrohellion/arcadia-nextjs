@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import getEventByID from "@/app/components/ui/api/FetchEvent";
-import { useRouter } from "next/navigation";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import EventDetailsBox from "@/app/components/ui/boxes/EventDetailsBox";
@@ -14,24 +13,13 @@ import SkeletonEventDetailsLoading from "@/app/components/ui/skeletons/SkeletonE
 import EventsChipCarousel from "@/app/components/ui/chips/EventsChipCarousel";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
+import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import RecentMatchesUpcomingEventBox from "@/app/components/ui/boxes/RecentMatchesUpcomingEventBox";
 
 const EventPage = ({ params }) => {
-  const router = useRouter();
   const { id } = params;
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const goToTeam = (id) => {
-    router.push(`/teams/${id}`);
-  };
-
-  const goToPlayer = (id) => {
-    router.push(`/players/${id}`);
-  };
-
-  const goToEvent = (id) => {
-    router.push(`/events/${id}`);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +50,10 @@ const EventPage = ({ params }) => {
               <div className="event-img-tags-wrapper">
                 <div className="event-image-wrapper">
                   {event.image ? (
-                    <GlobalSmallImage imageSrc={event.image} altText={event.name} />
+                    <GlobalSmallImage
+                      imageSrc={event.image}
+                      altText={event.name}
+                    />
                   ) : (
                     <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
@@ -94,6 +85,11 @@ const EventPage = ({ params }) => {
           />
         ) : (
           <SkeletonEventDetailsLoading />
+        )}
+        {event ? (
+          <RecentMatchesUpcomingEventBox id={event._id} />
+        ) : (
+          <SkeletonRecentMatchesOverviewLoading />
         )}
       </div>
     </>

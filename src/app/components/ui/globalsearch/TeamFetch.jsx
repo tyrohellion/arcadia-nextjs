@@ -1,16 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import TeamFetchAPI from "../api/FetchTeams";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const TeamFetch = (props) => {
   const value = props.searchValue;
   const [results, setResults] = useState([]);
-  const router = useRouter();
-
-  const handleClick = (id) => {
-    router.push(`/teams/${id}`);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +32,6 @@ const TeamFetch = (props) => {
               <li
                 className="team-list-item"
                 key={team._id}
-                onClick={() => handleClick(team._id)}
               >
                 {team.name}
                 <div className="team-region-image-wrapper">
@@ -50,6 +44,7 @@ const TeamFetch = (props) => {
                     <img src={team.image} className="team-list-image" />
                   ) : null}
                 </div>
+                <Link href={`/teams/${team._id}`} />
               </li>
             ))}
         </ul>
