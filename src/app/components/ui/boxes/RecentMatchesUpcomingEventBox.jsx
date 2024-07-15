@@ -10,6 +10,7 @@ import FinePrint from "../text/FinePrint";
 import prettyDate from "../api/prettyDate";
 import FetchEventMatchesOverview from "../api/FetchEventMatches";
 import EventMatchesUpcomingText from "../text/EventMatchesUpcomingText";
+import prettyTime from "../api/prettyTime";
 
 const RecentMatchesUpcomingEventBox = ({ id }) => {
   const [results, setResults] = useState([]);
@@ -75,16 +76,16 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
                 .filter((result) =>
                   completed
                     ? (result.blue && result.blue.score) ||
-                      result.blue.winner ||
+                      result.blue?.winner ||
                       (result.orange && result.orange.score) ||
-                      result.orange.winner
+                      result.orange?.winner
                     : !(
                         (result.blue && result.blue.score) ||
-                        result.blue.winner
+                        result.blue?.winner
                       ) &&
                       !(
                         (result.orange && result.orange.score) ||
-                        result.orange.winner
+                        result.orange?.winner
                       )
                 )
                 .map((result) => (
@@ -97,18 +98,13 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
                             : "0"
                         }
                       />
-                      <SmallText
-                        text={
-                          result.blue &&
-                          result.blue.team &&
-                          result.blue.team.team
-                            ? result.blue.team.team.name
-                            : "TBD"
-                        }
-                      />
-                      {result.blue &&
-                      result.blue.winner &&
-                      result.blue.score ? (
+                      <div className="team-name-routing-wrapper">
+                      <Link href={`/teams/${result.blue?.team?.team?._id}`} />
+                        <SmallText
+                          text={result.blue?.team?.team?.name || "TBD"}
+                        />
+                      </div>
+                      {result.blue?.winner && result.blue?.score ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
@@ -120,22 +116,25 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
                             : "0"
                         }
                       />
-                      <SmallText
-                        text={
-                          result.orange &&
-                          result.orange.team &&
-                          result.orange.team.team
-                            ? result.orange.team.team.name
-                            : "TBD"
-                        }
-                      />
-                      {result.orange &&
-                      result.orange.winner &&
-                      result.orange.score ? (
+                      <div className="team-name-routing-wrapper">
+                        <Link href={`/teams/${result.orange?.team?.team?._id}`} />
+                        <SmallText
+                          text={result.orange?.team?.team?.name || "TBD"}
+                        />
+                      </div>
+                      {result.orange?.winner && result.orange?.score ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
-                    <FinePrint text={prettyDate(result.date)} />
+                    <FinePrint
+                      text={
+                        result.date
+                          ? prettyDate(result.date) +
+                            " " +
+                            prettyTime(result.date)
+                          : null
+                      }
+                    />
                     <div className="rating-pill"></div>
                     <Link href={`/matches/${result._id}`} />
                   </li>

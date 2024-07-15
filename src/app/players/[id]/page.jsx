@@ -17,8 +17,6 @@ import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
-import PlayerLinksBox from "@/app/components/ui/boxes/PlayerLinksBox";
-import SkeletonPlayerLinksLoading from "@/app/components/ui/skeletons/SkeletonPlayerLinksLoading";
 import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/SkeletonPlayerDetailsLoading";
 
 const PlayerPage = ({ params }) => {
@@ -110,6 +108,7 @@ const PlayerPage = ({ params }) => {
                   : "No Country Found"
               }
               team={player.team ? player.team.name : "No Team Found"}
+              steamID={player.accounts[0].id}
             />
           ) : (
             <SkeletonPlayerDetailsLoading />
@@ -127,22 +126,16 @@ const PlayerPage = ({ params }) => {
             <SkeletonPlayerStatsLoading />
           )}
           {player ? (
-            <RecentMatchesPlayerBox id={player._id} />
-          ) : (
-            <SkeletonRecentMatchesOverviewLoading NoData="" />
-          )}
-        </div>
-
-        <div className="player-events-links-wrapper">
-          {player ? (
             <PlayerEventsBox id={player._id} />
           ) : (
             <SkeletonPlayerEventsLoading />
           )}
+        </div>
+        <div className="player-events-links-wrapper">
           {player ? (
-            <PlayerLinksBox steamID={player.accounts[0].id} />
+            <RecentMatchesPlayerBox id={player._id} />
           ) : (
-            <SkeletonPlayerLinksLoading />
+            <SkeletonRecentMatchesOverviewLoading NoData="" />
           )}
         </div>
       </div>

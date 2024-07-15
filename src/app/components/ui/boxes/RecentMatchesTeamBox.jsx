@@ -9,6 +9,7 @@ import NormalTextBlue from "../text/NormalTextBlue";
 import SkeletonRecentMatchesOverviewLoading from "../skeletons/SkeletonRecentMatchesOverviewLoading";
 import FinePrint from "../text/FinePrint";
 import prettyDate from "../api/prettyDate";
+import prettyTime from "../api/prettyTime";
 
 const RecentMatchesTeamBox = ({ id }) => {
   const [results, setResults] = useState([]);
@@ -56,7 +57,10 @@ const RecentMatchesTeamBox = ({ id }) => {
                       <NormalTextBlue
                         text={result.blue.score ? result.blue.score : "0"}
                       />
-                      <SmallText text={result.blue.team.team.name} />
+                      <div className="team-name-routing-wrapper">
+                        <Link href={`/teams/${result.blue?.team?.team?._id}`} />
+                        <SmallText text={result.blue?.team?.team?.name} />
+                      </div>
                       {result.blue.winner ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
@@ -65,12 +69,25 @@ const RecentMatchesTeamBox = ({ id }) => {
                       <NormalTextBlue
                         text={result.orange.score ? result.orange.score : "0"}
                       />
-                      <SmallText text={result.orange.team.team.name} />
+                      <div className="team-name-routing-wrapper">
+                        <Link
+                          href={`/teams/${result.orange?.team?.team?._id}`}
+                        />
+                        <SmallText text={result.orange?.team?.team?.name} />
+                      </div>
                       {result.orange.winner ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
-                    <FinePrint text={prettyDate(result.date)} />
+                    <FinePrint
+                      text={
+                        result.date
+                          ? prettyDate(result.date) +
+                            " " +
+                            prettyTime(result.date)
+                          : null
+                      }
+                    />
                     <div className="rating-pill"></div>
                     <Link href={`/matches/${result._id}`} />
                   </li>

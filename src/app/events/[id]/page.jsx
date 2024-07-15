@@ -15,6 +15,7 @@ import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesUpcomingEventBox from "@/app/components/ui/boxes/RecentMatchesUpcomingEventBox";
+import EventStagesBox from "@/app/components/ui/boxes/EventStagesBox";
 
 const EventPage = ({ params }) => {
   const { id } = params;
@@ -73,19 +74,26 @@ const EventPage = ({ params }) => {
       )}
       <EventsChipCarousel />
       <div className="boxes-wrapper">
-        {event ? (
-          <EventDetailsBox
-            startDate={event.startDate ? prettyDate(event.startDate) : null}
-            endDate={event.endDate ? prettyDate(event.endDate) : null}
-            startTime={event.startDate ? prettyTime(event.startDate) : null}
-            endTime={event.endDate ? prettyTime(event.endDate) : null}
-            region={event.region ? regionFormatter(event.region) : null}
-            mode={event.mode ? modeFormatter(event.mode) : null}
-            tier={event.tier ? tierFormatter(event.tier) : null}
-          />
-        ) : (
-          <SkeletonEventDetailsLoading />
-        )}
+        <div className="event-details-stages-wrapper">
+          {event ? (
+            <EventDetailsBox
+              startDate={event.startDate ? prettyDate(event.startDate) : null}
+              endDate={event.endDate ? prettyDate(event.endDate) : null}
+              startTime={event.startDate ? prettyTime(event.startDate) : null}
+              endTime={event.endDate ? prettyTime(event.endDate) : null}
+              region={event.region ? regionFormatter(event.region) : null}
+              mode={event.mode ? modeFormatter(event.mode) : null}
+              tier={event.tier ? tierFormatter(event.tier) : null}
+            />
+          ) : (
+            <SkeletonEventDetailsLoading />
+          )}
+          {event ? (
+            <EventStagesBox stages={event.stages} />
+          ) : (
+            <SkeletonEventDetailsLoading />
+          )}
+        </div>
         {event ? (
           <RecentMatchesUpcomingEventBox id={event._id} />
         ) : (

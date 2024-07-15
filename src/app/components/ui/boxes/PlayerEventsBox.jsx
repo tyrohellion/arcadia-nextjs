@@ -37,7 +37,7 @@ const PlayerEventsBox = ({ id }) => {
         const data = await fetchPlayerEventsOverview(id, time);
         if (data) {
           data.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
-          setResults(data.slice(0, 4));
+          setResults(data.slice(0, 5));
         } else {
           console.error("No stats data found in response:", data);
         }
