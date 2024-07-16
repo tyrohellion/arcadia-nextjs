@@ -1,0 +1,73 @@
+import React from "react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import CardHeader from "../text/CardHeader";
+import SkeletonPlayerEventsBox from "../skeletons/SkeletonPlayerEventsBox";
+import SkeletonPlayerEventsLoading from "../skeletons/SkeletonPlayerEventsLoading";
+import SmallText from "../text/SmallText";
+import FinePrint from "../text/FinePrint";
+import FinePrintTierTag from "../tags/FinePrintTierTag";
+import FinePrintPrettyDate from "../formatters/FinePrintPrettyDate";
+import FetchTeamRecentEvents from "../api/FetchTeamRecentEvents";
+
+const TeamEventsBox = ({ id }) => {
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const data = await FetchTeamRecentEvents(id);
+        if (data) {
+          setResults(data);
+        } else {
+          console.error("No stats data found in response:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching player stats:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchEvents();
+  }, [id]);
+
+  return (
+    <>
+      {isLoading ? (
+        <SkeletonPlayerEventsLoading />
+      ) : (
+        <div className="heading-small-box-wrapper">
+          <div className="headings-wrapper">
+            <CardHeader text="Recent Events" />
+          </div>
+          {Array.isArray(results) && results.length > 0 ? (
+            <ul className="global-small-box">
+              {results.map((event) => {
+                return (
+                  <li className="small-box-list-item" key={event._id}>
+                    <div className="player-event-overview-name-tier-wrapper">
+                      <>
+                        <SmallText text={event.name} />
+                        <div className="overview-event-tier-region-wrapper">
+                          <FinePrintTierTag tier={event.tier} />
+                          <FinePrintPrettyDate date={event.startDate} />
+                          <FinePrint text={event.region} />
+                        </div>
+                      </>
+                    </div>
+                    <Link href={`/events/${event._id}`} />
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <SkeletonPlayerEventsBox text="N/A" />
+          )}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default TeamEventsBox;

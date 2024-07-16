@@ -88,6 +88,7 @@ const RecentMatchesPlayerBox = ({ id }) => {
                           : null
                       }
                     />
+                    <FinePrint text={result.event.name} />
                     <div className="rating-pill"></div>
                     <Link href={`/matches/${result._id}`} />
                   </li>

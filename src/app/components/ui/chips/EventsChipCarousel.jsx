@@ -7,7 +7,6 @@ const EventsChipCarousel = () => {
       <GlobalChip text="Overview" />
       <GlobalChip text="Matches" />
       <GlobalChip text="Stats" />
-      <GlobalChip text="Brackets" />
       <GlobalChip text="Players" />
       <GlobalChip text="Teams" />
     </div>

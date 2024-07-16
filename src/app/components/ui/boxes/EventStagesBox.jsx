@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import CardHeader from "../text/CardHeader";
 import FinePrint from "../text/FinePrint";
-import EvenSmallerText from "../text/EvenSmallerText";
 import SkeletonEventDetailsLoading from "../skeletons/SkeletonEventDetailsLoading";
 import prettyDate from "../api/prettyDate";
 import prettyTime from "../api/prettyTime";
@@ -24,6 +22,7 @@ const EventStagesBox = ({ stages }) => {
             {results.map((stage) => (
               <>
                 <li className="small-box-list-item" key={stage.name}>
+                  <a href={stage.liquipedia} target="_blank" />
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="event-stage-text-wrapper">
@@ -43,7 +42,10 @@ const EventStagesBox = ({ stages }) => {
                             }
                           />
                         </div>
-                        <SmallText text={stage.name ? stage.name : null} />
+                        <div className="stage-name-icon-wrapper">
+                          <SmallText text={stage.name ? stage.name : null} />
+                          <img src="/static/images/externallink.png" />
+                        </div>
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrintPrizeTag

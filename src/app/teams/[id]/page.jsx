@@ -12,6 +12,7 @@ import regionFormatter from "@/app/components/ui/api/regionFormatter";
 import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
 import RecentMatchesTeamBox from "@/app/components/ui/boxes/RecentMatchesTeamBox";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import TeamEventsBox from "@/app/components/ui/boxes/TeamEventsBox";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -79,12 +80,18 @@ const TeamPage = ({ params }) => {
         </div>
       )}
       <div className="boxes-wrapper">
-        {team ? (
-          <ActiveRosterBox id={team._id} teamName={team.name} />
-        ) : (
-          <SkeletonRosterBoxLoading />
-        )}
-
+        <div className="team-roster-events-wrapper">
+          {team ? (
+            <ActiveRosterBox id={team._id} teamName={team.name} />
+          ) : (
+            <SkeletonRosterBoxLoading />
+          )}
+          {team ? (
+            <TeamEventsBox id={team._id} />
+          ) : (
+            <SkeletonRecentMatchesOverviewLoading NoData="" />
+          )}
+        </div>
         {team ? (
           <RecentMatchesTeamBox id={team._id} />
         ) : (

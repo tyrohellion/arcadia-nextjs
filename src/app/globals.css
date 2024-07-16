@@ -558,7 +558,7 @@ body {
   font-weight: 600;
   font-size: 0.75rem;
   width: fit-content;
-  white-space: nowrap;
+  white-space: wrap;
 }
 
 .global-fine-print-wrapped-tag {
@@ -777,10 +777,13 @@ body {
   flex-wrap: wrap;
 }
 
+/* boxes-wrapper-groupings */
+
 .player-details-recent-matches-wrapper,
 .player-stats-recent-matches-wrapper,
 .player-events-links-wrapper,
-.event-details-stages-wrapper {
+.event-details-stages-wrapper,
+.team-roster-events-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -820,6 +823,19 @@ body {
   padding: 0;
   overflow: hidden;
   margin: 0;
+}
+
+.stage-name-icon-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  img {
+    min-width: 1rem;
+    min-height: 1rem;
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .small-box-list-item {
