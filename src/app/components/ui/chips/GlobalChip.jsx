@@ -1,11 +1,14 @@
 import React from "react";
 
-const GlobalChip = ({text}) => {
-    return (
-        <>
-            <div className="chip-button">{text}</div>
-        </>
-    )
-}
+const GlobalChip = ({ text, isActive, onClick }) => {
+  return (
+    <div
+      onClick={onClick}
+      className={`chip-button ${isActive ? "active" : ""}`}
+    >
+      {text}
+    </div>
+  );
+};
 
-export default GlobalChip
+export default GlobalChip;

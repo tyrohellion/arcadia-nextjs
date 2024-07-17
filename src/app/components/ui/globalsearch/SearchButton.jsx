@@ -10,7 +10,7 @@ const SearchButton = () => {
 
   return (
     <>
-      <div className="nav-item" onClick={toggleOverlay}>
+      <div className="nav-item" id="searchNavButton" onClick={toggleOverlay}>
         Search
       </div>
       {isOverlayVisible && <GlobalSearch onClose={toggleOverlay} />}
