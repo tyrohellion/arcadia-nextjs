@@ -184,7 +184,6 @@ const countryCodes = {
   UG: "Uganda",
   UA: "Ukraine",
   AE: "United Arab Emirates",
-  GB: "United Kingdom",
   EN: "United Kingdom",
   US: "United States of America",
   UY: "Uruguay",
@@ -196,6 +195,7 @@ const countryCodes = {
   YE: "Yemen",
   ZM: "Zambia",
   ZW: "Zimbabwe",
+  RE: "Réunion"
 };
 
 function countryFormatter(code) {
@@ -203,3 +203,4 @@ function countryFormatter(code) {
 }
 
 export default countryFormatter;
+export { countryFormatter, countryCodes };

@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import getTeamByID from "@/app/components/ui/api/FetchTeam";
 import NormalText from "@/app/components/ui/text/NormalText";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
@@ -13,12 +13,22 @@ import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
 import RecentMatchesTeamBox from "@/app/components/ui/boxes/RecentMatchesTeamBox";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import TeamEventsBox from "@/app/components/ui/boxes/TeamEventsBox";
+import TeamChipCarousel from "@/app/components/ui/chips/TeamChipCarousel";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
+  const router = useRouter();
   const [team, setTeam] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const hasFetched = useRef(false);
+  const searchParams = useSearchParams();
+  const pageView = searchParams.get("view");
+
+  useEffect(() => {
+    if (!pageView) {
+      router.replace(`?view=Overview`);
+    }
+  }, [pageView, router, id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +53,7 @@ const TeamPage = ({ params }) => {
       {isLoading ? (
         <>
           <SkeletonHeader />
-          <ChipCarousel />
+          <TeamChipCarousel />
         </>
       ) : (
         <div className="header-chip-wrapper">
@@ -76,9 +86,10 @@ const TeamPage = ({ params }) => {
               <NormalText text="We can't find that team :'(" />
             )}
           </div>
-          <ChipCarousel />
+          <TeamChipCarousel />
         </div>
       )}
+      {pageView === "Overview" ? (
       <div className="boxes-wrapper">
         <div className="team-roster-events-wrapper">
           {team ? (
@@ -98,6 +109,7 @@ const TeamPage = ({ params }) => {
           <SkeletonRecentMatchesOverviewLoading NoData="" />
         )}
       </div>
+      ) : null}
     </>
   );
 };

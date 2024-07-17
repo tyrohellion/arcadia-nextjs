@@ -253,6 +253,22 @@ body {
   z-index: 11;
 }
 
+.small-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--button-color);
+  color: var(--font-color-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 250px;
+  min-width: 10rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  outline: none;
+  z-index: 11;
+}
+
 .results-wrapper {
   display: flex;
   justify-content: center;
@@ -570,7 +586,7 @@ body {
   font-weight: 600;
   font-size: 0.75rem;
   width: fit-content;
-  background-color: var(--button-color);
+  background-color: var(--main-background-color);
   padding: 0.4rem;
   border-radius: 0.4rem;
   transition: all 100ms;
@@ -744,6 +760,10 @@ body {
   justify-content: center;
   margin: 2rem 0 0 0;
   flex-wrap: wrap;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .chip-button {
@@ -1271,10 +1291,193 @@ body {
   color: var(--font-color-white);
 }
 
+/* player search page */
 
+.filter-tag-button {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: var(--results-background-color);
+  width: fit-content;
+  height: fit-content;
+  transition: all 100ms;
 
+  img {
+    min-width: 16px;
+    min-height: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
 
+.filter-tag-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.filter-tag-button:hover {
+  background-color: var(--button-color);
+  transition: all 100ms;
+  cursor: pointer;
+}
+
+.input-filters-header-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 3;
+}
+
+.country-dropdown {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  width: 250px;
+}
+
+.dropdown-button {
+  padding: 0.8rem;
+  background-color: var(--results-background-color);
+  color: var(--font-color-white);
+  border-radius: 0.4rem;
+  font-size: 0.9em;
+  font-weight: 550;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-button:focus {
+  outline: none;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: var(--button-color);
+  color: var(--font-color-white);
+  border-radius: 0.4rem;
+  top: 3rem;
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 100ms;
+  width: 250px;
+}
+
+.dropdown-item:hover {
+  background-color: var(--font-color-blue);
+  color: var(--font-color-dark);
+  transition: all 100ms;
+}
+
+.player-card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  width: 340px;
+  height: 200px;
+  gap: 1rem;
+  transition: all 100ms;
+
+  a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    min-width: 50px;
+    min-height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+    background-color: var(--img-background-color);
+    padding: 0.5rem;
+  }
+
+  .card-tags-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .main-card-content-wrapper {
+    margin-bottom: 3rem;
+  }
+
+  .card-tag-name-wrapper {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 215px;
+    white-space: wrap;
+  }
+
+  .global-small-text-blue {
+    position: absolute;
+    left: 1.5rem;
+    top: 5.5rem;
+  }
+
+  .card-small-heading-text {
+    color: var(--font-color-blue);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.player-card:hover {
+  background-color: var(--button-color);
+  transition: all 100ms;
+}
+
+.card-results-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem 0 1rem;
+}
+
+.card-tag-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.main-card-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-tags-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
 
 /* @media */
 
@@ -1303,5 +1506,10 @@ body {
   #searchNavButton {
     display: none;
   }
-}
 
+  .input-filters-header-wrapper {
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+  }
+}

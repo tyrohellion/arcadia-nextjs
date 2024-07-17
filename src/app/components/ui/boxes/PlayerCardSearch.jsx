@@ -1,0 +1,28 @@
+import React from "react";
+import Link from "next/link";
+import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
+import SmallHeading from "../text/SmallHeading";
+import FinePrint from "../text/FinePrint";
+import SmallTextBlue from "../text/SmallTextBlue";
+
+const PlayerCardSearch = ({ id, tag, name, image, team, country, role }) => {
+  return (
+    <div className="player-card">
+      <Link href={`/players/${id}`} />
+      <div className="main-card-content-wrapper">
+        <div className="card-tag-name-wrapper">
+          <h2 className="card-small-heading-text">{tag}</h2>
+          <FinePrint text={name} />
+        </div>
+        <img src={image} alt={team} />
+        <SmallTextBlue text={team} />
+      </div>
+      <div className="card-tags-wrapper">
+        <FinePrintTagWrapped text={country} />
+        <FinePrintTagWrapped text={role} />
+      </div>
+    </div>
+  );
+};
+
+export default PlayerCardSearch;

@@ -3,8 +3,8 @@ import GlobalChip from "./GlobalChip";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-const ChipCarousel = () => {
-  const views = ["Overview", "Results", "Stats"];
+const TeamChipCarousel = () => {
+  const views = ["Overview", "Results"];
   const [activeChip, setActiveChip] = useState(0);
   const searchParams = useSearchParams();
   const viewParam = searchParams.get("view");
@@ -33,4 +33,4 @@ const ChipCarousel = () => {
   );
 };
 
-export default ChipCarousel;
+export default TeamChipCarousel;

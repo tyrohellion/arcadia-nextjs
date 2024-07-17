@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import getEventByID from "@/app/components/ui/api/FetchEvent";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
@@ -19,8 +20,17 @@ import EventStagesBox from "@/app/components/ui/boxes/EventStagesBox";
 
 const EventPage = ({ params }) => {
   const { id } = params;
+  const router = useRouter();
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const pageView = searchParams.get("view");
+
+  useEffect(() => {
+    if (!pageView) {
+      router.replace(`?view=Overview`);
+    }
+  }, [pageView, router, id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,33 +83,35 @@ const EventPage = ({ params }) => {
         </div>
       )}
       <EventsChipCarousel />
-      <div className="boxes-wrapper">
-        <div className="event-details-stages-wrapper">
+      {pageView === "Overview" ? (
+        <div className="boxes-wrapper">
+          <div className="event-details-stages-wrapper">
+            {event ? (
+              <EventDetailsBox
+                startDate={event.startDate ? prettyDate(event.startDate) : null}
+                endDate={event.endDate ? prettyDate(event.endDate) : null}
+                startTime={event.startDate ? prettyTime(event.startDate) : null}
+                endTime={event.endDate ? prettyTime(event.endDate) : null}
+                region={event.region ? regionFormatter(event.region) : null}
+                mode={event.mode ? modeFormatter(event.mode) : null}
+                tier={event.tier ? tierFormatter(event.tier) : null}
+              />
+            ) : (
+              <SkeletonEventDetailsLoading />
+            )}
+            {event ? (
+              <EventStagesBox stages={event.stages} />
+            ) : (
+              <SkeletonEventDetailsLoading />
+            )}
+          </div>
           {event ? (
-            <EventDetailsBox
-              startDate={event.startDate ? prettyDate(event.startDate) : null}
-              endDate={event.endDate ? prettyDate(event.endDate) : null}
-              startTime={event.startDate ? prettyTime(event.startDate) : null}
-              endTime={event.endDate ? prettyTime(event.endDate) : null}
-              region={event.region ? regionFormatter(event.region) : null}
-              mode={event.mode ? modeFormatter(event.mode) : null}
-              tier={event.tier ? tierFormatter(event.tier) : null}
-            />
+            <RecentMatchesUpcomingEventBox id={event._id} />
           ) : (
-            <SkeletonEventDetailsLoading />
-          )}
-          {event ? (
-            <EventStagesBox stages={event.stages} />
-          ) : (
-            <SkeletonEventDetailsLoading />
+            <SkeletonRecentMatchesOverviewLoading />
           )}
         </div>
-        {event ? (
-          <RecentMatchesUpcomingEventBox id={event._id} />
-        ) : (
-          <SkeletonRecentMatchesOverviewLoading />
-        )}
-      </div>
+      ) : null}
     </>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
@@ -21,11 +22,20 @@ import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/Skeleton
 
 const PlayerPage = ({ params }) => {
   const { id } = params;
+  const router = useRouter();
   const [player, setPlayer] = useState(null);
   const [months, setMonths] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const hasFetched1 = useRef(false);
   const hasFetched2 = useRef(false);
+  const searchParams = useSearchParams();
+  const pageView = searchParams.get("view");
+
+  useEffect(() => {
+    if (!pageView) {
+      router.replace(`?view=Overview`);
+    }
+  }, [pageView, router, id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,48 +107,53 @@ const PlayerPage = ({ params }) => {
           <ChipCarousel />
         </div>
       )}
-      <div className="boxes-wrapper">
-        <div className="player-details-recent-matches-wrapper">
-          {player ? (
-            <PlayerDetailsBox
-              name={player.name ? player.name : "No Name Found"}
-              country={
-                player.country
-                  ? countryFormatter(player.country)
-                  : "No Country Found"
-              }
-              team={player.team ? player.team.name : "No Team Found"}
-              steamID={player.accounts[0].id}
-            />
-          ) : (
-            <SkeletonPlayerDetailsLoading />
-          )}
-          {player && player.team ? (
-            <ActiveRosterBox id={player.team._id} teamName={player.team.name} />
-          ) : (
-            <SkeletonRosterBoxLoading countryText="N/A" />
-          )}
+      {pageView === "Overview" ? (
+        <div className="boxes-wrapper">
+          <div className="player-details-recent-matches-wrapper">
+            {player ? (
+              <PlayerDetailsBox
+                name={player.name ? player.name : "No Name Found"}
+                country={
+                  player.country
+                    ? countryFormatter(player.country)
+                    : "No Country Found"
+                }
+                team={player.team ? player.team.name : "No Team Found"}
+                steamID={player.accounts ? player.accounts[0].id : null}
+              />
+            ) : (
+              <SkeletonPlayerDetailsLoading />
+            )}
+            {player && player.team ? (
+              <ActiveRosterBox
+                id={player.team._id}
+                teamName={player.team.name}
+              />
+            ) : (
+              <SkeletonRosterBoxLoading countryText="N/A" />
+            )}
+          </div>
+          <div className="player-stats-recent-matches-wrapper">
+            {player ? (
+              <PlayerStatsBox id={player._id} />
+            ) : (
+              <SkeletonPlayerStatsLoading />
+            )}
+            {player ? (
+              <PlayerEventsBox id={player._id} />
+            ) : (
+              <SkeletonPlayerEventsLoading />
+            )}
+          </div>
+          <div className="player-events-links-wrapper">
+            {player ? (
+              <RecentMatchesPlayerBox id={player._id} />
+            ) : (
+              <SkeletonRecentMatchesOverviewLoading NoData="" />
+            )}
+          </div>
         </div>
-        <div className="player-stats-recent-matches-wrapper">
-          {player ? (
-            <PlayerStatsBox id={player._id} />
-          ) : (
-            <SkeletonPlayerStatsLoading />
-          )}
-          {player ? (
-            <PlayerEventsBox id={player._id} />
-          ) : (
-            <SkeletonPlayerEventsLoading />
-          )}
-        </div>
-        <div className="player-events-links-wrapper">
-          {player ? (
-            <RecentMatchesPlayerBox id={player._id} />
-          ) : (
-            <SkeletonRecentMatchesOverviewLoading NoData="" />
-          )}
-        </div>
-      </div>
+      ) : null}
     </>
   );
 };
