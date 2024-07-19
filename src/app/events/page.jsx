@@ -78,8 +78,8 @@ const EventsPage = () => {
             <EventCardSearch
               key={event._id}
               id={event._id}
-              name={event.name}
-              date={event.startDate || null}
+              name={event.name ? event.name : "No Name Yet"}
+              date={event.startDate ? event.startDate || null : "No Start Date Yet"}
               image={
                 event.image ? event.image : "/static/images/rocketleague.svg"
               }
@@ -88,9 +88,14 @@ const EventsPage = () => {
                   ? event.prize.amount
                   : "No Prize"
               }
-              prizeUnit={event.prize && event.prize.currency ? event.prize.currency : null}
+              prizeUnit={
+                event.prize && event.prize.currency
+                  ? event.prize.currency
+                  : null
+              }
               region={event.region ? regionFormatter(event.region) : "?"}
               tier={event.tier ? tierFormatter(event.tier) : "?"}
+              mode={event.mode ? event.mode : "?"}
             />
           ))}
       </div>

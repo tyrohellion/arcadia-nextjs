@@ -26,16 +26,18 @@ const RegionDropdown = () => {
   }, []);
 
   useEffect(() => {
-    const region = searchParams.get("region");
-    if (region) {
-      setSelectedRegion(region);
+    const tier = searchParams.get("region");
+    if (tier) {
+      setSelectedRegion(tier);
     } else {
       setSelectedRegion(null);
     }
   }, [searchParams]);
 
   const handleRegionClick = (code) => {
-    router.push(`?region=${code}`);
+    const params = new URLSearchParams(window.location.search);
+    params.set("region", code);
+    router.push(`?${params.toString()}`);
     setIsOpen(false);
     setInputValue("");
   };
@@ -55,9 +57,17 @@ const RegionDropdown = () => {
     setInputValue(e.target.value);
   };
 
-  const filteredRegions = Object.keys(regionCodes).filter((code) =>
-    regionFilterFormatter(code).toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredRegions = Object.keys(regionCodes).filter((code) => {
+    const formatted = regionFilterFormatter(code);
+    if (!formatted) {
+      console.error(
+        `regionFilterFormatter returned undefined for code: ${code}`
+      );
+    }
+    return (
+      formatted && formatted.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  });
 
   return (
     <>
@@ -83,14 +93,14 @@ const RegionDropdown = () => {
             ))}
           </div>
         )}
-      </div>
-      <div className="filter-tag-wrapper">
-        {selectedRegion && (
-          <FilterTag
-            text={regionFilterFormatter(selectedRegion)}
-            onClick={handleRemoveRegion}
-          />
-        )}
+        <div className="filter-tag-wrapper">
+          {selectedRegion && (
+            <FilterTag
+              text={regionFilterFormatter(selectedRegion)}
+              onClick={handleRemoveRegion}
+            />
+          )}
+        </div>
       </div>
     </>
   );

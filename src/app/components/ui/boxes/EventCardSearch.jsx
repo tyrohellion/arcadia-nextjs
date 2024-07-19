@@ -14,6 +14,7 @@ const EventCardSearch = ({
   date,
   prize,
   prizeUnit,
+  mode
 }) => {
   let prizeString = PrizePoolFormatter(prize, prizeUnit);
   return (
@@ -30,6 +31,7 @@ const EventCardSearch = ({
       <div className="card-tags-wrapper">
         <FinePrintTagWrapped text={region} />
         <FinePrintTagWrapped text={tier} />
+        <FinePrintTagWrapped text={mode + "v" + mode} />
       </div>
     </div>
   );

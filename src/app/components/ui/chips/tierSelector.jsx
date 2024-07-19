@@ -62,7 +62,9 @@ const TierDropdown = () => {
     if (!formatted) {
       console.error(`tierFilterFormatter returned undefined for code: ${code}`);
     }
-    return formatted && formatted.toLowerCase().includes(inputValue.toLowerCase());
+    return (
+      formatted && formatted.toLowerCase().includes(inputValue.toLowerCase())
+    );
   });
 
   return (
@@ -89,14 +91,14 @@ const TierDropdown = () => {
             ))}
           </div>
         )}
-      </div>
-      <div className="filter-tag-wrapper">
-        {selectedTier && (
-          <FilterTag
-            text={tierFilterFormatter(selectedTier)}
-            onClick={handleRemoveTier}
-          />
-        )}
+        <div className="filter-tag-wrapper">
+          {selectedTier && (
+            <FilterTag
+              text={tierFilterFormatter(selectedTier)}
+              onClick={handleRemoveTier}
+            />
+          )}
+        </div>
       </div>
     </>
   );

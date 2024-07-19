@@ -91,14 +91,14 @@ const ModeDropdown = () => {
             ))}
           </div>
         )}
-      </div>
-      <div className="filter-tag-wrapper">
-        {selectedMode && (
-          <FilterTag
-            text={modeFilterFormatter(selectedMode)}
-            onClick={handleRemoveMode}
-          />
-        )}
+        <div className="filter-tag-wrapper">
+          {selectedMode && (
+            <FilterTag
+              text={modeFilterFormatter(selectedMode)}
+              onClick={handleRemoveMode}
+            />
+          )}
+        </div>
       </div>
     </>
   );

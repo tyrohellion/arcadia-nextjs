@@ -262,6 +262,7 @@ body {
   font-size: 0.9rem;
   width: 250px;
   min-width: 10rem;
+  max-height: 42.6px;
   border: none;
   border-radius: 0.5rem;
   padding: 0.8rem;
@@ -1311,12 +1312,12 @@ body {
 .filter-tag-button {
   display: flex;
   gap: 0.3rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 0.4rem;
+  border-radius: 0.3rem;
   background-color: var(--results-background-color);
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   transition: all 100ms;
 
@@ -1332,6 +1333,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  width: 95%;
+  top: 5px;
+  left: 5px;
 }
 
 .filter-tag-button:hover {
@@ -1357,6 +1362,7 @@ body {
   flex-direction: column;
   width: 200px;
 }
+
 .country-dropdown {
   position: relative;
   display: flex;

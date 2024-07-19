@@ -83,14 +83,14 @@ const CountryDropdown = () => {
             ))}
           </div>
         )}
-      </div>
-      <div className="filter-tag-wrapper">
-      {selectedCountry && (
-        <FilterTag
-          text={countryFormatter(selectedCountry)}
-          onClick={handleRemoveCountry}
-        />
-      )}
+        <div className="filter-tag-wrapper">
+          {selectedCountry && (
+            <FilterTag
+              text={countryFormatter(selectedCountry)}
+              onClick={handleRemoveCountry}
+            />
+          )}
+        </div>
       </div>
     </>
   );
