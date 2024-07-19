@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
-import SmallHeading from "../text/SmallHeading";
 import FinePrint from "../text/FinePrint";
 import SmallTextBlue from "../text/SmallTextBlue";
 

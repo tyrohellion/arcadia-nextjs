@@ -814,7 +814,8 @@ body {
 .player-stats-recent-matches-wrapper,
 .player-events-links-wrapper,
 .event-details-stages-wrapper,
-.team-roster-events-wrapper {
+.team-roster-events-wrapper,
+.team-stats-other-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -829,6 +830,20 @@ body {
   list-style: none;
   padding: 0;
   overflow: hidden;
+  margin: 0;
+}
+
+.global-small-box-former-members {
+  display: flex;
+  width: 340px;
+  max-height: 360px;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
 }
 
@@ -1333,6 +1348,15 @@ body {
   z-index: 3;
 }
 
+.region-dropdown,
+.tier-dropdown,
+.mode-dropdown {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  width: 200px;
+}
 .country-dropdown {
   position: relative;
   display: flex;
@@ -1378,7 +1402,17 @@ body {
   width: 250px;
 }
 
-.dropdown-item:hover {
+.dropdown-item-events {
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 100ms;
+  width: 200px;
+}
+
+.dropdown-item:hover,
+.dropdown-item-events:hover {
   background-color: var(--font-color-blue);
   color: var(--font-color-dark);
   transition: all 100ms;
@@ -1449,7 +1483,76 @@ body {
   }
 }
 
-.player-card:hover {
+.event-card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  width: 340px;
+  height: 200px;
+  gap: 1rem;
+  transition: all 100ms;
+
+  a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    min-width: 50px;
+    min-height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+    background-color: var(--img-background-color);
+    padding: 0.5rem;
+  }
+
+  .card-tags-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .main-card-content-wrapper {
+    margin-bottom: 3rem;
+  }
+
+  .card-tag-name-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 285px;
+    white-space: wrap;
+  }
+
+  .global-small-text-blue {
+    position: absolute;
+    left: 1.5rem;
+    top: 5.5rem;
+  }
+
+  .card-small-heading-text {
+    color: var(--font-color-blue);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.player-card:hover,
+.event-card:hover {
   background-color: var(--button-color);
   transition: all 100ms;
 }

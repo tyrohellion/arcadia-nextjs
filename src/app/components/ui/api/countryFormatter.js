@@ -1,4 +1,5 @@
 const countryCodes = {
+  AB: "Scotland",
   AF: "Afghanistan",
   AL: "Albania",
   DZ: "Algeria",
@@ -185,7 +186,7 @@ const countryCodes = {
   UA: "Ukraine",
   AE: "United Arab Emirates",
   EN: "United Kingdom",
-  US: "United States of America",
+  US: "United States",
   UY: "Uruguay",
   UZ: "Uzbekistan",
   VU: "Vanuatu",

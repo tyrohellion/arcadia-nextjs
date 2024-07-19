@@ -10,7 +10,6 @@ const TeamsPage = () => {
   const searchInputRef = useRef(null);
   const [results, setResults] = useState([]);
   const searchParams = useSearchParams();
-  const regionFilter = searchParams.get("region");
 
   useEffect(() => {
     if (searchInputRef.current) {

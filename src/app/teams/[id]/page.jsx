@@ -14,6 +14,9 @@ import RecentMatchesTeamBox from "@/app/components/ui/boxes/RecentMatchesTeamBox
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import TeamEventsBox from "@/app/components/ui/boxes/TeamEventsBox";
 import TeamChipCarousel from "@/app/components/ui/chips/TeamChipCarousel";
+import TeamStatsBox from "@/app/components/ui/boxes/TeamStatsBox";
+import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
+import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -90,25 +93,40 @@ const TeamPage = ({ params }) => {
         </div>
       )}
       {pageView === "Overview" ? (
-      <div className="boxes-wrapper">
-        <div className="team-roster-events-wrapper">
-          {team ? (
-            <ActiveRosterBox id={team._id} teamName={team.name} />
-          ) : (
-            <SkeletonRosterBoxLoading />
-          )}
-          {team ? (
-            <TeamEventsBox id={team._id} />
-          ) : (
-            <SkeletonRecentMatchesOverviewLoading NoData="" />
-          )}
-        </div>
-        {team ? (
-          <RecentMatchesTeamBox id={team._id} />
-        ) : (
-          <SkeletonRecentMatchesOverviewLoading NoData="" />
-        )}
-      </div>
+        <>
+          <div className="boxes-wrapper">
+            <div className="team-roster-events-wrapper">
+              {team ? (
+                <ActiveRosterBox id={team._id} teamName={team.name} />
+              ) : (
+                <SkeletonRosterBoxLoading />
+              )}
+              {team ? (
+                <TeamEventsBox id={team._id} />
+              ) : (
+                <SkeletonRecentMatchesOverviewLoading NoData="" />
+              )}
+            </div>
+            <div className="team-stats-other-wrapper">
+              {team ? (
+                <TeamStatsBox id={team._id} />
+              ) : (
+                <SkeletonPlayerStatsLoading />
+              )}
+
+              {team ? (
+                <TeamFormerMembersBox id={team._id} />
+              ) : (
+                <SkeletonRosterBoxLoading />
+              )}
+            </div>
+            {team ? (
+              <RecentMatchesTeamBox id={team._id} />
+            ) : (
+              <SkeletonRecentMatchesOverviewLoading NoData="" />
+            )}
+          </div>
+        </>
       ) : null}
     </>
   );
