@@ -6,6 +6,7 @@ import prettyDate from "../api/prettyDate";
 import prettyTime from "../api/prettyTime";
 import FinePrintPrizeTag from "../tags/FinePrintPrizeTag";
 import SmallText from "../text/SmallText";
+import countryFormatter from "../api/countryFormatter";
 
 const EventStagesBox = ({ stages }) => {
   const results = stages;
@@ -27,20 +28,57 @@ const EventStagesBox = ({ stages }) => {
                     <div className="stat-name-wrapper">
                       <div className="event-stage-text-wrapper">
                         <div className="margin-right-text-box">
-                          <FinePrint
-                            text={
-                              stage.startDate
-                                ? prettyTime(stage.startDate)
-                                : null
-                            }
-                          />
-                          <FinePrint
-                            text={
-                              stage.startDate
-                                ? prettyDate(stage.startDate)
-                                : null
-                            }
-                          />
+                          <div className="time-date-icon-wrapper">
+                            <img src="/static/images/calendar.png" />
+                            <div className="time-date-stage-wrapper">
+                              <FinePrint
+                                text={
+                                  stage.startDate
+                                    ? prettyTime(stage.startDate)
+                                    : null
+                                }
+                              />
+                              <FinePrint
+                                text={
+                                  stage.startDate
+                                    ? prettyDate(stage.startDate)
+                                    : null
+                                }
+                              />
+                            </div>
+                          </div>
+                          <div className="lan-stages-icon-wrapper">
+                            {stage.location &&
+                            stage.location.venue &&
+                            stage.location.country &&
+                            stage.location.city ? (
+                              <img src="/static/images/location.png" />
+                            ) : null}
+                            <div className="lan-stages-wrapper">
+                              <FinePrint
+                                text={
+                                  stage.location &&
+                                  stage.location.venue &&
+                                  stage.location.country &&
+                                  stage.location.city
+                                    ? stage.location.venue
+                                    : null
+                                }
+                              />
+                              <FinePrint
+                                text={
+                                  stage.location &&
+                                  stage.location.venue &&
+                                  stage.location.country &&
+                                  stage.location.city
+                                    ? stage.location.city +
+                                      ", " +
+                                      countryFormatter(stage.location.country)
+                                    : null
+                                }
+                              />
+                            </div>
+                          </div>
                         </div>
                         <div className="stage-name-icon-wrapper">
                           <SmallText text={stage.name ? stage.name : null} />
