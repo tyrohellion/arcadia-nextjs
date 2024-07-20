@@ -23,10 +23,17 @@ const EventStagesBox = ({ stages }) => {
             {results.map((stage) => (
               <>
                 <li className="small-box-list-item" key={stage.name}>
-                  <a href={stage.liquipedia} target="_blank" />
+                  <a
+                    href={stage.liquipedia ? stage.liquipedia : null}
+                    target="_blank"
+                  />
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="event-stage-text-wrapper">
+                        <div className="stage-name-icon-wrapper">
+                          <SmallText text={stage.name ? stage.name : null} />
+                          <img src="/static/images/externallink.png" />
+                        </div>
                         <div className="margin-right-text-box">
                           <div className="time-date-icon-wrapper">
                             <img src="/static/images/calendar.png" />
@@ -47,42 +54,43 @@ const EventStagesBox = ({ stages }) => {
                               />
                             </div>
                           </div>
-                          <div className="lan-stages-icon-wrapper">
-                            {stage.location &&
-                            stage.location.venue &&
-                            stage.location.country &&
-                            stage.location.city ? (
-                              <img src="/static/images/location.png" />
-                            ) : null}
-                            <div className="lan-stages-wrapper">
-                              <FinePrint
-                                text={
-                                  stage.location &&
-                                  stage.location.venue &&
-                                  stage.location.country &&
-                                  stage.location.city
-                                    ? stage.location.venue
-                                    : null
-                                }
-                              />
-                              <FinePrint
-                                text={
-                                  stage.location &&
-                                  stage.location.venue &&
-                                  stage.location.country &&
-                                  stage.location.city
-                                    ? stage.location.city +
-                                      ", " +
-                                      countryFormatter(stage.location.country)
-                                    : null
-                                }
-                              />
+                          {stage.location &&
+                          stage.location.venue &&
+                          stage.location.country &&
+                          stage.location.city ? (
+                            <div className="lan-stages-icon-wrapper">
+                              {stage.location &&
+                              stage.location.venue &&
+                              stage.location.country &&
+                              stage.location.city ? (
+                                <img src="/static/images/location.png" />
+                              ) : null}
+                              <div className="lan-stages-wrapper">
+                                <FinePrint
+                                  text={
+                                    stage.location &&
+                                    stage.location.venue &&
+                                    stage.location.country &&
+                                    stage.location.city
+                                      ? stage.location.venue
+                                      : null
+                                  }
+                                />
+                                <FinePrint
+                                  text={
+                                    stage.location &&
+                                    stage.location.venue &&
+                                    stage.location.country &&
+                                    stage.location.city
+                                      ? stage.location.city +
+                                        ", " +
+                                        countryFormatter(stage.location.country)
+                                      : null
+                                  }
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div className="stage-name-icon-wrapper">
-                          <SmallText text={stage.name ? stage.name : null} />
-                          <img src="/static/images/externallink.png" />
+                          ) : null}
                         </div>
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
