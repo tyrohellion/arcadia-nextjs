@@ -111,7 +111,7 @@ const PlayerStatsBox = ({ id }) => {
                         </div>
                         <div className="num-games-player-stats-box-wrapper">
                           <FinePrint text="GAMES" />
-                          <div className="stat-label">{stats.games.total}</div>
+                          <div className="stat-label">{Math.trunc(stats.games.total)}</div>
                         </div>
                       </div>
                       <div
