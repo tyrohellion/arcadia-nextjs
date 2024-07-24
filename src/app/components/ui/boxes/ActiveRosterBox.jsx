@@ -7,7 +7,7 @@ import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import FinePrint from "../text/FinePrint";
 import SkeletonRosterBoxLoading from "../skeletons/SkeletonRosterBoxLoading";
 
-const ActiveRosterBox = ({ id, teamName }) => {
+const ActiveRosterBox = ({ id }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const hasFetched = useRef(false);
@@ -43,7 +43,7 @@ const ActiveRosterBox = ({ id, teamName }) => {
           </div>
           <ul className="global-small-box">
             <li className="small-box-list-item-title">
-                {teamName}
+                {results[0].team.name}
                 <Link href={`/teams/${id}`} />
             </li>
             {results.map((player) => (
@@ -60,7 +60,7 @@ const ActiveRosterBox = ({ id, teamName }) => {
           </ul>
         </div>
       ) : (
-        <SkeletonRosterBoxLoading countryText="N/A" />
+        null
       )}
     </>
   );

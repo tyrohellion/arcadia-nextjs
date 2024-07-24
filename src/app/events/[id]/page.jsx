@@ -51,9 +51,7 @@ const EventPage = ({ params }) => {
   return (
     <>
       {isLoading ? (
-        <>
-          <SkeletonHeader />
-        </>
+        <SkeletonHeader />
       ) : (
         <div className="event-header-wrapper">
           {event ? (

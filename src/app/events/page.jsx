@@ -46,14 +46,7 @@ const EventsPage = () => {
     };
 
     fetchData();
-  }, [
-    searchInput,
-    regionFilter,
-    tierFilter,
-    modeFilter,
-    beforeFilter,
-    afterFilter,
-  ]);
+  }, [searchInput, regionFilter, tierFilter, modeFilter, beforeFilter, afterFilter]);
 
   console.log(results);
 
@@ -74,30 +67,34 @@ const EventsPage = () => {
       </div>
       <div className="card-results-wrapper">
         {Array.isArray(results) &&
-          results.map((event) => (
-            <EventCardSearch
-              key={event._id}
-              id={event._id}
-              name={event.name ? event.name : "No Name Yet"}
-              date={event.startDate ? event.startDate || null : "No Start Date Yet"}
-              image={
-                event.image ? event.image : "/static/images/rocketleague.svg"
-              }
-              prize={
-                event.prize && event.prize.amount
-                  ? event.prize.amount
-                  : "No Prize"
-              }
-              prizeUnit={
-                event.prize && event.prize.currency
-                  ? event.prize.currency
-                  : null
-              }
-              region={event.region ? regionFormatter(event.region) : "?"}
-              tier={event.tier ? tierFormatter(event.tier) : "?"}
-              mode={event.mode ? event.mode : "?"}
-            />
-          ))}
+          results.map((event) =>
+            event.name ? (
+              <EventCardSearch
+                key={event._id}
+                id={event._id}
+                name={event.name ? event.name : "No Name Yet"}
+                date={event.startDate ? event.startDate : "No Start Date Yet"}
+                image={
+                  event.image ? event.image : "/static/images/rocketleague.svg"
+                }
+                prize={
+                  event.prize && event.prize.amount
+                    ? event.prize.amount
+                    : "No Prize"
+                }
+                prizeUnit={
+                  event.prize && event.prize.currency
+                    ? event.prize.currency
+                    : null
+                }
+                region={event.region ? regionFormatter(event.region) : "?"}
+                tier={event.tier ? tierFormatter(event.tier) : "?"}
+                mode={event.mode ? event.mode : "?"}
+              />
+            ) : (
+              <div className="skeleton-event" key={event._id}></div>
+            )
+          )}
       </div>
     </>
   );

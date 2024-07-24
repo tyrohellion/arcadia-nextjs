@@ -451,7 +451,7 @@ body {
 
 .event-region-list-item,
 .event-tier-list-item {
-  background-color: var(--main-background-color);
+  background-color: var(--button-color);
   padding: 0.5rem;
   border-radius: 0.4rem;
   width: fit-content;
@@ -466,7 +466,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-background-color);
+  background-color: var(--button-color);
   border-radius: 0.4rem;
   height: 2.3rem;
   min-width: 2.3rem;
@@ -483,6 +483,13 @@ body {
 .event-list-item:hover {
   background-color: var(--button-color);
   cursor: pointer;
+
+  .player-country-list-tag,
+  .team-region-list-tag,
+  .event-region-list-item,
+  .event-tier-list-item {
+    background-color: var(--main-background-color);
+  }
 }
 
 .player-header-wrapper,
@@ -1694,6 +1701,20 @@ body {
   padding: 1.5rem 1.5rem 4rem 1.5rem;
 }
 
+.match-series-card-team-header-skeleton {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  height: 138px;
+}
+
+.loading-smallest-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 0.5rem;
+  background-color: var(--img-background-color);
+}
+
 .blue-team-match-series-header {
   display: flex;
   align-items: center;
@@ -1797,6 +1818,14 @@ body {
   padding: 0.8rem 0 0.8rem 0;
 }
 
+.scores-list-item-match-skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--light-border);
+  height: 46.6px;
+}
+
 .scores-list-inner-wrapper {
   display: flex;
   justify-content: space-between;
@@ -1810,6 +1839,13 @@ body {
   text-decoration: none;
   padding: 1rem 3rem 0 3rem;
   justify-content: space-between;
+}
+
+.match-card-final-li-skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
 }
 
 .upcoming-match-text {

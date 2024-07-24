@@ -73,41 +73,37 @@ const PlayerEventsBox = ({ id }) => {
     <>
       {isLoading ? (
         <SkeletonPlayerEventsLoading />
-      ) : (
+      ) : Array.isArray(results) && results.length > 0 ? (
         <div className="heading-small-box-wrapper">
           <div className="headings-wrapper">
             <CardHeader text="Recent Events" />
             <FinePrint text="PLAYER RATING" />
           </div>
-          {Array.isArray(results) && results.length > 0 ? (
-            <ul className="global-small-box">
-              {results.map((result) => {
-                const event = result.events[0];
-                return (
-                  event && (
-                    <li className="small-box-list-item" key={event._id}>
-                      <div className="player-event-overview-name-tier-wrapper">
-                        <>
-                          <SmallText text={event.name} />
-                          <div className="overview-event-tier-region-wrapper">
-                            <FinePrintTierTag tier={event.tier} />
-                            <FinePrintPrettyDate date={result.startDate} />
-                            <FinePrint text={event.region} />
-                          </div>
-                        </>
-                      </div>
-                      <RatingTag playerId={id} eventId={event._id} />
-                      <Link href={`/events/${event._id}`} />
-                    </li>
-                  )
-                );
-              })}
-            </ul>
-          ) : (
-            <SkeletonPlayerEventsBox text="N/A" />
-          )}
+          <ul className="global-small-box">
+            {results.map((result) => {
+              const event = result.events[0];
+              return (
+                event && (
+                  <li className="small-box-list-item" key={event._id}>
+                    <div className="player-event-overview-name-tier-wrapper">
+                      <>
+                        <SmallText text={event.name} />
+                        <div className="overview-event-tier-region-wrapper">
+                          <FinePrintTierTag tier={event.tier} />
+                          <FinePrintPrettyDate date={result.startDate} />
+                          <FinePrint text={event.region} />
+                        </div>
+                      </>
+                    </div>
+                    <RatingTag playerId={id} eventId={event._id} />
+                    <Link href={`/events/${event._id}`} />
+                  </li>
+                )
+              );
+            })}
+          </ul>
         </div>
-      )}
+      ) : null}
     </>
   );
 };

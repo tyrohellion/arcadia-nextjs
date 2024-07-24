@@ -104,7 +104,7 @@ const PlayerPage = ({ params }) => {
               <NormalText text={"We can't find that player :'("} />
             )}
           </div>
-          <ChipCarousel />
+          {player ? <ChipCarousel /> : null}
         </div>
       )}
       {pageView === "Overview" ? (
@@ -129,9 +129,7 @@ const PlayerPage = ({ params }) => {
                 id={player.team._id}
                 teamName={player.team.name}
               />
-            ) : (
-              <SkeletonRosterBoxLoading countryText="N/A" />
-            )}
+            ) : null}
           </div>
           <div className="player-stats-recent-matches-wrapper">
             {player ? (
@@ -149,7 +147,7 @@ const PlayerPage = ({ params }) => {
             {player ? (
               <RecentMatchesPlayerBox id={player._id} />
             ) : (
-              <SkeletonRecentMatchesOverviewLoading NoData="" />
+              <SkeletonRecentMatchesOverviewLoading />
             )}
           </div>
         </div>
