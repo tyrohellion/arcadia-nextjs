@@ -205,6 +205,19 @@ body {
   height: 66px;
 }
 
+.skeleton-event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  height: 200px;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  color: var(--font-color-blue);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 .small-box-list-item-skeleton-stats-wrapper {
   display: flex;
   flex-direction: column;
@@ -1422,6 +1435,15 @@ body {
   z-index: 3;
 }
 
+.input-filters-header-wrapper-results {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 3;
+  margin-top: 2rem;
+}
+
 .region-dropdown,
 .tier-dropdown,
 .mode-dropdown {
@@ -1858,6 +1880,88 @@ body {
   font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
   font-weight: 600;
+}
+
+/* player results */
+
+.bar-results-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 1rem 0 1rem;
+}
+
+.skeleton-bar {
+  display: flex;
+  width: 100%;
+  min-height: 120px;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+}
+
+.match-bar-href {
+  width: 100%;
+  text-decoration: none;
+}
+
+.match-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--img-background-color);
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+  }
+}
+
+.match-scores-teams-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.match-full-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.date-time-match-bar-wrapper {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.team-img-match-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.team-scores-match-bar-wrapper,
+.team-names-match-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.bar-tags-wrapper {
+  display: flex;
+  gap: 0.3rem;
 }
 
 /* @media */

@@ -11,7 +11,6 @@ import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPl
 import PlayerEventsBox from "@/app/components/ui/boxes/PlayerEventsBox";
 import SkeletonPlayerEventsLoading from "@/app/components/ui/skeletons/SkeletonPlayerEventsLoading";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
 import PlayerDetailsBox from "@/app/components/ui/boxes/PlayerDetailsBox";
 import countryFormatter from "@/app/components/ui/api/countryFormatter";
 import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
@@ -19,6 +18,7 @@ import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
 import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/SkeletonPlayerDetailsLoading";
+import PlayerResults from "@/app/components/ui/content/PlayerResults";
 
 const PlayerPage = ({ params }) => {
   const { id } = params;
@@ -152,6 +152,7 @@ const PlayerPage = ({ params }) => {
           </div>
         </div>
       ) : null}
+      {pageView === "Results" ? <PlayerResults id={id} /> : null}
     </>
   );
 };
