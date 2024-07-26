@@ -6,7 +6,7 @@ import TierDropdown from "../chips/tierSelector";
 import ModeDropdown from "../chips/modeSelector";
 import MatchResultsBar from "../boxes/MatchResultsBar";
 
-const PlayerResults = ({ id }) => {
+const TeamResults = ({ id }) => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -26,7 +26,7 @@ const PlayerResults = ({ id }) => {
   const viewFilter = searchParams.get("view");
 
   const buildUrl = (page) => {
-    const baseUrl = `https://zsr.octane.gg/matches?player=${id}&sort=date:desc`;
+    const baseUrl = `https://zsr.octane.gg/matches?team=${id}&sort=date:desc`;
     const params = new URLSearchParams();
     if (regionFilter) params.set("region", regionFilter);
     if (tierFilter) params.set("tier", tierFilter);
@@ -171,4 +171,4 @@ const PlayerResults = ({ id }) => {
   );
 };
 
-export default PlayerResults;
+export default TeamResults;

@@ -17,6 +17,7 @@ import TeamChipCarousel from "@/app/components/ui/chips/TeamChipCarousel";
 import TeamStatsBox from "@/app/components/ui/boxes/TeamStatsBox";
 import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
 import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
+import TeamResults from "@/app/components/ui/content/TeamResults";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -128,6 +129,7 @@ const TeamPage = ({ params }) => {
           </div>
         </>
       ) : null}
+      {pageView === "Results" ? <TeamResults id={id} /> : null}
     </>
   );
 };

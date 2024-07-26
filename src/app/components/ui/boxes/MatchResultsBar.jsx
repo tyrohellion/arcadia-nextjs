@@ -30,47 +30,56 @@ const MatchResultsBar = ({
   mode,
 }) => {
   return (
-    <Link href={`/matches/${id}`} className="match-bar-href">
-      <div className="match-bar">
-        <div className="match-scores-teams-wrapper">
-          <div className="team-img-match-bar-wrapper">
-            <img src={blueImage} alt={blueTeamName} />
-            <img src={orangeImage} alt={orangeTeamName} />
-          </div>
-          <div className="team-scores-match-bar-wrapper">
-            <NormalTextBlue text={blueTeamScore} />
-            <NormalTextBlue text={orangeTeamScore} />
-          </div>
-          <div className="team-names-match-bar-wrapper">
-            <Link href={`/teams/${blueTeamId}`}>
-              <EvenSmallerText text={blueTeamName} />
-            </Link>
-            <Link href={`/teams/${orangeTeamId}`}>
-              <EvenSmallerText text={orangeTeamName} />
-            </Link>
-          </div>
-        </div>
-        <div className="match-full-details-wrapper">
-          <div className="bar-tag-name-wrapper">
-            <Link href={`/events/${eventId}`}>
-              <FinePrint text={eventName} />
-            </Link>
-            <div className="date-time-match-bar-wrapper">
-              <FinePrint text={prettyDate(date)} />
-              <FinePrint text={prettyTime(date)} />
+    <>
+      <li className="match-bar">
+        <Link href={`/matches/${id}`} className="match-bar-href"></Link>
+        <div className="match-bar-content-wrapper">
+          <div className="match-scores-teams-wrapper">
+            <div className="all-row-match-bar-wrapper">
+              <div className="team-scores-match-bar-wrapper">
+                <NormalTextBlue text={blueTeamScore} />
+                <NormalTextBlue text={orangeTeamScore} />
+              </div>
+              <div className="team-img-match-bar-wrapper">
+                <img src={blueImage} alt={blueTeamName} />
+                <img src={orangeImage} alt={orangeTeamName} />
+              </div>
+              <div className="team-names-match-bar-wrapper">
+                <Link href={`/teams/${blueTeamId}`} className="match-bar-links">
+                  <EvenSmallerText text={blueTeamName} />
+                </Link>
+                <Link
+                  href={`/teams/${orangeTeamId}`}
+                  className="match-bar-links"
+                >
+                  <EvenSmallerText text={orangeTeamName} />
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="bar-tags-wrapper">
-            <FinePrintTagWrapped text={eventStage} />
-            <FinePrintTagWrapped text={regionFormatter(region)} />
-            <FinePrintTagWrapped text={tierFormatter(tier)} />
-            <FinePrintTagWrapped text={mode + "v" + mode} />
-            {qualifier ? <FinePrintTagWrapped text={qualifier} /> : null}
-            <FinePrintTagWrapped text={location} />
+          <div className="match-full-details-wrapper">
+            <div className="event-name-date-wrapper-bar">
+              <Link href={`/events/${eventId}`} className="match-bar-links">
+                <EvenSmallerText text={eventName} />
+              </Link>
+              <div className="date-time-match-bar-wrapper">
+                <FinePrint text={prettyDate(date)} />
+                <FinePrint text={prettyTime(date)} />
+              </div>
+            </div>
+            <div className="bar-tags-wrapper">
+              <FinePrintTagWrapped text={eventStage} />
+              <FinePrintTagWrapped text={regionFormatter(region)} />
+              <FinePrintTagWrapped text={tierFormatter(tier)} />
+              <FinePrintTagWrapped text={mode + "v" + mode} />
+              {qualifier ? <FinePrintTagWrapped text={qualifier} /> : null}
+              <FinePrintTagWrapped text={location} />
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+        <div className="bottom-pill-bar"></div>
+      </li>
+    </>
   );
 };
 
