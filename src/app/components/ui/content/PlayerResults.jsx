@@ -5,6 +5,7 @@ import RegionDropdown from "../chips/regionSelector";
 import TierDropdown from "../chips/tierSelector";
 import ModeDropdown from "../chips/modeSelector";
 import MatchResultsBar from "../boxes/MatchResultsBar";
+import QualDropdown from "../chips/QualSelector";
 
 const PlayerResults = ({ id }) => {
   const [results, setResults] = useState([]);
@@ -22,7 +23,6 @@ const PlayerResults = ({ id }) => {
   const qualifierFilter = searchParams.get("qualifier");
   const bestOfFilter = searchParams.get("bestOf");
   const reverseSweepFilter = searchParams.get("reverseSweep");
-  const orderFilter = searchParams.get("sort");
   const viewFilter = searchParams.get("view");
 
   const buildUrl = (page) => {
@@ -36,7 +36,6 @@ const PlayerResults = ({ id }) => {
     if (qualifierFilter) params.set("qualifier", qualifierFilter);
     if (bestOfFilter) params.set("bestOf", bestOfFilter);
     if (reverseSweepFilter) params.set("reverseSweep", reverseSweepFilter);
-    if (orderFilter) params.set("sort", orderFilter);
     params.set("page", page);
     return `${baseUrl}&${params.toString()}`;
   };
@@ -118,37 +117,84 @@ const PlayerResults = ({ id }) => {
         <RegionDropdown />
         <TierDropdown />
         <ModeDropdown />
+        <QualDropdown />
       </div>
       <div className="wrapper-bar-for-centering">
         <ul className="bar-results-wrapper">
           {results.map((match) =>
-            match._id ? (
+            match && match._id ? (
               <MatchResultsBar
                 key={match._id}
                 id={match._id}
-                eventName={match.event.name}
-                eventId={match.event._id}
-                blueTeamName={match.blue.team.team.name || "TBD"}
-                orangeTeamName={match.orange.team.team.name || "TBD"}
-                blueTeamId={match.blue.team.team._id}
-                orangeTeamId={match.orange.team.team._id}
-                blueTeamScore={match.blue.score ? match.blue.score : "0"}
-                orangeTeamScore={match.orange.score ? match.orange.score : "0"}
-                date={match.date || "Upcoming"}
+                eventName={match.event.name ? match.event.name : null}
+                eventId={match.event._id ? match.event._id : null}
+                blueTeamName={
+                  (match.blue &&
+                    match.blue.team &&
+                    match.blue.team.team &&
+                    match.blue.team.team.name) ||
+                  "TBD"
+                }
+                orangeTeamName={
+                  (match.orange &&
+                    match.orange.team &&
+                    match.orange.team.team &&
+                    match.orange.team.team.name) ||
+                  "TBD"
+                }
+                blueTeamId={
+                  match.blue &&
+                  match.blue.team &&
+                  match.blue.team.team &&
+                  match.blue.team.team._id
+                    ? match.blue.team.team._id
+                    : null
+                }
+                orangeTeamId={
+                  match.orange &&
+                  match.orange.team &&
+                  match.orange.team.team &&
+                  match.orange.team.team._id
+                    ? match.orange.team.team._id
+                    : null
+                }
+                blueTeamScore={
+                  match.blue && match.blue.score ? match.blue.score : "0"
+                }
+                orangeTeamScore={
+                  match.orange && match.orange.score ? match.orange.score : "0"
+                }
+                date={match.date ? match.date : "Upcoming"}
                 blueImage={
-                  match.blue.team.team.image ||
-                  "/static/images/rocketleague.svg"
+                  match.blue &&
+                  match.blue.team &&
+                  match.blue.team.team &&
+                  match.blue.team.team.image
+                    ? match.blue.team.team.image
+                    : "/static/images/rocketleague.svg"
                 }
                 orangeImage={
-                  match.orange.team.team.image ||
-                  "/static/images/rocketleague.svg"
+                  match.orange &&
+                  match.orange.team &&
+                  match.orange.team.team &&
+                  match.orange.team.team.image
+                    ? match.orange.team.team.image
+                    : "/static/images/rocketleague.svg"
                 }
-                region={match.event.region || "?"}
-                tier={match.event.tier || "?"}
-                mode={match.event.mode || "?"}
-                eventStage={match.stage.name || "No Stage"}
-                qualifier={match.stage.qualifier ? "Qualifier" : null}
-                location={match.stage.lan ? "Lan" : "Online"}
+                region={
+                  match.event && match.event.region ? match.event.region : "?"
+                }
+                tier={match.event && match.event.tier ? match.event.tier : "?"}
+                mode={match.event && match.event.mode ? match.event.mode : "?"}
+                eventStage={
+                  match.stage && match.stage.name
+                    ? match.stage.name
+                    : "No Stage"
+                }
+                qualifier={
+                  match.stage && match.stage.qualifier ? "Qualifier" : null
+                }
+                location={match.stage && match.stage.lan ? "Lan" : "Online"}
               />
             ) : (
               <div className="skeleton-bar" key={match._id}>

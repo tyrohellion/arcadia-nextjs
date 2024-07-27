@@ -17,6 +17,7 @@ import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesUpcomingEventBox from "@/app/components/ui/boxes/RecentMatchesUpcomingEventBox";
 import EventStagesBox from "@/app/components/ui/boxes/EventStagesBox";
+import EventResults from "@/app/components/ui/content/EventResults";
 
 const EventPage = ({ params }) => {
   const { id } = params;
@@ -110,6 +111,7 @@ const EventPage = ({ params }) => {
           )}
         </div>
       ) : null}
+      {pageView === "Matches" ? <EventResults id={id} /> : null}
     </>
   );
 };

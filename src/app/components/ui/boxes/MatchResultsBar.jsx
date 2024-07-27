@@ -8,6 +8,7 @@ import regionFormatter from "../api/regionFormatter";
 import EvenSmallerText from "../text/EvenSmallerText";
 import NormalTextBlue from "../text/NormalTextBlue";
 import prettyTime from "../api/prettyTime";
+import SmallText from "../text/SmallText";
 
 const MatchResultsBar = ({
   id,
@@ -46,13 +47,13 @@ const MatchResultsBar = ({
               </div>
               <div className="team-names-match-bar-wrapper">
                 <Link href={`/teams/${blueTeamId}`} className="match-bar-links">
-                  <EvenSmallerText text={blueTeamName} />
+                  <SmallText text={blueTeamName} />
                 </Link>
                 <Link
                   href={`/teams/${orangeTeamId}`}
                   className="match-bar-links"
                 >
-                  <EvenSmallerText text={orangeTeamName} />
+                  <SmallText text={orangeTeamName} />
                 </Link>
               </div>
             </div>

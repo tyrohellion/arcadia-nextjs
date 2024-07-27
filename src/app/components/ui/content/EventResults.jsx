@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import RegionDropdown from "../chips/regionSelector";
 import TierDropdown from "../chips/tierSelector";
 import ModeDropdown from "../chips/modeSelector";
 import MatchResultsBar from "../boxes/MatchResultsBar";
 import QualDropdown from "../chips/QualSelector";
 
-const TeamResults = ({ id }) => {
+const EventResults = ({ id }) => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -26,7 +26,7 @@ const TeamResults = ({ id }) => {
   const viewFilter = searchParams.get("view");
 
   const buildUrl = (page) => {
-    const baseUrl = `https://zsr.octane.gg/matches?team=${id}&sort=date:desc`;
+    const baseUrl = `https://zsr.octane.gg/matches?event=${id}&sort=date:desc`;
     const params = new URLSearchParams();
     if (regionFilter) params.set("region", regionFilter);
     if (tierFilter) params.set("tier", tierFilter);
@@ -217,4 +217,4 @@ const TeamResults = ({ id }) => {
   );
 };
 
-export default TeamResults;
+export default EventResults;
