@@ -1703,7 +1703,6 @@ body {
 .match-series-card-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
 }
 
 .match-series-card {
@@ -2036,6 +2035,32 @@ body {
 .bar-tags-wrapper {
   display: flex;
   gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.game-ballchasing-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  justify-content: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    min-width: 16px;
+    min-height: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.game-ballchasing-link-wrapper:hover {
+  .global-small-text-blue {
+    color: white;
+  }
 }
 
 /* @media */

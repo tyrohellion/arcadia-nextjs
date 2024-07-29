@@ -25,6 +25,7 @@ const MatchPage = ({ params }) => {
   const searchParams = useSearchParams();
   const pageView = searchParams.get("view");
   const [numOfGames, setNumOfGames] = useState(null);
+  const ballchasingBaseURL = "https://ballchasing.com/replay/";
 
   useEffect(() => {
     if (!pageView) {
@@ -194,7 +195,68 @@ const MatchPage = ({ params }) => {
                   {Array.from({ length: numOfGames }).map((_, index) => (
                     <li className="scores-list-item-match" key={index}>
                       <div className="scores-list-inner-wrapper">
-                        {match.games && match.games[index] ? (
+                        {match.games &&
+                        match.games[index] &&
+                        match.games[index].ballchasing ? (
+                          <>
+                            <NormalText
+                              text={
+                                match.games[index].blue
+                                  ? match.games[index].blue
+                                  : "0"
+                              }
+                            />
+                            {match.games[index].overtime &&
+                            match.games[index].duration > 300 ? (
+                              <div className="game-ballchasing-link-wrapper">
+                                <a
+                                  href={
+                                    ballchasingBaseURL +
+                                    match.games[index].ballchasing
+                                  }
+                                >
+                                  <div className="global-small-text-blue">
+                                    Game{" "}
+                                    {index +
+                                      1 +
+                                      " (+" +
+                                      Math.floor(
+                                        (match.games[index].duration - 300) / 60
+                                      ) +
+                                      ":" +
+                                      String(
+                                        (match.games[index].duration - 300) % 60
+                                      ).padStart(2, "0") +
+                                      ")"}
+                                  </div>
+                                </a>
+                                <img src="/static/images/externallink.png" />
+                              </div>
+                            ) : (
+                              <div className="game-ballchasing-link-wrapper">
+                                <a
+                                  href={
+                                    ballchasingBaseURL +
+                                    match.games[index].ballchasing
+                                  }
+                                  target="_blank"
+                                >
+                                  <div className="global-small-text-blue">
+                                    Game {index + 1}
+                                  </div>
+                                </a>
+                                <img src="/static/images/externallink.png" />
+                              </div>
+                            )}
+                            <NormalText
+                              text={
+                                match.games[index].orange
+                                  ? match.games[index].orange
+                                  : "0"
+                              }
+                            />
+                          </>
+                        ) : match.games && match.games[index] ? (
                           <>
                             <NormalText
                               text={
