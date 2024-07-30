@@ -1,9 +1,9 @@
-const EventFetchAPI = async (value) => {
+const featuredEvents = async () => {
   let results = [];
 
   try {
     let response = await fetch(
-      `${"https://zsr.octane.gg/events"}?name=${value}`
+      "https://zsr.octane.gg/events?sort=date:desc&tier=S&perPage=5"
     );
     if (!response.ok) throw new Error();
     const data = await response.json();
@@ -13,4 +13,4 @@ const EventFetchAPI = async (value) => {
   }
 };
 
-export default EventFetchAPI;
+export default featuredEvents;

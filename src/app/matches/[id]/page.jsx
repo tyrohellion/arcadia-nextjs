@@ -214,6 +214,7 @@ const MatchPage = ({ params }) => {
                                     ballchasingBaseURL +
                                     match.games[index].ballchasing
                                   }
+                                  target="_blank"
                                 >
                                   <div className="global-small-text-blue">
                                     Game{" "}

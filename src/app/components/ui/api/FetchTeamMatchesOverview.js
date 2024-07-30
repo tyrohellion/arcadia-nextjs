@@ -3,7 +3,7 @@ const url = "https://zsr.octane.gg/";
 const FetchTeamMatchesOverview = async (id) => {
   try {
     const response = await fetch(
-      `${url}matches?team=${id}&sort=date:desc`
+      `${url}matches?team=${id}&sort=date:desc&perPage=20`
     );
     if (!response.ok)
       throw new Error(`Error fetching player stats: ${response.statusText}`);

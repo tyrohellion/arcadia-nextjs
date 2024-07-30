@@ -26,7 +26,7 @@ const TeamResults = ({ id }) => {
   const viewFilter = searchParams.get("view");
 
   const buildUrl = (page) => {
-    const baseUrl = `https://zsr.octane.gg/matches?team=${id}&sort=date:desc`;
+    const baseUrl = `https://zsr.octane.gg/matches?team=${id}&sort=date:desc&perPage=20`;
     const params = new URLSearchParams();
     if (regionFilter) params.set("region", regionFilter);
     if (tierFilter) params.set("tier", tierFilter);

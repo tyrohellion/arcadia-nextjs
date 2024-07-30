@@ -10,11 +10,15 @@ import SkeletonRecentMatchesOverviewLoading from "../skeletons/SkeletonRecentMat
 import FinePrint from "../text/FinePrint";
 import prettyDate from "../api/prettyDate";
 import prettyTime from "../api/prettyTime";
+import { useRouter } from "next/navigation";
+import ButtonSmall from "../buttons/ButtonSmall";
+import ButtonSmallest from "../buttons/ButtonSmallest";
 
 const RecentMatchesPlayerBox = ({ id }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const hasFetched = useRef(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -37,6 +41,10 @@ const RecentMatchesPlayerBox = ({ id }) => {
     fetchEvents();
   }, [id]);
 
+  const onClick = () => {
+    return router.push(`?view=Results`);
+  };
+
   console.log(results);
 
   return (
@@ -50,6 +58,9 @@ const RecentMatchesPlayerBox = ({ id }) => {
           </div>
           {Array.isArray(results) && results.length > 0 ? (
             <ul className="global-small-box-matches">
+              <div className="bottom-gradient">
+                <ButtonSmallest text="See More" onClick={onClick} />
+              </div>
               {results.map((result) =>
                 result.blue.winner || result.orange.winner ? (
                   <li className="small-box-list-item-matches" key={result._id}>

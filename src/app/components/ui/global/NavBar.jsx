@@ -13,23 +13,28 @@ const NavBar = () => {
   return (
     <>
       <div className="nav-wrapper">
-        <div className="nav-item">
-          <Link href={`/`} />
-          Home
-        </div>
-        <div className="nav-item">
-          <Link href={`/players`} />
-          Players
+        <Link href={`/`} className="clickable-logo">
+          <img src="/static/images/logo.svg" className="arcadia-logo" />
+        </Link>
+        <div className="nav-inner-wrapper">
+          <div className="nav-item-home">
+            <Link href={`/`} />
+            Home
+          </div>
+          <div className="nav-item">
+            <Link href={`/players`} />
+            Players
+          </div>
+          <div className="nav-item">
+            <Link href={`/events`} />
+            Events
+          </div>
+          <div className="nav-item">
+            <Link href={`/teams`} />
+            Teams
+          </div>
         </div>
         <SearchButton />
-        <div className="nav-item">
-          <Link href={`/events`} />
-          Events
-        </div>
-        <div className="nav-item">
-          <Link href={`/teams`} />
-          Teams
-        </div>
       </div>
     </>
   );
