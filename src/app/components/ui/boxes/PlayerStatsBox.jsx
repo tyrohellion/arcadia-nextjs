@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import CardHeader from "../text/CardHeader";
-import SkeletonPlayerStatsBox from "../skeletons/SkeletonPlayerStatsBox";
 import getLocalDateMinusMonths from "../api/getLocalTime";
 import getPlayerStatsOverview from "../api/FetchPlayerStatsOverview";
 import NormalText from "../text/NormalText";
