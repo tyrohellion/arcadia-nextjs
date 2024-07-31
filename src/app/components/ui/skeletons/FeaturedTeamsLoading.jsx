@@ -16,10 +16,6 @@ const FeaturedTeamsLoading = () => {
       <li></li>
       <li></li>
       <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
     </ul>
   );
 };

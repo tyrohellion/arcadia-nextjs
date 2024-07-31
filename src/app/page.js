@@ -163,7 +163,14 @@ export default function Home() {
             <FeaturedTeamsLoading />
           ) : (
             featuredTeams.map((team) =>
-              team && team.team && team.team.name && team.team._id ? (
+              team &&
+              team.team &&
+              team.team.name &&
+              team.team._id &&
+              (team.team.region === "NA" ||
+                team.team.region === "EU" ||
+                team.team.region === "SAM" ||
+                team.team.region === "ME") ? (
                 <Link href={`/teams/${team.team._id}`} key={team.team._id}>
                   <li>
                     <img
