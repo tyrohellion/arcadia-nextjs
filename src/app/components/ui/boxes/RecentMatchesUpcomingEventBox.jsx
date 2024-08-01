@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import CardHeader from "../text/CardHeader";
 import SmallText from "../text/SmallText";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
@@ -11,11 +12,14 @@ import FetchEventMatchesOverview from "../api/FetchEventMatches";
 import EventMatchesUpcomingText from "../text/EventMatchesUpcomingText";
 import prettyTime from "../api/prettyTime";
 import SkeletonRecentMatchesEventsUpcomingOverviewLoading from "../skeletons/SkeletonRecentMatchesEventsUpcomingOverviewLoading";
+import ButtonSmallest from "../buttons/ButtonSmallest";
 
 const RecentMatchesUpcomingEventBox = ({ id }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [completed, setCompleted] = useState(true);
+  const [showSeeAllButton, setShowSeeAllButton] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -26,6 +30,22 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
         const data = await FetchEventMatchesOverview(id, sortOrder);
         if (data) {
           setResults(data);
+          const filteredResults = data.filter((result) =>
+            completed
+              ? (result.blue && result.blue.score) ||
+                result.blue?.winner ||
+                (result.orange && result.orange.score) ||
+                result.orange?.winner
+              : !(
+                  (result.blue && result.blue.score) ||
+                  result.blue?.winner
+                ) &&
+                  !(
+                    (result.orange && result.orange.score) ||
+                    result.orange?.winner
+                  )
+          );
+          setShowSeeAllButton(filteredResults.length > 2);
         } else {
           console.error("No matches data found in response:", data);
         }
@@ -39,10 +59,12 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
     fetchEvents();
   }, [id, completed]);
 
-  console.log(results);
+  const toggleCompleted = (isCompleted) => {
+    setCompleted(isCompleted);
+  };
 
-  const toggleCompleted = () => {
-    setCompleted((prevCompleted) => !prevCompleted);
+  const onClick = () => {
+    return router.push(`?view=Matches`);
   };
 
   return (
@@ -55,16 +77,21 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
             <CardHeader text="Recent Matches" />
           </div>
           <ul className="global-small-box-matches-events">
+            {showSeeAllButton ? (
+              <div className="bottom-gradient">
+                <ButtonSmallest text="See All" onClick={onClick} />
+              </div>
+            ) : null}
             <div className="small-box-list-item-matches-buttons">
               <div className="toggle-buttons">
                 <button
-                  onClick={() => setCompleted(true)}
+                  onClick={() => toggleCompleted(true)}
                   className={completed ? "active" : ""}
                 >
                   Completed
                 </button>
                 <button
-                  onClick={() => setCompleted(false)}
+                  onClick={() => toggleCompleted(false)}
                   className={!completed ? "active" : ""}
                 >
                   Upcoming

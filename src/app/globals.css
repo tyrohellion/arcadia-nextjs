@@ -73,8 +73,8 @@ body {
 }
 
 .skeleton-image {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: var(--button-color);
   border-radius: 0.7rem;
 }
@@ -184,7 +184,7 @@ body {
 
 .small-box-list-item-skeleton-stats {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem;
   height: 66px;
@@ -218,6 +218,47 @@ body {
   font-weight: 600;
 }
 
+/* event participants */
+
+.event-participants-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem 1rem 0 1rem;
+}
+
+.event-participants-skeleton-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.small-box-list-item-title-participants {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color-white);
+  white-space: wrap;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  gap: 0.5rem;
+}
+
+.small-box-list-item-title-participants:hover {
+  background-color: var(--button-color);
+}
+
+.event-participant-team-image {
+  min-width: 25px;
+  min-height: 25px;
+  width: 25px;
+  height: 25px;
+}
+
 .small-box-list-item-skeleton-stats-wrapper {
   display: flex;
   flex-direction: column;
@@ -233,6 +274,7 @@ body {
 .global-search-wrapper {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -417,7 +459,7 @@ body {
   flex: 1;
   padding: 1rem;
   background-color: var(--results-background-color);
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   width: 340px;
   height: 80px;
   gap: 0.5rem;
@@ -1084,7 +1126,7 @@ body {
   gap: 0.5rem;
   width: 100vw;
   justify-content: center;
-  margin: 2rem 0 0 0;
+  padding: 2rem 1rem 0 1rem;
   flex-wrap: wrap;
 
   a {
@@ -1099,7 +1141,7 @@ body {
   padding: 0.6rem 0.8rem 0.6rem 0.8rem;
   font-size: 1rem;
   height: fit-content;
-  width: 100px;
+  width: 121.09px;
   min-width: 100px;
   font-weight: 600;
   color: var(--font-color-blue);
@@ -1157,6 +1199,10 @@ body {
   padding: 0;
   overflow: hidden;
   margin: 0;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .global-small-box-former-members {
@@ -1210,6 +1256,7 @@ body {
   width: 340px;
   background-color: var(--results-background-color);
   border-radius: 0.5rem;
+  position: relative;
   flex-direction: column;
   list-style: none;
   padding: 0;
@@ -2385,6 +2432,13 @@ body {
   }
 }
 
+@media screen and (max-width: 1080px) {
+  #searchNavButton,
+  .global-search-wrapper {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .featured-lists-wrapper {
     flex-direction: column;
@@ -2435,7 +2489,6 @@ body {
     flex-direction: column;
   }
 
-  #searchNavButton,
   .nav-item-home {
     display: none;
   }
@@ -2471,5 +2524,11 @@ body {
 
   .match-full-details-wrapper {
     padding-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .match-series-card {
+    border-radius: 0px;
   }
 }

@@ -18,6 +18,7 @@ import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/
 import RecentMatchesUpcomingEventBox from "@/app/components/ui/boxes/RecentMatchesUpcomingEventBox";
 import EventStagesBox from "@/app/components/ui/boxes/EventStagesBox";
 import EventResults from "@/app/components/ui/content/EventResults";
+import EventParticipantBox from "@/app/components/ui/boxes/EventParticipantBox";
 
 const EventPage = ({ params }) => {
   const { id } = params;
@@ -112,6 +113,11 @@ const EventPage = ({ params }) => {
         </div>
       ) : null}
       {pageView === "Matches" ? <EventResults id={id} /> : null}
+      {pageView === "Participants" ? (
+        <div className="event-participants-wrapper">
+          <EventParticipantBox id={id} />
+        </div>
+      ) : null}
     </>
   );
 };

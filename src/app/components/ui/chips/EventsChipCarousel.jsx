@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const EventsChipCarousel = () => {
-  const views = ["Overview", "Matches", "Stats", "Players", "Teams"];
+  const views = ["Overview", "Matches", "Stats", "Participants"];
   const [activeChip, setActiveChip] = useState(0);
   const searchParams = useSearchParams();
   const viewParam = searchParams.get("view");

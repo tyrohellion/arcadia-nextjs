@@ -1,40 +1,31 @@
 import React from "react";
-import NormalText from "../text/NormalText";
+import SmallText from "../text/SmallText";
+import CardHeader from "../text/CardHeader";
+import FinePrint from "../text/FinePrint";
 
-const SkeletonPlayerStatsBox = ({ text }) => {
+const SkeletonPlayerStatsBox = () => {
   return (
     <>
       <div className="heading-small-box-wrapper">
+        <div className="headings-wrapper">
+          <CardHeader text="Stats Overview" />
+          <FinePrint text="LAST 6 MONTHS" />
+        </div>
         <ul className="global-small-box">
           <li className="small-box-list-item-skeleton-stats">
-            <div className="small-box-list-item-skeleton-stats-wrapper">
-              <NormalText text={text} />
-              <div className="empty-rating-pill"></div>
-            </div>
+            <SmallText text="No Recent Stats" />
           </li>
           <li className="small-box-list-item-skeleton-stats">
-            <div className="small-box-list-item-skeleton-stats-wrapper">
-              <NormalText text={text} />
-              <div className="empty-rating-pill"></div>
-            </div>
+            <SmallText text="No Recent Stats" />
           </li>
           <li className="small-box-list-item-skeleton-stats">
-            <div className="small-box-list-item-skeleton-stats-wrapper">
-              <NormalText text={text} />
-              <div className="empty-rating-pill"></div>
-            </div>
+            <SmallText text="No Recent Stats" />
           </li>
           <li className="small-box-list-item-skeleton-stats">
-            <div className="small-box-list-item-skeleton-stats-wrapper">
-              <NormalText text={text} />
-              <div className="empty-rating-pill"></div>
-            </div>
+            <SmallText text="No Recent Stats" />
           </li>
           <li className="small-box-list-item-skeleton-stats">
-            <div className="small-box-list-item-skeleton-stats-wrapper">
-              <NormalText text={text} />
-              <div className="empty-rating-pill"></div>
-            </div>
+            <SmallText text="No Recent Stats" />
           </li>
         </ul>
       </div>

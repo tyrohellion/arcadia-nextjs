@@ -5,6 +5,7 @@ import getPlayerStatsOverview from "../api/FetchPlayerStatsOverview";
 import NormalText from "../text/NormalText";
 import FinePrint from "../text/FinePrint";
 import SkeletonPlayerStatsLoading from "../skeletons/SkeletonPlayerStatsLoading";
+import SkeletonPlayerStatsBox from "../skeletons/SkeletonPlayerStatsBox";
 
 const PlayerStatsBox = ({ id }) => {
   const [time, setTime] = useState("");
@@ -58,7 +59,6 @@ const PlayerStatsBox = ({ id }) => {
             <CardHeader text="Stats Overview" />
             <FinePrint text="LAST 6 MONTHS" />
           </div>
-
           <ul className="global-small-box">
             {results.map((stats) => (
               <React.Fragment key={stats.player._id}>
@@ -210,7 +210,7 @@ const PlayerStatsBox = ({ id }) => {
             ))}
           </ul>
         </div>
-      ) : null}
+      ) : <SkeletonPlayerStatsBox /> }
     </>
   );
 };
