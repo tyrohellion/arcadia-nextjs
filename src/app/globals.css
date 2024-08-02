@@ -239,10 +239,10 @@ body {
   padding: 0;
   overflow: hidden;
   margin: 0;
+}
 
-  a {
-    text-decoration: none;
-  }
+.global-small-box-event-part a {
+  text-decoration: none;
 }
 
 .small-box-list-item-event-part {
@@ -255,14 +255,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item-event-part a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-event-part:hover {
@@ -295,14 +295,14 @@ body {
   font-weight: 600;
   position: relative;
   gap: 0.5rem;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item-title-participants a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-title-participants:hover {
@@ -400,11 +400,13 @@ body {
   padding: 0 0 3rem 0;
   flex-direction: column;
   gap: 0.5rem;
+}
 
-  .arcadia-logo-home {
-    width: 60px;
-    height: 60px;
-  }
+.arcadia-home-header-wrapper .arcadia-logo-home {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
 }
 
 .branding-header-wrapper {
@@ -464,10 +466,11 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+}
 
-  a {
-    text-decoration: none;
-  }
+.featured-events-list a,
+.featured-teams-list a {
+  text-decoration: none;
 }
 
 .featured-heading-text {
@@ -523,16 +526,16 @@ body {
   gap: 0.5rem;
   white-space: wrap;
   transition: all 100ms;
+}
 
-  img {
-    min-width: 45px;
-    min-height: 45px;
-    height: 45px;
-    width: 45px;
-    background-color: var(--img-background-color);
-    border-radius: 0.4rem;
-    padding: 0.5rem;
-  }
+.featured-teams-list li img {
+  min-width: 45px;
+  min-height: 45px;
+  height: 45px;
+  width: 45px;
+  background-color: var(--img-background-color);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
 }
 
 .featured-events-list li:hover,
@@ -609,13 +612,13 @@ body {
   position: fixed;
   top: 0;
   z-index: 19;
+}
 
-  .arcadia-logo {
-    min-width: 25px;
-    min-height: 25px;
-    height: 25px;
-    width: 25px;
-  }
+.nav-wrapper .arcadia-logo {
+  min-width: 25px;
+  min-height: 25px;
+  height: 25px;
+  width: 25px;
 }
 
 .clickable-logo {
@@ -640,14 +643,15 @@ body {
   font-size: 1rem;
   position: relative;
   transition: all 150ms;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.nav-item a,
+.nav-item-home a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .nav-item-search-button {
@@ -664,13 +668,13 @@ body {
   font-size: 1rem;
   font-weight: 600;
   transition: all 150ms;
+}
 
-  img {
-    min-width: 18px;
-    min-height: 18px;
-    height: 18px;
-    width: 18px;
-  }
+.nav-item-search-button img {
+  min-width: 18px;
+  min-height: 18px;
+  height: 18px;
+  width: 18px;
 }
 
 .nav-item-search-button:hover {
@@ -738,14 +742,15 @@ body {
   font-weight: 600;
   list-style: none;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.player-list-item a,
+.team-list-item a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .player-tag-name-list-wrapper {
@@ -778,14 +783,14 @@ body {
   font-weight: 600;
   list-style: none;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.event-list-item a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .player-list-name {
@@ -1192,10 +1197,10 @@ body {
   justify-content: center;
   padding: 2rem 1rem 0 1rem;
   flex-wrap: wrap;
+}
 
-  a {
-    text-decoration: none;
-  }
+.chip-carousel a {
+  text-decoration: none;
 }
 
 .chip-button {
@@ -1263,10 +1268,10 @@ body {
   padding: 0;
   overflow: hidden;
   margin: 0;
+}
 
-  a {
-    text-decoration: none;
-  }
+.global-small-box a {
+  text-decoration: none;
 }
 
 .global-small-box-former-members {
@@ -1332,13 +1337,13 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
 
-  img {
-    min-width: 1rem;
-    min-height: 1rem;
-    width: 1rem;
-    height: 1rem;
-  }
+.stage-name-icon-wrapper img {
+  min-width: 1rem;
+  min-height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .small-box-list-item {
@@ -1351,14 +1356,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-player-links {
@@ -1371,14 +1376,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item-player-links a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-player-links:hover {
@@ -1409,14 +1414,14 @@ body {
   padding: 1rem;
   justify-content: center;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item-matches a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-matches-buttons {
@@ -1481,14 +1486,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.small-box-list-item-title a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .small-box-list-item-title:hover {
@@ -1553,26 +1558,26 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
 
-  img {
-    min-width: 1rem;
-    min-height: 1rem;
-    width: 1rem;
-    height: 1rem;
-  }
+.lan-stages-icon-wrapper img {
+  min-width: 1rem;
+  min-height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .time-date-icon-wrapper {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
 
-  img {
-    min-width: 1rem;
-    min-height: 1rem;
-    width: 1rem;
-    height: 1rem;
-  }
+.time-date-icon-wrapper img {
+  min-width: 1rem;
+  min-height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .time-date-stage-wrapper {
@@ -1589,15 +1594,15 @@ body {
 
 .team-name-routing-wrapper {
   position: relative;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-  }
+.team-name-routing-wrapper a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
 }
 
 .event-stage-text-wrapper {
@@ -1610,13 +1615,13 @@ body {
   display: flex;
   gap: 0.4rem;
   align-items: center;
+}
 
-  img {
-    min-width: 1rem;
-    min-height: 1rem;
-    width: 1rem;
-    height: 1rem;
-  }
+.small-text-icon-wrapper img {
+  min-width: 1rem;
+  min-height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .small-box-list-item:hover {
@@ -1813,13 +1818,13 @@ body {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--font-color-white);
+}
 
-  img {
-    min-width: 30px;
-    min-height: 30px;
-    height: 30px;
-    width: 30px;
-  }
+.copyright img {
+  min-width: 30px;
+  min-height: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 /* player search page */
@@ -1835,13 +1840,13 @@ body {
   width: 100%;
   height: fit-content;
   transition: all 100ms;
+}
 
-  img {
-    min-width: 16px;
-    min-height: 16px;
-    width: 16px;
-    height: 16px;
-  }
+.filter-tag-button img {
+  min-width: 16px;
+  min-height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .filter-tag-wrapper {
@@ -1964,59 +1969,59 @@ body {
   height: 200px;
   gap: 1rem;
   transition: all 100ms;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
+.player-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 
-  img {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    min-width: 50px;
-    min-height: 50px;
-    width: 50px;
-    height: 50px;
-    border-radius: 0.5rem;
-    background-color: var(--img-background-color);
-    padding: 0.5rem;
-  }
+.player-card img {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 50px;
+  min-height: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.5rem;
+  background-color: var(--img-background-color);
+  padding: 0.5rem;
+}
 
-  .card-tags-wrapper {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-  }
+.player-card .card-tags-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
 
-  .main-card-content-wrapper {
-    margin-bottom: 3rem;
-  }
+.player-card .main-card-content-wrapper {
+  margin-bottom: 3rem;
+}
 
-  .card-tag-name-wrapper {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    width: 215px;
-    white-space: wrap;
-  }
+.player-card .card-tag-name-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 215px;
+  white-space: wrap;
+}
 
-  .global-small-text-blue {
-    position: absolute;
-    left: 1.5rem;
-    top: 5.5rem;
-  }
+.player-card .global-small-text-blue {
+  position: absolute;
+  left: 1.5rem;
+  top: 5.5rem;
+}
 
-  .card-small-heading-text {
-    color: var(--font-color-blue);
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-  }
+.player-card .card-small-heading-text {
+  color: var(--font-color-blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .event-card {
@@ -2031,62 +2036,62 @@ body {
   height: 200px;
   gap: 1rem;
   transition: all 100ms;
+}
 
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
+.event-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 
-  img {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    min-width: 50px;
-    min-height: 50px;
-    width: 50px;
-    height: 50px;
-    border-radius: 0.5rem;
-    background-color: var(--img-background-color);
-    padding: 0.5rem;
-  }
+.event-card img {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  min-width: 50px;
+  min-height: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.5rem;
+  background-color: var(--img-background-color);
+  padding: 0.5rem;
+}
 
-  .card-tags-wrapper {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-  }
+.event-card .card-tags-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
 
-  .main-card-content-wrapper {
-    margin-bottom: 3rem;
-  }
+.event-card .main-card-content-wrapper {
+  margin-bottom: 3rem;
+}
 
-  .card-tag-name-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    width: 285px;
-    white-space: wrap;
-  }
+.event-card .card-tag-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 285px;
+  white-space: wrap;
+}
 
-  .global-small-text-blue {
-    position: absolute;
-    left: 1.5rem;
-    top: 5.5rem;
-  }
+.event-card .global-small-text-blue {
+  position: absolute;
+  left: 1.5rem;
+  top: 5.5rem;
+}
 
-  .card-small-heading-text {
-    color: var(--font-color-blue);
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-  }
+.event-card .card-small-heading-text {
+  color: var(--font-color-blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .player-card:hover,
@@ -2232,15 +2237,15 @@ body {
   top: -43px;
   left: 0;
   transition: all 150ms;
+}
 
-  a {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-  }
+.blue-team-tooltip-name a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 
 .orange-team-tooltip-name {
@@ -2258,15 +2263,15 @@ body {
   bottom: -43px;
   right: 0;
   transition: all 150ms;
+}
 
-  a {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-  }
+.orange-team-tooltip-name a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 
 .img-with-link-to-team {
@@ -2379,24 +2384,24 @@ body {
   justify-content: space-between;
   padding: 1rem 1.5rem 1rem 1.5rem;
   gap: 1rem;
+}
 
-  img {
-    min-width: 40px;
-    min-height: 40px;
-    width: 40px;
-    height: 40px;
-    background-color: var(--img-background-color);
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-  }
+.match-bar img {
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--img-background-color);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
 
-  .global-small-text:hover {
-    color: var(--font-color-blue);
-  }
+.match-bar .global-small-text:hover {
+  color: var(--font-color-blue);
+}
 
-  .even-smaller-text:hover {
-    color: var(--font-color-blue);
-  }
+.match-bar .even-smaller-text:hover {
+  color: var(--font-color-blue);
 }
 
 .match-bar-href {
@@ -2480,17 +2485,17 @@ body {
   gap: 0.4rem;
   width: fit-content;
   justify-content: center;
+}
 
-  a {
-    text-decoration: none;
-  }
+.game-ballchasing-link-wrapper a {
+  text-decoration: none;
+}
 
-  img {
-    min-width: 16px;
-    min-height: 16px;
-    width: 16px;
-    height: 16px;
-  }
+.game-ballchasing-link-wrapper img {
+  min-width: 16px;
+  min-height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .game-ballchasing-link-wrapper:hover {
