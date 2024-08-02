@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { regionFilterFormatter, regionCodes } from "../api/regionMap";
@@ -26,9 +27,9 @@ const RegionDropdown = () => {
   }, []);
 
   useEffect(() => {
-    const tier = searchParams.get("region");
-    if (tier) {
-      setSelectedRegion(tier);
+    const region = searchParams.get("region");
+    if (region) {
+      setSelectedRegion(region);
     } else {
       setSelectedRegion(null);
     }
@@ -70,39 +71,37 @@ const RegionDropdown = () => {
   });
 
   return (
-    <>
-      <div ref={dropdownRef} className="region-dropdown">
-        <input
-          className="dropdown-button"
-          type="text"
-          value={inputValue}
-          onClick={toggleDropdown}
-          onChange={handleInputChange}
-          placeholder="Region"
-        />
-        {isOpen && (
-          <div className="dropdown-menu">
-            {filteredRegions.map((code) => (
-              <div
-                key={code}
-                className="dropdown-item-events"
-                onClick={() => handleRegionClick(code)}
-              >
-                {regionFilterFormatter(code)}
-              </div>
-            ))}
-          </div>
-        )}
-        <div className="filter-tag-wrapper">
-          {selectedRegion && (
-            <FilterTag
-              text={regionFilterFormatter(selectedRegion)}
-              onClick={handleRemoveRegion}
-            />
-          )}
+    <div ref={dropdownRef} className="region-dropdown">
+      <input
+        className="dropdown-button"
+        type="text"
+        value={inputValue}
+        onClick={toggleDropdown}
+        onChange={handleInputChange}
+        placeholder="Region"
+      />
+      {isOpen && (
+        <div className="dropdown-menu">
+          {filteredRegions.map((code) => (
+            <div
+              key={code}
+              className="dropdown-item-events"
+              onClick={() => handleRegionClick(code)}
+            >
+              {regionFilterFormatter(code)}
+            </div>
+          ))}
         </div>
+      )}
+      <div className="filter-tag-wrapper">
+        {selectedRegion && (
+          <FilterTag
+            text={regionFilterFormatter(selectedRegion)}
+            onClick={handleRemoveRegion}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

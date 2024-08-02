@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import getMatchByID from "@/app/components/ui/api/FetchMatch";
 import prettyDate from "@/app/components/ui/api/prettyDate";
 import prettyTime from "@/app/components/ui/api/prettyTime";
@@ -22,16 +22,8 @@ const MatchPage = ({ params }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [match, setMatch] = useState(true);
   const hasFetched1 = useRef(false);
-  const searchParams = useSearchParams();
-  const pageView = searchParams.get("view");
   const [numOfGames, setNumOfGames] = useState(null);
   const ballchasingBaseURL = "https://ballchasing.com/replay/";
-
-  useEffect(() => {
-    if (!pageView) {
-      router.replace(`?view=Overview`);
-    }
-  }, [pageView, router, id]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -342,10 +334,16 @@ const MatchPage = ({ params }) => {
                 event={
                   match.event && match.event.name ? match.event.name : null
                 }
-                startDate={match.date ? prettyDate(match.date) : "No Start Date Found"}
-                startTime={match.date ? prettyTime(match.date) : "No Start Time Found"}
+                startDate={
+                  match.date ? prettyDate(match.date) : "No Start Date Found"
+                }
+                startTime={
+                  match.date ? prettyTime(match.date) : "No Start Time Found"
+                }
                 stage={
-                  match.stage && match.stage.name ? match.stage.name : "No Stage Found"
+                  match.stage && match.stage.name
+                    ? match.stage.name
+                    : "No Stage Found"
                 }
                 mode={
                   match.event && match.event.mode

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import getEventByID from "@/app/components/ui/api/FetchEvent";
 import NormalText from "@/app/components/ui/text/NormalText";

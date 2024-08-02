@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { modeFilterFormatter, modeCodes } from "../api/ModeFilterMap";

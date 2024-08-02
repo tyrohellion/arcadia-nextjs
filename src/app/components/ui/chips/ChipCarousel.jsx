@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import GlobalChip from "./GlobalChip";
 import Link from "next/link";
