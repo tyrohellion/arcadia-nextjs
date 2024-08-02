@@ -20,103 +20,88 @@ const EventStagesBox = ({ stages }) => {
           </div>
 
           <ul className="global-small-box">
-            {results.map((stage) => (
-              <>
-                <li className="small-box-list-item" key={stage?.name}>
-                  <a
-                    href={stage?.liquipedia ? stage.liquipedia : null}
-                    target="_blank"
-                  />
-                  <div className="player-stats-bar-wrapper">
-                    <div className="stat-name-wrapper">
-                      <div className="event-stage-text-wrapper">
-                        <div className="stage-name-icon-wrapper">
-                          <SmallText text={stage?.name ? stage.name : null} />
-                          <img src="/static/images/externallink.png" />
+            {results.map((stage, index) => (
+              <li className="small-box-list-item" key={stage?.id || index}>
+                <a
+                  href={stage?.liquipedia || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+                <div className="player-stats-bar-wrapper">
+                  <div className="stat-name-wrapper">
+                    <div className="event-stage-text-wrapper">
+                      <div className="stage-name-icon-wrapper">
+                        <SmallText text={stage?.name || null} />
+                        <img
+                          src="/static/images/externallink.png"
+                          alt="External Link"
+                        />
+                      </div>
+                      <div className="margin-right-text-box">
+                        <div className="time-date-icon-wrapper">
+                          <img
+                            src="/static/images/calendar.png"
+                            alt="Calendar"
+                          />
+                          <div className="time-date-stage-wrapper">
+                            <FinePrint
+                              text={
+                                stage?.startDate
+                                  ? prettyTime(stage.startDate)
+                                  : null
+                              }
+                            />
+                            <FinePrint
+                              text={
+                                stage?.startDate
+                                  ? prettyDate(stage.startDate)
+                                  : null
+                              }
+                            />
+                          </div>
                         </div>
-                        <div className="margin-right-text-box">
-                          <div className="time-date-icon-wrapper">
-                            <img src="/static/images/calendar.png" />
-                            <div className="time-date-stage-wrapper">
+                        {stage?.location &&
+                        stage.location.venue &&
+                        stage.location.country &&
+                        stage.location.city ? (
+                          <div className="lan-stages-icon-wrapper">
+                            <img
+                              src="/static/images/location.png"
+                              alt="Location"
+                            />
+                            <div className="lan-stages-wrapper">
+                              <FinePrint text={stage.location.venue || null} />
                               <FinePrint
                                 text={
-                                  stage?.startDate
-                                    ? prettyTime(stage.startDate)
-                                    : null
-                                }
-                              />
-                              <FinePrint
-                                text={
-                                  stage?.startDate
-                                    ? prettyDate(stage.startDate)
+                                  stage.location.city
+                                    ? `${
+                                        stage.location.city
+                                      }, ${countryFormatter(
+                                        stage.location.country
+                                      )}`
                                     : null
                                 }
                               />
                             </div>
                           </div>
-                          {stage?.location &&
-                          stage.location.venue &&
-                          stage.location.country &&
-                          stage.location.city ? (
-                            <div className="lan-stages-icon-wrapper">
-                              {stage.location &&
-                              stage.location.venue &&
-                              stage.location.country &&
-                              stage.location.city ? (
-                                <img src="/static/images/location.png" />
-                              ) : null}
-                              <div className="lan-stages-wrapper">
-                                <FinePrint
-                                  text={
-                                    stage.location &&
-                                    stage.location.venue &&
-                                    stage.location.country &&
-                                    stage.location.city
-                                      ? stage.location.venue
-                                      : null
-                                  }
-                                />
-                                <FinePrint
-                                  text={
-                                    stage.location &&
-                                    stage.location.venue &&
-                                    stage.location.country &&
-                                    stage.location.city
-                                      ? stage.location.city +
-                                        ", " +
-                                        countryFormatter(stage.location.country)
-                                      : null
-                                  }
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                        </div>
-                      </div>
-                      <div className="num-games-player-stats-box-wrapper">
-                        <FinePrintPrizeTag
-                          amount={
-                            stage?.prize && stage.prize.amount
-                              ? stage.prize.amount
-                              : null
-                          }
-                          unit={
-                            stage?.prize && stage.prize.unit
-                              ? stage.prize.unit
-                              : null
-                          }
-                        />
+                        ) : null}
                       </div>
                     </div>
-                    <div
-                      className="rating-pill"
-                      style={{
-                        "--progress": 0 + "%",
-                      }}
-                    ></div>
+                    <div className="num-games-player-stats-box-wrapper">
+                      <FinePrintPrizeTag
+                        amount={stage?.prize?.amount || null}
+                        unit={stage?.prize?.unit || null}
+                      />
+                    </div>
                   </div>
-                </li>
-              </>
+                  <div
+                    className="rating-pill"
+                    style={{
+                      "--progress": 0 + "%",
+                    }}
+                  ></div>
+                </div>
+              </li>
             ))}
           </ul>
         </div>

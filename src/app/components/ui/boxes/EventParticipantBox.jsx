@@ -37,13 +37,19 @@ const EventParticipantBox = ({ id }) => {
       {isLoading ? (
         <div className="event-participants-skeleton-container">
           {Array.from({ length: 15 }).map((_, index) => (
-            <SkeletonEventPartBoxLoading />
+            <SkeletonEventPartBoxLoading key={index} />
           ))}
         </div>
       ) : Array.isArray(results) && results.length > 0 ? (
-        results.map((team, index) => (
-          <ul className="global-small-box-event-part">
-            <li className="small-box-list-item-title-participants">
+        results.map((team, teamIndex) => (
+          <ul
+            className="global-small-box-event-part"
+            key={team?.team?._id || teamIndex}
+          >
+            <li
+              className="small-box-list-item-title-participants"
+              key={team?.team?._id || `team-${teamIndex}`}
+            >
               <Link href={`/teams/${team?.team?._id}`}></Link>
               <img
                 className="event-participant-team-image"
@@ -56,8 +62,11 @@ const EventParticipantBox = ({ id }) => {
               />
               {team?.team?.name}
             </li>
-            {(team?.players).map((player) => (
-              <li className="small-box-list-item-event-part" key={player?._id}>
+            {team?.players.map((player, playerIndex) => (
+              <li
+                className="small-box-list-item-event-part"
+                key={player?._id || `player-${playerIndex}`}
+              >
                 <Link href={`/players/${player?._id}`}></Link>
                 <div className="player-tag-coach-wrapper">
                   <div className="player-tag-roster">{player?.tag}</div>

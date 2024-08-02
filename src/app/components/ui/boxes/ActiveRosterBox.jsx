@@ -47,8 +47,8 @@ const ActiveRosterBox = ({ id }) => {
               {results[0]?.team?.name}
               <Link href={`/teams/${id}`} />
             </li>
-            {results.map((player) => (
-              <li className="small-box-list-item" key={player?._id}>
+            {results.map((player, index) => (
+              <li className="small-box-list-item" key={player?._id || index}>
                 <div className="player-tag-coach-wrapper">
                   <div className="player-tag-roster">{player?.tag}</div>
                   {player?.coach && <FinePrintTagWrapped text="COACH" />}
