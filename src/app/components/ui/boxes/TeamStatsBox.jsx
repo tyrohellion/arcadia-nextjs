@@ -65,14 +65,14 @@ const TeamStatsBox = ({ id }) => {
           </div>
           <ul className="global-small-box">
             {results.map((stats) => (
-              <li className="small-box-list-item" key={`rating-${stats.team._id}`}>
+              <li className="small-box-list-item" key={`rating-${stats?.team?._id}`}>
                 <div className="player-stats-bar-wrapper">
                   <div className="stat-name-wrapper">
                     <div className="player-tag-roster">
                       <NormalText
                         text={
                           (
-                            (stats.games.wins / stats.games.total) * 100
+                            (stats?.games?.wins / stats?.games?.total) * 100
                           ).toFixed(2) + "%"
                         }
                       />
@@ -80,26 +80,26 @@ const TeamStatsBox = ({ id }) => {
                     </div>
                     <div className="num-games-player-stats-box-wrapper">
                       <FinePrint text="GAMES" />
-                      <div className="stat-label">{Math.trunc(stats.games.total)}</div>
+                      <div className="stat-label">{Math.trunc(stats?.games?.total)}</div>
                     </div>
                   </div>
                   <div
                     className="rating-pill"
                     style={{
-                      "--progress": `${(stats.games.wins / stats.games.total) * 100}%`,
+                      "--progress": `${(stats?.games?.wins / stats?.games?.total) * 100}%`,
                     }}
                   ></div>
                 </div>
               </li>
             ))}
             {results.map((stats) => (
-              <li className="small-box-list-item" key={`score-${stats.team._id}`}>
+              <li className="small-box-list-item" key={`score-${stats?.team?._id}`}>
                 <div className="player-stats-bar-wrapper">
                   <div className="stat-name-wrapper">
                     <div className="player-tag-roster">
                       <NormalText
                         text={(
-                          stats.stats.score / stats.games.total
+                          stats?.stats?.score / stats?.games?.total
                         ).toFixed(2)}
                       />
                       <FinePrint text="SCORE PER GAME" />
@@ -107,54 +107,54 @@ const TeamStatsBox = ({ id }) => {
                     <div className="num-games-player-stats-box-wrapper">
                       <FinePrint text="MATCHES" />
                       <div className="stat-label">
-                        {stats.matches.total}
+                        {stats?.matches?.total}
                       </div>
                     </div>
                   </div>
                   <div
                     className="score-pill"
                     style={{
-                      "--progress": `${(stats.stats.score / stats.games.total / 2100) * 100}%`,
+                      "--progress": `${(stats?.stats?.score / stats?.games?.total / 2100) * 100}%`,
                     }}
                   ></div>
                 </div>
               </li>
             ))}
             {results.map((stats) => (
-              <li className="small-box-list-item" key={`goals-${stats.team._id}`}>
+              <li className="small-box-list-item" key={`goals-${stats?.team?._id}`}>
                 <div className="player-stats-bar-wrapper">
                   <div className="stat-name-wrapper">
                     <div className="player-tag-roster">
                       <NormalText
                         text={(
-                          stats.stats.goals / stats.games.total
+                          stats?.stats?.goals / stats?.games?.total
                         ).toFixed(2)}
                       />
                       <FinePrint text="GOALS PER GAME" />
                     </div>
                     <div className="num-games-player-stats-box-wrapper">
                       <FinePrint text="GOALS" />
-                      <div className="stat-label">{stats.stats.goals}</div>
+                      <div className="stat-label">{stats?.stats?.goals}</div>
                     </div>
                   </div>
                   <div
                     className="goals-pill"
                     style={{
-                      "--progress": `${(stats.stats.goals / stats.games.total / 4) * 100}%`,
+                      "--progress": `${(stats?.stats?.goals / stats?.games?.total / 4) * 100}%`,
                     }}
                   ></div>
                 </div>
               </li>
             ))}
             {results.map((stats) => (
-              <li className="small-box-list-item" key={`shotper-${stats.team._id}`}>
+              <li className="small-box-list-item" key={`shotper-${stats?.team?._id}`}>
                 <div className="player-stats-bar-wrapper">
                   <div className="stat-name-wrapper">
                     <div className="player-tag-roster">
                       <NormalText
                         text={
                           (
-                            (stats.stats.goals / stats.stats.shots) * 100
+                            (stats?.stats?.goals / stats?.stats?.shots) * 100
                           ).toFixed(2) + "%"
                         }
                       />
@@ -162,24 +162,24 @@ const TeamStatsBox = ({ id }) => {
                     </div>
                     <div className="num-games-player-stats-box-wrapper">
                       <FinePrint text="SHOTS" />
-                      <div className="stat-label">{stats.stats.shots}</div>
+                      <div className="stat-label">{stats?.stats?.shots}</div>
                     </div>
                   </div>
                   <div
                     className="shooting-pill"
                     style={{
-                      "--progress": `${(stats.stats.goals / stats.stats.shots) * 100}%`,
+                      "--progress": `${(stats?.stats?.goals / stats?.stats?.shots) * 100}%`,
                     }}
                   ></div>
                 </div>
               </li>
             ))}
             {results.map((stats) => (
-              <li className="small-box-list-item" key={`saves-${stats.team._id}`}>
+              <li className="small-box-list-item" key={`saves-${stats?.team?._id}`}>
                 <div className="player-stats-bar-wrapper">
                   <div className="stat-name-wrapper">
                     <div className="margin-right-text-box">
-                      <FinePrint text={prettyDate(stats.startDate)} />
+                      <FinePrint text={prettyDate(stats?.startDate)} />
                     </div>
                     <div className="num-games-player-stats-box-wrapper">
                       <FinePrint text="Age of Data" />

@@ -18,6 +18,7 @@ import TeamStatsBox from "@/app/components/ui/boxes/TeamStatsBox";
 import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
 import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
 import TeamResults from "@/app/components/ui/content/TeamResults";
+import SkeletonTeamEventsLoading from "@/app/components/ui/skeletons/SkeletonTeamEventsLoading";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -68,21 +69,21 @@ const TeamPage = ({ params }) => {
                   {team.image ? (
                     <GlobalSmallImage
                       imageSrc={team.image}
-                      altText={team.name}
+                      altText={team.name ? team.name : "No Team Name Found"}
                     />
                   ) : (
                     <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
-                      altText={team.name}
+                      altText={team.name ? team.name : "No Team Name Found"}
                     />
                   )}
                 </div>
                 <div className="team-names-wrapper">
-                  <SmallHeading text={team.name} />
+                  <SmallHeading text={team.name ? team.name : "No Team Name Found"} />
                   {team.region ? (
                     <SmallTagLowercase text={regionFormatter(team.region)} />
                   ) : (
-                    <SmallTagLowercase text="No region data" />
+                    <SmallTagLowercase text="No region Found" />
                   )}
                 </div>
               </div>
@@ -98,31 +99,31 @@ const TeamPage = ({ params }) => {
           <div className="boxes-wrapper">
             <div className="team-roster-events-wrapper">
               {team ? (
-                <ActiveRosterBox id={team._id} teamName={team.name} />
+                <ActiveRosterBox id={team._id ? team._id : null} teamName={team.name ? team.name : "No Team Name Found"} />
               ) : (
                 <SkeletonRosterBoxLoading />
               )}
               {team ? (
-                <TeamEventsBox id={team._id} />
+                <TeamEventsBox id={team._id ? team._id : null} />
               ) : (
-                <SkeletonRecentMatchesOverviewLoading NoData="" />
+                <SkeletonTeamEventsLoading />
               )}
             </div>
             <div className="team-stats-other-wrapper">
               {team ? (
-                <TeamStatsBox id={team._id} />
+                <TeamStatsBox id={team._id ? team._id : null} />
               ) : (
                 <SkeletonPlayerStatsLoading />
               )}
 
               {team ? (
-                <TeamFormerMembersBox id={team._id} />
+                <TeamFormerMembersBox id={team._id ? team._id : null} />
               ) : (
                 <SkeletonRosterBoxLoading />
               )}
             </div>
             {team ? (
-              <RecentMatchesTeamBox id={team._id} />
+              <RecentMatchesTeamBox id={team._id ? team._id : null} />
             ) : (
               <SkeletonRecentMatchesOverviewLoading NoData="" />
             )}

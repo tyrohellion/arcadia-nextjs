@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import fetchPlayerEventsOverview from "../api/FetchPlayerEventsOverview";
 import SmallTag from "../tags/SmallTag";
 import CardHeader from "../text/CardHeader";
-import SkeletonPlayerEventsBox from "../skeletons/SkeletonPlayerEventsBox";
 import SkeletonPlayerEventsLoading from "../skeletons/SkeletonPlayerEventsLoading";
 import getLocalDateMinusMonths from "../api/getLocalTime";
 import SmallText from "../text/SmallText";
@@ -81,22 +80,22 @@ const PlayerEventsBox = ({ id }) => {
           </div>
           <ul className="global-small-box">
             {results.map((result) => {
-              const event = result.events[0];
+              const event = result?.events[0];
               return (
                 event && (
                   <li className="small-box-list-item" key={event._id}>
                     <div className="player-event-overview-name-tier-wrapper">
                       <>
-                        <SmallText text={event.name} />
+                        <SmallText text={event?.name} />
                         <div className="overview-event-tier-region-wrapper">
-                          <FinePrintTierTag tier={event.tier} />
-                          <FinePrintPrettyDate date={result.startDate} />
-                          <FinePrint text={event.region} />
+                          <FinePrintTierTag tier={event?.tier} />
+                          <FinePrintPrettyDate date={result?.startDate} />
+                          <FinePrint text={event?.region} />
                         </div>
                       </>
                     </div>
-                    <RatingTag playerId={id} eventId={event._id} />
-                    <Link href={`/events/${event._id}`} />
+                    <RatingTag playerId={id} eventId={event?._id} />
+                    <Link href={`/events/${event?._id}`} />
                   </li>
                 )
               );

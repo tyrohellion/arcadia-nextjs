@@ -4,7 +4,7 @@ import CardHeader from "../text/CardHeader";
 import getFormerMembers from "../api/FetchFormerMembers";
 import GlobalTag from "../tags/GlobalTag";
 import SkeletonFormerMembersLoading from "../skeletons/SkeletonFormerMembersLoading";
-import SkeletonFormerMembersBox from "../skeletons/SkeletonFormerMembersBox";
+import SkeletonNoFormerMembersBox from "../skeletons/SkeletonNoFormerMembersBox";
 
 const TeamFormerMembersBox = ({ id }) => {
     const [results, setResults] = useState([]);
@@ -46,18 +46,18 @@ const TeamFormerMembersBox = ({ id }) => {
           </div>
           <ul className="global-small-box-former-members">
             {results.map((player) => (
-              <li className="small-box-list-item" key={player._id}>
+              <li className="small-box-list-item" key={player?._id}>
                 <div className="player-tag-coach-wrapper">
-                  <div className="player-tag-roster">{player.tag}</div>
+                  <div className="player-tag-roster">{player?.tag}</div>
                 </div>
-                {player.country && <GlobalTag text={player.country} />}
-                <Link href={`/players/${player._id}`} />
+                {player?.country && <GlobalTag text={player?.country} />}
+                <Link href={`/players/${player?._id}`} />
               </li>
             ))}
           </ul>
         </div>
       ) : (
-        <SkeletonFormerMembersBox text="N/A" />
+        <SkeletonNoFormerMembersBox />
       )}
     </>
   );

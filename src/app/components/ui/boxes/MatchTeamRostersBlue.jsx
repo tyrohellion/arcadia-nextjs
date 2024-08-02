@@ -17,18 +17,18 @@ const MatchTeamRostersBlue = ({ match }) => {
           </div>
           <ul className="global-small-box">
             <li className="small-box-list-item-title">
-              {match.blue.team.team.name}
-              <Link href={`/teams/${match.blue.team.team._id}`} />
+              {match?.blue?.team?.team?.name}
+              <Link href={`/teams/${match?.blue?.team?.team?._id}`} />
             </li>
-            {match.blue.players.map((player) => (
-              <li className="small-box-list-item" key={player.player._id}>
+            {match?.blue?.players.map((player) => (
+              <li className="small-box-list-item" key={player?.player?._id}>
                 <div className="player-tag-coach-wrapper">
-                  <div className="player-tag-roster">{player.player.tag}</div>
-                  {player.coach && <FinePrintTagWrapped text="COACH" />}
-                  {player.substitute && <FinePrintTagWrapped text="SUB" />}
+                  <div className="player-tag-roster">{player?.player?.tag}</div>
+                  {player?.coach && <FinePrintTagWrapped text="COACH" />}
+                  {player?.substitute && <FinePrintTagWrapped text="SUB" />}
                 </div>
-                {player.player.country && <GlobalTag text={player.player.country} />}
-                <Link href={`/players/${player.player._id}`} />
+                {player?.player?.country && <GlobalTag text={player?.player?.country} />}
+                <Link href={`/players/${player?.player?._id}`} />
               </li>
             ))}
           </ul>

@@ -70,46 +70,46 @@ const RecentMatchesPlayerBox = ({ id }) => {
                 </div>
               ) : null}
               {results.map((result) =>
-                result.blue.winner || result.orange.winner ? (
-                  <li className="small-box-list-item-matches" key={result._id}>
+                result?.blue?.winner || result?.orange?.winner ? (
+                  <li className="small-box-list-item-matches" key={result?._id}>
                     <div className="recent-matches-blue-wrapper">
                       <NormalTextBlue
-                        text={result.blue.score ? result.blue.score : "0"}
+                        text={result?.blue?.score ? result?.blue?.score : "0"}
                       />
                       <div className="team-name-routing-wrapper">
-                        <Link href={`/teams/${result.blue?.team?.team?._id}`} />
-                        <SmallText text={result.blue?.team?.team?.name} />
+                        <Link href={`/teams/${result?.blue?.team?.team?._id}`} />
+                        <SmallText text={result?.blue?.team?.team?.name} />
                       </div>
-                      {result.blue.winner ? (
+                      {result?.blue?.winner ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
                     <div className="recent-matches-orange-wrapper">
                       <NormalTextBlue
-                        text={result.orange.score ? result.orange.score : "0"}
+                        text={result?.orange?.score ? result?.orange?.score : "0"}
                       />
                       <div className="team-name-routing-wrapper">
                         <Link
-                          href={`/teams/${result.orange?.team?.team?._id}`}
+                          href={`/teams/${result?.orange?.team?.team?._id}`}
                         />
-                        <SmallText text={result.orange?.team?.team?.name} />
+                        <SmallText text={result?.orange?.team?.team?.name} />
                       </div>
-                      {result.orange.winner ? (
+                      {result?.orange?.winner ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
                     <FinePrint
                       text={
-                        result.date
-                          ? prettyDate(result.date) +
+                        result?.date
+                          ? prettyDate(result?.date) +
                             " " +
-                            prettyTime(result.date)
+                            prettyTime(result?.date)
                           : null
                       }
                     />
-                    <FinePrint text={result.event.name} />
+                    <FinePrint text={result?.event?.name} />
                     <div className="rating-pill"></div>
-                    <Link href={`/matches/${result._id}`} />
+                    <Link href={`/matches/${result?._id}`} />
                   </li>
                 ) : null
               )}

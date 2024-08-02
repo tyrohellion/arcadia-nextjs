@@ -61,31 +61,31 @@ const PlayerStatsBox = ({ id }) => {
           </div>
           <ul className="global-small-box">
             {results.map((stats) => (
-              <React.Fragment key={stats.player._id}>
+              <React.Fragment key={stats?.player?._id}>
                 <li
                   className="small-box-list-item"
-                  key={`rating-${stats.player._id}`}
+                  key={`rating-${stats?.player?._id}`}
                 >
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
                           text={(
-                            stats.stats.rating / stats.games.total
+                            stats?.stats?.rating / stats?.games?.total
                           ).toFixed(3)}
                         />
                         <FinePrint text="RATING" />
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="MATCHES" />
-                        <div className="stat-label">{stats.matches.total}</div>
+                        <div className="stat-label">{stats?.matches?.total}</div>
                       </div>
                     </div>
                     <div
                       className="rating-pill"
                       style={{
                         "--progress":
-                          (stats.stats.rating / stats.games.total / 2.0) * 100 +
+                          (stats?.stats?.rating / stats?.games?.total / 1.75) * 100 +
                           "%",
                       }}
                     ></div>
@@ -93,13 +93,13 @@ const PlayerStatsBox = ({ id }) => {
                 </li>
                 <li
                   className="small-box-list-item"
-                  key={`score-${stats.player._id}`}
+                  key={`score-${stats?.player?._id}`}
                 >
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={(stats.stats.score / stats.games.total).toFixed(
+                          text={(stats?.stats?.score / stats?.games?.total).toFixed(
                             2
                           )}
                         />
@@ -108,7 +108,7 @@ const PlayerStatsBox = ({ id }) => {
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="GAMES" />
                         <div className="stat-label">
-                          {Math.trunc(stats.games.total)}
+                          {Math.trunc(stats?.games?.total)}
                         </div>
                       </div>
                     </div>
@@ -116,7 +116,7 @@ const PlayerStatsBox = ({ id }) => {
                       className="score-pill"
                       style={{
                         "--progress":
-                          (stats.stats.score / stats.games.total / 700) * 100 +
+                          (stats?.stats?.score / stats?.games?.total / 650) * 100 +
                           "%",
                       }}
                     ></div>
@@ -124,13 +124,13 @@ const PlayerStatsBox = ({ id }) => {
                 </li>
                 <li
                   className="small-box-list-item"
-                  key={`goals-${stats.player._id}`}
+                  key={`goals-${stats?.player?._id}`}
                 >
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={(stats.stats.goals / stats.games.total).toFixed(
+                          text={(stats?.stats?.goals / stats?.games?.total).toFixed(
                             2
                           )}
                         />
@@ -138,14 +138,14 @@ const PlayerStatsBox = ({ id }) => {
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="GOALS" />
-                        <div className="stat-label">{stats.stats.goals}</div>
+                        <div className="stat-label">{stats?.stats?.goals}</div>
                       </div>
                     </div>
                     <div
                       className="goals-pill"
                       style={{
                         "--progress":
-                          (stats.stats.goals / stats.games.total / 1.5) * 100 +
+                          (stats?.stats?.goals / stats?.games?.total / 1.5) * 100 +
                           "%",
                       }}
                     ></div>
@@ -153,14 +153,14 @@ const PlayerStatsBox = ({ id }) => {
                 </li>
                 <li
                   className="small-box-list-item"
-                  key={`shotper-${stats.player._id}`}
+                  key={`shotper-${stats?.player?._id}`}
                 >
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
                           text={`${(
-                            (stats.stats.goals / stats.stats.shots) *
+                            (stats?.stats?.goals / stats?.stats?.shots) *
                             100
                           ).toFixed(2)}%`}
                         />
@@ -168,40 +168,40 @@ const PlayerStatsBox = ({ id }) => {
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="SHOTS" />
-                        <div className="stat-label">{stats.stats.shots}</div>
+                        <div className="stat-label">{stats?.stats?.shots}</div>
                       </div>
                     </div>
                     <div
                       className="shooting-pill"
                       style={{
                         "--progress":
-                          (stats.stats.goals / stats.stats.shots) * 100 + "%",
+                          (stats?.stats?.goals / stats?.stats?.shots) * 100 + "%",
                       }}
                     ></div>
                   </div>
                 </li>
                 <li
                   className="small-box-list-item"
-                  key={`saves-${stats.player._id}`}
+                  key={`saves-${stats?.player?._id}`}
                 >
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={`${stats.stats.goalParticipation.toFixed(2)}%`}
+                          text={`${stats?.stats?.goalParticipation.toFixed(2)}%`}
                         />
                         <FinePrint text="GOAL PART." />
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="ASSISTS" />
-                        <div className="stat-label">{stats.stats.assists}</div>
+                        <div className="stat-label">{stats?.stats?.assists}</div>
                       </div>
                     </div>
                     <div
                       className="goalpart-pill"
                       style={{
                         "--progress":
-                          stats.stats.goalParticipation.toFixed(2) + "%",
+                          stats?.stats?.goalParticipation.toFixed(2) + "%",
                       }}
                     ></div>
                   </div>

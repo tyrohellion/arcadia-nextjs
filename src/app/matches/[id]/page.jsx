@@ -195,9 +195,9 @@ const MatchPage = ({ params }) => {
                   {Array.from({ length: numOfGames }).map((_, index) => (
                     <li className="scores-list-item-match" key={index}>
                       <div className="scores-list-inner-wrapper">
-                        {match.games &&
-                        match.games[index] &&
-                        match.games[index].ballchasing ? (
+                        {match?.games &&
+                        match?.games[index] &&
+                        match?.games[index]?.ballchasing ? (
                           <>
                             <NormalText
                               text={
@@ -206,8 +206,8 @@ const MatchPage = ({ params }) => {
                                   : "0"
                               }
                             />
-                            {match.games[index].overtime &&
-                            match.games[index].duration > 300 ? (
+                            {match?.games[index].overtime &&
+                            match?.games[index].duration > 300 ? (
                               <div className="game-ballchasing-link-wrapper">
                                 <a
                                   href={
@@ -238,7 +238,7 @@ const MatchPage = ({ params }) => {
                                 <a
                                   href={
                                     ballchasingBaseURL +
-                                    match.games[index].ballchasing
+                                    match?.games[index]?.ballchasing
                                   }
                                   target="_blank"
                                 >
@@ -251,34 +251,34 @@ const MatchPage = ({ params }) => {
                             )}
                             <NormalText
                               text={
-                                match.games[index].orange
-                                  ? match.games[index].orange
+                                match?.games[index]?.orange
+                                  ? match?.games[index]?.orange
                                   : "0"
                               }
                             />
                           </>
-                        ) : match.games && match.games[index] ? (
+                        ) : match?.games && match?.games[index] ? (
                           <>
                             <NormalText
                               text={
-                                match.games[index].blue
-                                  ? match.games[index].blue
+                                match?.games[index]?.blue
+                                  ? match?.games[index]?.blue
                                   : "0"
                               }
                             />
-                            {match.games[index].overtime &&
-                            match.games[index].duration > 300 ? (
+                            {match?.games[index].overtime &&
+                            match?.games[index].duration > 300 ? (
                               <div className="global-small-text-blue">
                                 Game{" "}
                                 {index +
                                   1 +
                                   " (+" +
                                   Math.floor(
-                                    (match.games[index].duration - 300) / 60
+                                    (match?.games[index].duration - 300) / 60
                                   ) +
                                   ":" +
                                   String(
-                                    (match.games[index].duration - 300) % 60
+                                    (match?.games[index].duration - 300) % 60
                                   ).padStart(2, "0") +
                                   ")"}
                               </div>
@@ -289,7 +289,7 @@ const MatchPage = ({ params }) => {
                             )}
                             <NormalText
                               text={
-                                match.games[index].orange
+                                match?.games[index]?.orange
                                   ? match.games[index].orange
                                   : "0"
                               }
@@ -342,20 +342,20 @@ const MatchPage = ({ params }) => {
                 event={
                   match.event && match.event.name ? match.event.name : null
                 }
-                startDate={match.date ? prettyDate(match.date) : null}
-                startTime={match.date ? prettyTime(match.date) : null}
+                startDate={match.date ? prettyDate(match.date) : "No Start Date Found"}
+                startTime={match.date ? prettyTime(match.date) : "No Start Time Found"}
                 stage={
-                  match.stage && match.stage.name ? match.stage.name : null
+                  match.stage && match.stage.name ? match.stage.name : "No Stage Found"
                 }
                 mode={
                   match.event && match.event.mode
                     ? match.event.mode + "v" + match.event.mode
-                    : null
+                    : "No Mode Found"
                 }
                 region={
                   match.event && match.event.region
                     ? regionFormatter(match.event.region)
-                    : null
+                    : "No Region Found"
                 }
                 type={match.stage && match.stage.lan ? "Lan" : "Online"}
               />

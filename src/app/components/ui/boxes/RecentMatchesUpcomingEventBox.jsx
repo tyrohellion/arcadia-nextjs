@@ -32,17 +32,17 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
           setResults(data);
           const filteredResults = data.filter((result) =>
             completed
-              ? (result.blue && result.blue.score) ||
-                result.blue?.winner ||
-                (result.orange && result.orange.score) ||
-                result.orange?.winner
+              ? (result?.blue && result?.blue?.score) ||
+                result?.blue?.winner ||
+                (result?.orange && result?.orange?.score) ||
+                result?.orange?.winner
               : !(
-                  (result.blue && result.blue.score) ||
-                  result.blue?.winner
+                  (result?.blue && result?.blue?.score) ||
+                  result?.blue?.winner
                 ) &&
                   !(
-                    (result.orange && result.orange.score) ||
-                    result.orange?.winner
+                    (result?.orange && result?.orange?.score) ||
+                    result?.orange?.winner
                   )
           );
           setShowSeeAllButton(filteredResults.length > 2);
@@ -102,70 +102,70 @@ const RecentMatchesUpcomingEventBox = ({ id }) => {
               results
                 .filter((result) =>
                   completed
-                    ? (result.blue && result.blue.score) ||
-                      result.blue?.winner ||
-                      (result.orange && result.orange.score) ||
-                      result.orange?.winner
+                    ? (result?.blue && result?.blue?.score) ||
+                      result?.blue?.winner ||
+                      (result?.orange && result?.orange?.score) ||
+                      result?.orange?.winner
                     : !(
-                        (result.blue && result.blue.score) ||
-                        result.blue?.winner
+                        (result?.blue && result?.blue?.score) ||
+                        result?.blue?.winner
                       ) &&
                       !(
-                        (result.orange && result.orange.score) ||
-                        result.orange?.winner
+                        (result?.orange && result?.orange?.score) ||
+                        result?.orange?.winner
                       )
                 )
                 .map((result) => (
-                  <li className="small-box-list-item-matches" key={result._id}>
+                  <li className="small-box-list-item-matches" key={result?._id}>
                     <div className="recent-matches-blue-wrapper">
                       <NormalTextBlue
                         text={
-                          result.blue && result.blue.score
-                            ? result.blue.score
+                          result?.blue && result?.blue?.score
+                            ? result?.blue?.score
                             : "0"
                         }
                       />
                       <div className="team-name-routing-wrapper">
-                        <Link href={`/teams/${result.blue?.team?.team?._id}`} />
+                        <Link href={`/teams/${result?.blue?.team?.team?._id}`} />
                         <SmallText
-                          text={result.blue?.team?.team?.name || "TBD"}
+                          text={result?.blue?.team?.team?.name || "TBD"}
                         />
                       </div>
-                      {result.blue?.winner && result.blue?.score ? (
+                      {result?.blue?.winner && result?.blue?.score ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
                     <div className="recent-matches-orange-wrapper">
                       <NormalTextBlue
                         text={
-                          result.orange && result.orange.score
-                            ? result.orange.score
+                          result?.orange && result?.orange?.score
+                            ? result?.orange?.score
                             : "0"
                         }
                       />
                       <div className="team-name-routing-wrapper">
                         <Link
-                          href={`/teams/${result.orange?.team?.team?._id}`}
+                          href={`/teams/${result?.orange?.team?.team?._id}`}
                         />
                         <SmallText
-                          text={result.orange?.team?.team?.name || "TBD"}
+                          text={result?.orange?.team?.team?.name || "TBD"}
                         />
                       </div>
-                      {result.orange?.winner && result.orange?.score ? (
+                      {result?.orange?.winner && result?.orange?.score ? (
                         <FinePrintTagWrapped text="WINNER" />
                       ) : null}
                     </div>
                     <FinePrint
                       text={
-                        result.date
-                          ? prettyDate(result.date) +
+                        result?.date
+                          ? prettyDate(result?.date) +
                             " " +
-                            prettyTime(result.date)
+                            prettyTime(result?.date)
                           : null
                       }
                     />
                     <div className="rating-pill"></div>
-                    <Link href={`/matches/${result._id}`} />
+                    <Link href={`/matches/${result?._id}`} />
                   </li>
                 ))
             ) : (

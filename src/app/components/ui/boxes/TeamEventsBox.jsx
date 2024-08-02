@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import CardHeader from "../text/CardHeader";
 import SkeletonPlayerEventsBox from "../skeletons/SkeletonPlayerEventsBox";
-import SkeletonPlayerEventsLoading from "../skeletons/SkeletonPlayerEventsLoading";
 import SmallText from "../text/SmallText";
 import FinePrint from "../text/FinePrint";
 import FinePrintTierTag from "../tags/FinePrintTierTag";
 import FinePrintPrettyDate from "../formatters/FinePrintPrettyDate";
 import FetchTeamRecentEvents from "../api/FetchTeamRecentEvents";
+import SkeletonTeamEventsLoading from "../skeletons/SkeletonTeamEventsLoading";
 
 const TeamEventsBox = ({ id }) => {
   const [results, setResults] = useState([]);
@@ -35,7 +35,7 @@ const TeamEventsBox = ({ id }) => {
   return (
     <>
       {isLoading ? (
-        <SkeletonPlayerEventsLoading />
+        <SkeletonTeamEventsLoading />
       ) : (
         <div className="heading-small-box-wrapper">
           <div className="headings-wrapper">
@@ -45,18 +45,18 @@ const TeamEventsBox = ({ id }) => {
             <ul className="global-small-box">
               {results.map((event) => {
                 return (
-                  <li className="small-box-list-item" key={event._id}>
+                  <li className="small-box-list-item" key={event?._id}>
                     <div className="player-event-overview-name-tier-wrapper">
                       <>
-                        <SmallText text={event.name} />
+                        <SmallText text={event?.name} />
                         <div className="overview-event-tier-region-wrapper">
-                          <FinePrintTierTag tier={event.tier} />
-                          <FinePrintPrettyDate date={event.startDate} />
-                          <FinePrint text={event.region} />
+                          <FinePrintTierTag tier={event?.tier} />
+                          <FinePrintPrettyDate date={event?.startDate} />
+                          <FinePrint text={event?.region} />
                         </div>
                       </>
                     </div>
-                    <Link href={`/events/${event._id}`} />
+                    <Link href={`/events/${event?._id}`} />
                   </li>
                 );
               })}

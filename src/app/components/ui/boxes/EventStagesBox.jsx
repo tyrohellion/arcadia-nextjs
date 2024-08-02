@@ -22,16 +22,16 @@ const EventStagesBox = ({ stages }) => {
           <ul className="global-small-box">
             {results.map((stage) => (
               <>
-                <li className="small-box-list-item" key={stage.name}>
+                <li className="small-box-list-item" key={stage?.name}>
                   <a
-                    href={stage.liquipedia ? stage.liquipedia : null}
+                    href={stage?.liquipedia ? stage.liquipedia : null}
                     target="_blank"
                   />
                   <div className="player-stats-bar-wrapper">
                     <div className="stat-name-wrapper">
                       <div className="event-stage-text-wrapper">
                         <div className="stage-name-icon-wrapper">
-                          <SmallText text={stage.name ? stage.name : null} />
+                          <SmallText text={stage?.name ? stage.name : null} />
                           <img src="/static/images/externallink.png" />
                         </div>
                         <div className="margin-right-text-box">
@@ -40,21 +40,21 @@ const EventStagesBox = ({ stages }) => {
                             <div className="time-date-stage-wrapper">
                               <FinePrint
                                 text={
-                                  stage.startDate
+                                  stage?.startDate
                                     ? prettyTime(stage.startDate)
                                     : null
                                 }
                               />
                               <FinePrint
                                 text={
-                                  stage.startDate
+                                  stage?.startDate
                                     ? prettyDate(stage.startDate)
                                     : null
                                 }
                               />
                             </div>
                           </div>
-                          {stage.location &&
+                          {stage?.location &&
                           stage.location.venue &&
                           stage.location.country &&
                           stage.location.city ? (
@@ -96,12 +96,12 @@ const EventStagesBox = ({ stages }) => {
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrintPrizeTag
                           amount={
-                            stage.prize && stage.prize.amount
+                            stage?.prize && stage.prize.amount
                               ? stage.prize.amount
                               : null
                           }
                           unit={
-                            stage.prize && stage.prize.unit
+                            stage?.prize && stage.prize.unit
                               ? stage.prize.unit
                               : null
                           }

@@ -63,17 +63,17 @@ const EventPage = ({ params }) => {
                   {event.image ? (
                     <GlobalSmallImage
                       imageSrc={event.image}
-                      altText={event.name}
+                      altText={event.name ? event.name : "No Event Name"}
                     />
                   ) : (
                     <GlobalSmallImage
                       imageSrc="/static/images/rocketleague.svg"
-                      altText={event.name}
+                      altText={event.name ? event.name : "No Event Name"}
                     />
                   )}
                 </div>
                 <div className="event-names-wrapper">
-                  <SmallHeading text={event.name} />
+                  <SmallHeading text={event.name ? event.name : "No Event Name"} />
                 </div>
               </div>
             </>
@@ -88,13 +88,13 @@ const EventPage = ({ params }) => {
           <div className="event-details-stages-wrapper">
             {event ? (
               <EventDetailsBox
-                startDate={event.startDate ? prettyDate(event.startDate) : null}
-                endDate={event.endDate ? prettyDate(event.endDate) : null}
-                startTime={event.startDate ? prettyTime(event.startDate) : null}
-                endTime={event.endDate ? prettyTime(event.endDate) : null}
-                region={event.region ? regionFormatter(event.region) : null}
-                mode={event.mode ? modeFormatter(event.mode) : null}
-                tier={event.tier ? tierFormatter(event.tier) : null}
+                startDate={event.startDate ? prettyDate(event.startDate) : "No Event Start Date"}
+                endDate={event.endDate ? prettyDate(event.endDate) : "No Event End Date"}
+                startTime={event.startDate ? prettyTime(event.startDate) : "No Event Start Time"}
+                endTime={event.endDate ? prettyTime(event.endDate) : "No Event Start Time"}
+                region={event.region ? regionFormatter(event.region) : "No Event Region"}
+                mode={event.mode ? modeFormatter(event.mode) : "No Event Mode"}
+                tier={event.tier ? tierFormatter(event.tier) : "No Event Tier"}
               />
             ) : (
               <SkeletonEventDetailsLoading />
@@ -106,7 +106,7 @@ const EventPage = ({ params }) => {
             )}
           </div>
           {event ? (
-            <RecentMatchesUpcomingEventBox id={event._id} />
+            <RecentMatchesUpcomingEventBox id={id} />
           ) : (
             <SkeletonRecentMatchesOverviewLoading />
           )}

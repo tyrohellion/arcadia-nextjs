@@ -19,6 +19,7 @@ import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/
 import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
 import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/SkeletonPlayerDetailsLoading";
 import PlayerResults from "@/app/components/ui/content/PlayerResults";
+import SkeletonNoRosterBox from "@/app/components/ui/skeletons/SkeletonNoRosterBox";
 
 const PlayerPage = ({ params }) => {
   const { id } = params;
@@ -91,12 +92,12 @@ const PlayerPage = ({ params }) => {
                     ) : (
                       <GlobalSmallImage
                         imageSrc="/static/images/rocketleague.svg"
-                        altText={player.tag}
+                        altText={player?.tag}
                       />
                     )}
                   </div>
                   <div className="player-names-wrapper">
-                    <SmallHeading text={player.tag} />
+                    <SmallHeading text={player?.tag} />
                   </div>
                 </div>
               </>
@@ -114,22 +115,24 @@ const PlayerPage = ({ params }) => {
               <PlayerDetailsBox
                 name={player.name ? player.name : "No Name Found"}
                 country={
-                  player.country
+                  player?.country
                     ? countryFormatter(player.country)
                     : "No Country Found"
                 }
-                team={player.team ? player.team.name : "No Team Found"}
-                steamID={player.accounts ? player.accounts[0].id : null}
+                team={player?.team ? player.team.name : "No Team Found"}
+                steamID={player?.accounts ? player?.accounts[0]?.id : null}
               />
             ) : (
               <SkeletonPlayerDetailsLoading />
             )}
             {player && player.team ? (
               <ActiveRosterBox
-                id={player.team._id}
-                teamName={player.team.name}
+                id={player.team._id ? player.team._id : null}
+                teamName={player.team.name ? player.team.name : null}
               />
-            ) : null}
+            ) : (
+              <SkeletonNoRosterBox />
+            )}
           </div>
           <div className="player-stats-recent-matches-wrapper">
             {player ? (

@@ -55,7 +55,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="copyright">arcadia © 2024</div>
+        <div className="copyright">
+          <img src="/static/images/logo.svg" className="arcadia-logo" />
+          ARCADIA © 2024
+        </div>
       </div>
     </>
   );
