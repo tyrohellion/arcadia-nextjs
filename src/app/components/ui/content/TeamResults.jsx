@@ -1,5 +1,11 @@
 "use client";
-import React, { useEffect, useState, useRef, useCallback, Suspense } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  Suspense,
+} from "react";
 import { useSearchParams } from "next/navigation";
 import RegionDropdown from "../chips/regionSelector";
 import TierDropdown from "../chips/tierSelector";
@@ -124,90 +130,79 @@ const TeamResults = ({ id }) => {
         <ul className="bar-results-wrapper">
           {results.map((match) =>
             match && match._id ? (
-              <Suspense
+              <MatchResultsBar
                 key={match._id}
-                fallback={<SkeletonResultsBarLoading />}
-              >
-                <MatchResultsBar
-                  key={match._id}
-                  id={match._id}
-                  eventName={match.event.name ? match.event.name : null}
-                  eventId={match.event._id ? match.event._id : null}
-                  blueTeamName={
-                    (match.blue &&
-                      match.blue.team &&
-                      match.blue.team.team &&
-                      match.blue.team.team.name) ||
-                    "TBD"
-                  }
-                  orangeTeamName={
-                    (match.orange &&
-                      match.orange.team &&
-                      match.orange.team.team &&
-                      match.orange.team.team.name) ||
-                    "TBD"
-                  }
-                  blueTeamId={
-                    match.blue &&
+                id={match._id}
+                eventName={match.event.name ? match.event.name : null}
+                eventId={match.event._id ? match.event._id : null}
+                blueTeamName={
+                  (match.blue &&
                     match.blue.team &&
                     match.blue.team.team &&
-                    match.blue.team.team._id
-                      ? match.blue.team.team._id
-                      : null
-                  }
-                  orangeTeamId={
-                    match.orange &&
+                    match.blue.team.team.name) ||
+                  "TBD"
+                }
+                orangeTeamName={
+                  (match.orange &&
                     match.orange.team &&
                     match.orange.team.team &&
-                    match.orange.team.team._id
-                      ? match.orange.team.team._id
-                      : null
-                  }
-                  blueTeamScore={
-                    match.blue && match.blue.score ? match.blue.score : "0"
-                  }
-                  orangeTeamScore={
-                    match.orange && match.orange.score
-                      ? match.orange.score
-                      : "0"
-                  }
-                  date={match.date ? match.date : "Upcoming"}
-                  blueImage={
-                    match.blue &&
-                    match.blue.team &&
-                    match.blue.team.team &&
-                    match.blue.team.team.image
-                      ? match.blue.team.team.image
-                      : "/static/images/rocketleague.svg"
-                  }
-                  orangeImage={
-                    match.orange &&
-                    match.orange.team &&
-                    match.orange.team.team &&
-                    match.orange.team.team.image
-                      ? match.orange.team.team.image
-                      : "/static/images/rocketleague.svg"
-                  }
-                  region={
-                    match.event && match.event.region ? match.event.region : "?"
-                  }
-                  tier={
-                    match.event && match.event.tier ? match.event.tier : "?"
-                  }
-                  mode={
-                    match.event && match.event.mode ? match.event.mode : "?"
-                  }
-                  eventStage={
-                    match.stage && match.stage.name
-                      ? match.stage.name
-                      : "No Stage"
-                  }
-                  qualifier={
-                    match.stage && match.stage.qualifier ? "Qualifier" : null
-                  }
-                  location={match.stage && match.stage.lan ? "Lan" : "Online"}
-                />
-              </Suspense>
+                    match.orange.team.team.name) ||
+                  "TBD"
+                }
+                blueTeamId={
+                  match.blue &&
+                  match.blue.team &&
+                  match.blue.team.team &&
+                  match.blue.team.team._id
+                    ? match.blue.team.team._id
+                    : null
+                }
+                orangeTeamId={
+                  match.orange &&
+                  match.orange.team &&
+                  match.orange.team.team &&
+                  match.orange.team.team._id
+                    ? match.orange.team.team._id
+                    : null
+                }
+                blueTeamScore={
+                  match.blue && match.blue.score ? match.blue.score : "0"
+                }
+                orangeTeamScore={
+                  match.orange && match.orange.score ? match.orange.score : "0"
+                }
+                date={match.date ? match.date : "Upcoming"}
+                blueImage={
+                  match.blue &&
+                  match.blue.team &&
+                  match.blue.team.team &&
+                  match.blue.team.team.image
+                    ? match.blue.team.team.image
+                    : "/static/images/rocketleague.svg"
+                }
+                orangeImage={
+                  match.orange &&
+                  match.orange.team &&
+                  match.orange.team.team &&
+                  match.orange.team.team.image
+                    ? match.orange.team.team.image
+                    : "/static/images/rocketleague.svg"
+                }
+                region={
+                  match.event && match.event.region ? match.event.region : "?"
+                }
+                tier={match.event && match.event.tier ? match.event.tier : "?"}
+                mode={match.event && match.event.mode ? match.event.mode : "?"}
+                eventStage={
+                  match.stage && match.stage.name
+                    ? match.stage.name
+                    : "No Stage"
+                }
+                qualifier={
+                  match.stage && match.stage.qualifier ? "Qualifier" : null
+                }
+                location={match.stage && match.stage.lan ? "Lan" : "Online"}
+              />
             ) : (
               <div className="skeleton-bar" key={match._id}>
                 Upcoming

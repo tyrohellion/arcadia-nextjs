@@ -126,96 +126,42 @@ const EventResults = ({ id }) => {
       </div>
       <div className="wrapper-bar-for-centering">
         <ul className="bar-results-wrapper">
-          {results.map((match) => (
-            <React.Fragment key={match._id}>
-              <Suspense fallback={<SkeletonResultsBarLoading />}>
-                {match && match._id ? (
-                  <MatchResultsBar
-                    id={match._id}
-                    eventName={match.event.name ? match.event.name : null}
-                    eventId={match.event._id ? match.event._id : null}
-                    blueTeamName={
-                      (match.blue &&
-                        match.blue.team &&
-                        match.blue.team.team &&
-                        match.blue.team.team.name) ||
-                      "TBD"
-                    }
-                    orangeTeamName={
-                      (match.orange &&
-                        match.orange.team &&
-                        match.orange.team.team &&
-                        match.orange.team.team.name) ||
-                      "TBD"
-                    }
-                    blueTeamId={
-                      match.blue &&
-                      match.blue.team &&
-                      match.blue.team.team &&
-                      match.blue.team.team._id
-                        ? match.blue.team.team._id
-                        : null
-                    }
-                    orangeTeamId={
-                      match.orange &&
-                      match.orange.team &&
-                      match.orange.team.team &&
-                      match.orange.team.team._id
-                        ? match.orange.team.team._id
-                        : null
-                    }
-                    blueTeamScore={
-                      match.blue && match.blue.score ? match.blue.score : "0"
-                    }
-                    orangeTeamScore={
-                      match.orange && match.orange.score
-                        ? match.orange.score
-                        : "0"
-                    }
-                    date={match.date ? match.date : "Upcoming"}
-                    blueImage={
-                      match.blue &&
-                      match.blue.team &&
-                      match.blue.team.team &&
-                      match.blue.team.team.image
-                        ? match.blue.team.team.image
-                        : "/static/images/rocketleague.svg"
-                    }
-                    orangeImage={
-                      match.orange &&
-                      match.orange.team &&
-                      match.orange.team.team &&
-                      match.orange.team.team.image
-                        ? match.orange.team.team.image
-                        : "/static/images/rocketleague.svg"
-                    }
-                    region={
-                      match.event && match.event.region
-                        ? match.event.region
-                        : "?"
-                    }
-                    tier={
-                      match.event && match.event.tier ? match.event.tier : "?"
-                    }
-                    mode={
-                      match.event && match.event.mode ? match.event.mode : "?"
-                    }
-                    eventStage={
-                      match.stage && match.stage.name
-                        ? match.stage.name
-                        : "No Stage"
-                    }
-                    qualifier={
-                      match.stage && match.stage.qualifier ? "Qualifier" : null
-                    }
-                    location={match.stage && match.stage.lan ? "Lan" : "Online"}
-                  />
-                ) : (
-                  <div className="skeleton-bar">Upcoming</div>
-                )}
-              </Suspense>
-            </React.Fragment>
-          ))}
+          {results.map((match) =>
+            match?._id ? (
+              <MatchResultsBar
+                key={match._id}
+                id={match._id}
+                eventName={match.event?.name ?? null}
+                eventId={match.event?._id ?? null}
+                blueTeamName={match.blue?.team?.team?.name ?? "TBD"}
+                orangeTeamName={match.orange?.team?.team?.name ?? "TBD"}
+                blueTeamId={match.blue?.team?.team?._id ?? null}
+                orangeTeamId={match.orange?.team?.team?._id ?? null}
+                blueTeamScore={match.blue?.score ?? "0"}
+                orangeTeamScore={match.orange?.score ?? "0"}
+                date={match.date ?? "Upcoming"}
+                blueImage={
+                  match.blue?.team?.team?.image ??
+                  "/static/images/rocketleague.svg"
+                }
+                orangeImage={
+                  match.orange?.team?.team?.image ??
+                  "/static/images/rocketleague.svg"
+                }
+                region={match.event?.region ?? "?"}
+                tier={match.event?.tier ?? "?"}
+                mode={match.event?.mode ?? "?"}
+                eventStage={match.stage?.name ?? "No Stage"}
+                qualifier={match.stage?.qualifier ? "Qualifier" : null}
+                location={match.stage?.lan ? "Lan" : "Online"}
+              />
+            ) : (
+              <div className="skeleton-bar" key="skeleton">
+                Upcoming
+              </div>
+            )
+          )}
+
           {loading ? <SkeletonResultsBarLoading /> : null}
         </ul>
       </div>
