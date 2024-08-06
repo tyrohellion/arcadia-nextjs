@@ -6,7 +6,6 @@ import NormalText from "@/app/components/ui/text/NormalText";
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
 import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
-import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import regionFormatter from "@/app/components/ui/api/regionFormatter";
 import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
@@ -19,6 +18,7 @@ import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPl
 import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
 import TeamResults from "@/app/components/ui/content/TeamResults";
 import SkeletonTeamEventsLoading from "@/app/components/ui/skeletons/SkeletonTeamEventsLoading";
+import Image from "next/image";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -67,14 +67,20 @@ const TeamPage = ({ params }) => {
               <div className="team-img-name-wrapper">
                 <div className="team-image-wrapper">
                   {team.image ? (
-                    <GlobalSmallImage
-                      imageSrc={team.image}
-                      altText={team.name ? team.name : "No Team Name Found"}
+                    <Image
+                      src={team.image}
+                      width={70}
+                      height={70}
+                      alt={team.name ? team.name : "No Team Name Found"}
+                      className="global-small-image"
                     />
                   ) : (
-                    <GlobalSmallImage
-                      imageSrc="/static/images/rocketleague.svg"
-                      altText={team.name ? team.name : "No Team Name Found"}
+                    <Image
+                      src="/static/images/rocketleague.svg"
+                      width={70}
+                      height={70}
+                      alt={team.name ? team.name : "No Team Name Found"}
+                      className="global-small-image"
                     />
                   )}
                 </div>

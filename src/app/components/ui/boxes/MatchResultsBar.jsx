@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import FinePrint from "../text/FinePrint";
 import prettyDate from "../api/prettyDate";
@@ -42,8 +43,8 @@ const MatchResultsBar = ({
                 <NormalTextBlue text={orangeTeamScore} />
               </div>
               <div className="team-img-match-bar-wrapper">
-                <img src={blueImage} alt={blueTeamName} />
-                <img src={orangeImage} alt={orangeTeamName} />
+                <Image src={blueImage} width={40} height={40} alt={blueTeamName} />
+                <Image src={orangeImage} width={40} height={40} alt={orangeTeamName} />
               </div>
               <div className="team-names-match-bar-wrapper">
                 <Link href={`/teams/${blueTeamId}`} className="match-bar-links">

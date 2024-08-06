@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Footer = () => {
@@ -56,7 +57,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="copyright">
-          <img src="/static/images/logo.svg" className="arcadia-logo" />
+          <Image
+            src="/static/images/logo.svg"
+            alt="arcadia logo"
+            className="arcadia-logo"
+            width={30}
+            height={30}
+          />
           ARCADIA © 2024
         </div>
       </div>

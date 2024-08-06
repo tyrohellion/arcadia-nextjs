@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import SmallText from "./components/ui/text/SmallText";
 import getLocalDateMinusMonths from "./components/ui/api/getLocalTime";
 import FinePrintTagWrapped from "./components/ui/tags/FinePrintTagWrapped";
 import tierFormatter from "./components/ui/api/tierFormatter";
 import regionFormatter from "./components/ui/api/regionFormatter";
-import GlobalSmallImage from "./components/ui/img/GlobalSmallImage";
-import GlobalSmallestImage from "./components/ui/img/GlobalSmallestImage";
 import FinePrint from "./components/ui/text/FinePrint";
 import FeaturedEventsLoading from "./components/ui/skeletons/FeaturedEventsLoading";
 import FeaturedTeamsLoading from "./components/ui/skeletons/FeaturedTeamsLoading";
@@ -115,7 +114,7 @@ export default function Home() {
       <div className="arcadia-home-header-wrapper">
         <div className="branding-header-wrapper">
           <h1 className="arcadia-home-header">ARCADIA</h1>
-          <img src="/static/images/logo.svg" className="arcadia-logo-home" />
+          <Image src="/static/images/logo.svg" width={60} height={60} alt="arcadia logo" />
         </div>
         <SmallText text="Rocket League Esports" />
       </div>
@@ -173,12 +172,14 @@ export default function Home() {
                 team.team.region === "ME") ? (
                 <Link href={`/teams/${team.team._id}`} key={team.team._id}>
                   <li>
-                    <img
+                    <Image
                       src={
                         team.team.image
                           ? team.team.image
                           : "/static/images/rocketleague.svg"
                       }
+                      width={45}
+                      height={45}
                       alt={team.team.name}
                     />
                     <div className="featured-small-text">{team.team.name}</div>

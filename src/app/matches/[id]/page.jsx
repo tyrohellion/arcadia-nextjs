@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import getMatchByID from "@/app/components/ui/api/FetchMatch";
 import prettyDate from "@/app/components/ui/api/prettyDate";
 import prettyTime from "@/app/components/ui/api/prettyTime";
 import SmallText from "@/app/components/ui/text/SmallText";
-import GlobalSmallestImage from "@/app/components/ui/img/GlobalSmallestImage";
 import Link from "next/link";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SmallTextBlue from "@/app/components/ui/text/SmallTextBlue";
@@ -82,20 +82,30 @@ const MatchPage = ({ params }) => {
                       match.blue.team &&
                       match.blue.team.team &&
                       match.blue.team.team.image ? (
-                        <GlobalSmallestImage
-                          imageSrc={
+                        <Image
+                          src={
                             match.blue.team.team.image
                               ? match.blue.team.team.image
                               : null
                           }
+                          width={50}
+                          height={50}
+                          alt="blue image"
+                          className="global-smallest-image"
                         />
                       ) : (
-                        <GlobalSmallestImage imageSrc="/static/images/rocketleague.svg" />
+                        <Image
+                          src="/static/images/rocketleague.svg"
+                          width={50}
+                          height={50}
+                          alt="blue image"
+                          className="global-smallest-image"
+                        />
                       )}
                     </Link>
                   ) : (
-                    <GlobalSmallestImage
-                      imageSrc={
+                    <Image
+                      src={
                         match &&
                         match.blue &&
                         match.blue.team &&
@@ -104,6 +114,10 @@ const MatchPage = ({ params }) => {
                           ? match.blue.team.team.image
                           : null
                       }
+                      width={50}
+                      height={50}
+                      alt="blue image"
+                      className="global-smallest-image"
                     />
                   )}
                   <div className="blue-team-tooltip-name">
@@ -155,20 +169,30 @@ const MatchPage = ({ params }) => {
                       match.orange.team &&
                       match.orange.team.team &&
                       match.orange.team.team.image ? (
-                        <GlobalSmallestImage
-                          imageSrc={
+                        <Image
+                          src={
                             match.orange.team.team.image
                               ? match.orange.team.team.image
                               : null
                           }
+                          width={50}
+                          height={50}
+                          alt="orange image"
+                          className="global-smallest-image"
                         />
                       ) : (
-                        <GlobalSmallestImage imageSrc="/static/images/rocketleague.svg" />
+                        <Image
+                          src="/static/images/rocketleague.svg"
+                          width={50}
+                          height={50}
+                          alt="orange image"
+                          className="global-smallest-image"
+                        />
                       )}
                     </Link>
                   ) : (
-                    <GlobalSmallestImage
-                      imageSrc={
+                    <Image
+                      src={
                         match &&
                         match.orange &&
                         match.orange.team &&
@@ -177,6 +201,10 @@ const MatchPage = ({ params }) => {
                           ? match.orange.team.team.image
                           : null
                       }
+                      width={50}
+                      height={50}
+                      alt="orange image"
+                      className="global-smallest-image"
                     />
                   )}
                   <div className="arrow-for-orange-team-name"></div>
@@ -223,7 +251,12 @@ const MatchPage = ({ params }) => {
                                       ")"}
                                   </div>
                                 </a>
-                                <img src="/static/images/externallink.png" />
+                                <Image
+                                  src="/static/images/externallink.png"
+                                  width={16}
+                                  height={16}
+                                  alt="external link icon"
+                                />
                               </div>
                             ) : (
                               <div className="game-ballchasing-link-wrapper">
@@ -238,7 +271,12 @@ const MatchPage = ({ params }) => {
                                     Game {index + 1}
                                   </div>
                                 </a>
-                                <img src="/static/images/externallink.png" />
+                                <Image
+                                  src="/static/images/externallink.png"
+                                  width={16}
+                                  height={16}
+                                  alt="external link icon"
+                                />
                               </div>
                             )}
                             <NormalText

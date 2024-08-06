@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
@@ -13,7 +14,6 @@ import SkeletonPlayerEventsLoading from "@/app/components/ui/skeletons/SkeletonP
 import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
 import PlayerDetailsBox from "@/app/components/ui/boxes/PlayerDetailsBox";
 import countryFormatter from "@/app/components/ui/api/countryFormatter";
-import GlobalSmallImage from "@/app/components/ui/img/GlobalSmallImage";
 import SmallHeading from "@/app/components/ui/text/SmallHeading";
 import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
 import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
@@ -85,14 +85,20 @@ const PlayerPage = ({ params }) => {
                 <div className="player-img-name-wrapper">
                   <div className="player-image-wrapper">
                     {player.team && player.team.image ? (
-                      <GlobalSmallImage
-                        imageSrc={player.team.image}
-                        altText={player.team.name}
+                      <Image
+                        src={player.team.image}
+                        width={70}
+                        height={70}
+                        alt={player.team.name}
+                        className="global-small-image"
                       />
                     ) : (
-                      <GlobalSmallImage
+                      <Image
                         imageSrc="/static/images/rocketleague.svg"
-                        altText={player?.tag}
+                        width={70}
+                        height={70}
+                        alt={player?.tag}
+                        className="global-small-image"
                       />
                     )}
                   </div>

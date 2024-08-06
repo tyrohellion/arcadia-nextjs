@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import GlobalSearch from "./GlobalSearch";
 
 const SearchButton = () => {
@@ -15,7 +16,12 @@ const SearchButton = () => {
         id="searchNavButton"
         onClick={toggleOverlay}
       >
-        <img src="/static/images/search.svg" />
+        <Image
+          src="/static/images/search.svg"
+          alt="search icon"
+          width={18}
+          height={18}
+        />
       </div>
       {isOverlayVisible && <GlobalSearch onClose={toggleOverlay} />}
     </>

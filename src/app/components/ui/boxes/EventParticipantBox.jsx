@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import GlobalTag from "../tags/GlobalTag";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import SkeletonEventPartBoxLoading from "../skeletons/SkeletonEventPartBoxLoading";
@@ -51,8 +52,9 @@ const EventParticipantBox = ({ id }) => {
               key={team?.team?._id || `team-${teamIndex}`}
             >
               <Link href={`/teams/${team?.team?._id}`}></Link>
-              <img
-                className="event-participant-team-image"
+              <Image
+                width={25}
+                height={25}
                 src={
                   team?.team?.image
                     ? team.team.image

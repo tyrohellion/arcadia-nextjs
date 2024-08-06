@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import PlayerFetchAPI from "../api/FetchPlayers";
 import Link from "next/link";
 
@@ -44,10 +45,7 @@ const PlayerFetch = (props) => {
         <ul className="search-results-wrapper">
           {Array.isArray(results) &&
             results.map((player) => (
-              <li
-                className="player-list-item"
-                key={player._id}
-              >
+              <li className="player-list-item" key={player._id}>
                 <div className="player-tag-name-list-wrapper">
                   {player.tag}
                   {player.name ? (
@@ -61,8 +59,11 @@ const PlayerFetch = (props) => {
                     </div>
                   ) : null}
                   {player.team && player.team.image ? (
-                    <img
+                    <Image
                       src={player.team.image}
+                      alt="player team"
+                      width={36.8}
+                      height={36.8}
                       className="player-team-list-image"
                     />
                   ) : null}

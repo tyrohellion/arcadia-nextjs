@@ -529,10 +529,6 @@ body {
 }
 
 .featured-teams-list li img {
-  min-width: 45px;
-  min-height: 45px;
-  height: 45px;
-  width: 45px;
   background-color: var(--img-background-color);
   border-radius: 0.4rem;
   padding: 0.5rem;
@@ -668,13 +664,6 @@ body {
   font-size: 1rem;
   font-weight: 600;
   transition: all 150ms;
-}
-
-.nav-item-search-button img {
-  min-width: 18px;
-  min-height: 18px;
-  height: 18px;
-  width: 18px;
 }
 
 .nav-item-search-button:hover {
@@ -815,10 +804,6 @@ body {
 }
 
 .event-list-item img {
-  width: 2.7rem;
-  height: 2.7rem;
-  min-width: 2.7rem;
-  min-height: 2.7rem;
   padding: 0.5rem;
   background-color: var(--img-background-color);
   border-radius: 0.5rem;
@@ -1154,31 +1139,13 @@ body {
   cursor: pointer;
 }
 
-.global-image {
-  min-width: 100px;
-  min-height: 100px;
-  height: 100px;
-  width: 100px;
-  background-color: var(--img-background-color);
-  border-radius: 0.7rem;
-  padding: 0.8rem;
-}
-
 .global-small-image {
-  min-width: 70px;
-  min-height: 70px;
-  height: 70px;
-  width: 70px;
   background-color: var(--img-background-color);
   border-radius: 0.5rem;
   padding: 0.8rem;
 }
 
 .global-smallest-image {
-  min-width: 50px;
-  min-height: 50px;
-  height: 50px;
-  width: 50px;
   background-color: var(--img-background-color);
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -1337,13 +1304,6 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}
-
-.stage-name-icon-wrapper img {
-  min-width: 1rem;
-  min-height: 1rem;
-  width: 1rem;
-  height: 1rem;
 }
 
 .small-box-list-item {
@@ -1560,24 +1520,10 @@ body {
   align-items: center;
 }
 
-.lan-stages-icon-wrapper img {
-  min-width: 1rem;
-  min-height: 1rem;
-  width: 1rem;
-  height: 1rem;
-}
-
 .time-date-icon-wrapper {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-}
-
-.time-date-icon-wrapper img {
-  min-width: 1rem;
-  min-height: 1rem;
-  width: 1rem;
-  height: 1rem;
 }
 
 .time-date-stage-wrapper {
@@ -1615,13 +1561,6 @@ body {
   display: flex;
   gap: 0.4rem;
   align-items: center;
-}
-
-.small-text-icon-wrapper img {
-  min-width: 1rem;
-  min-height: 1rem;
-  width: 1rem;
-  height: 1rem;
 }
 
 .small-box-list-item:hover {
@@ -1820,13 +1759,6 @@ body {
   color: var(--font-color-white);
 }
 
-.copyright img {
-  min-width: 30px;
-  min-height: 30px;
-  height: 30px;
-  width: 30px;
-}
-
 /* player search page */
 
 .filter-tag-button {
@@ -1840,13 +1772,6 @@ body {
   width: 100%;
   height: fit-content;
   transition: all 100ms;
-}
-
-.filter-tag-button img {
-  min-width: 16px;
-  min-height: 16px;
-  width: 16px;
-  height: 16px;
 }
 
 .filter-tag-wrapper {
@@ -1984,10 +1909,6 @@ body {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  min-width: 50px;
-  min-height: 50px;
-  width: 50px;
-  height: 50px;
   border-radius: 0.5rem;
   background-color: var(--img-background-color);
   padding: 0.5rem;
@@ -2051,10 +1972,6 @@ body {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  min-width: 50px;
-  min-height: 50px;
-  width: 50px;
-  height: 50px;
   border-radius: 0.5rem;
   background-color: var(--img-background-color);
   padding: 0.5rem;
@@ -2387,10 +2304,6 @@ body {
 }
 
 .match-bar img {
-  min-width: 40px;
-  min-height: 40px;
-  width: 40px;
-  height: 40px;
   background-color: var(--img-background-color);
   padding: 0.5rem;
   border-radius: 0.3rem;
@@ -2489,13 +2402,6 @@ body {
 
 .game-ballchasing-link-wrapper a {
   text-decoration: none;
-}
-
-.game-ballchasing-link-wrapper img {
-  min-width: 16px;
-  min-height: 16px;
-  width: 16px;
-  height: 16px;
 }
 
 .game-ballchasing-link-wrapper:hover {
@@ -2619,6 +2525,15 @@ body {
 
   .home-big-buttons-wrapper {
     gap: 1rem;
+  }
+
+  .small-search-bar,
+  .dropdown-button {
+    font-size: 1rem;
+  }
+
+  .filter-tag-wrapper {
+    top: 6px;
   }
 }
 
