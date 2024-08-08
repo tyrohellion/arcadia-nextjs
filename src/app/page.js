@@ -11,6 +11,7 @@ import FinePrint from "./components/ui/text/FinePrint";
 import FeaturedEventsLoading from "./components/ui/skeletons/FeaturedEventsLoading";
 import FeaturedTeamsLoading from "./components/ui/skeletons/FeaturedTeamsLoading";
 import prettyDate from "./components/ui/api/prettyDate";
+import FeaturedNewsLoading from "./components/ui/skeletons/FeaturedNewsLoading";
 
 export default function Home() {
   const [featuredEventsS, setFeaturedEventsS] = useState([]);
@@ -164,7 +165,7 @@ export default function Home() {
         <ul className="featured-articles-list">
           <div className="featured-heading-text">Recent News</div>
           {isLoadingAricles ? (
-            <FeaturedTeamsLoading />
+            <FeaturedNewsLoading />
           ) : (
             articles.map((article) =>
               article?.title &&
@@ -172,6 +173,7 @@ export default function Home() {
               article?._id &&
               article?.slug ? (
                 <a
+                  key={article.slug}
                   href={`https://www.shiftrle.gg/articles/${article.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
