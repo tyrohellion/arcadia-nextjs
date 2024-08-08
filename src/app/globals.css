@@ -392,6 +392,36 @@ body {
 
 /* home page */
 
+.featured-articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.featured-articles-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 340px;
+  padding: 0.7rem;
+  background-color: var(--results-background-color);
+  border-radius: 0.5rem;
+  transition: all 100ms;
+}
+
+.featured-articles-list li:hover {
+  background-color: var(--button-color);
+  transition: all 100ms;
+}
+
+.featured-articles-list a {
+  text-decoration: none;
+}
+
 .arcadia-home-header-wrapper {
   display: flex;
   height: fit-content;

@@ -94,7 +94,7 @@ const PlayerPage = ({ params }) => {
                       />
                     ) : (
                       <Image
-                        imageSrc="/static/images/rocketleague.svg"
+                        src="/static/images/rocketleague.svg"
                         width={70}
                         height={70}
                         alt={player?.tag}

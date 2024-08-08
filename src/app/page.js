@@ -10,12 +10,15 @@ import regionFormatter from "./components/ui/api/regionFormatter";
 import FinePrint from "./components/ui/text/FinePrint";
 import FeaturedEventsLoading from "./components/ui/skeletons/FeaturedEventsLoading";
 import FeaturedTeamsLoading from "./components/ui/skeletons/FeaturedTeamsLoading";
+import prettyDate from "./components/ui/api/prettyDate";
 
 export default function Home() {
   const [featuredEventsS, setFeaturedEventsS] = useState([]);
   const [featuredEventsA, setFeaturedEventsA] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [featuredTeams, setFeaturedTeams] = useState([]);
   const [isLoadingS, setIsLoadingS] = useState(true);
+  const [isLoadingAricles, setIsLoadingAricles] = useState(true);
   const [isLoadingA, setIsLoadingA] = useState(true);
   const [isLoadingTeams, setIsLoadingTeams] = useState(true);
   const [time, setTime] = useState(null);
@@ -34,6 +37,26 @@ export default function Home() {
     };
 
     fetchTime();
+  }, []);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const url = `https://content.octane.gg/articles?_sort=published_at:desc&_limit=12`;
+      console.log("Fetching URL:", url);
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        setArticles(data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setIsLoadingAricles(false);
+      }
+    };
+
+    fetchArticles();
   }, []);
 
   useEffect(() => {
@@ -108,13 +131,19 @@ export default function Home() {
   }, []);
 
   console.log(featuredTeams);
+  console.log(articles);
 
   return (
     <>
       <div className="arcadia-home-header-wrapper">
         <div className="branding-header-wrapper">
           <h1 className="arcadia-home-header">ARCADIA</h1>
-          <Image src="/static/images/logo.svg" width={60} height={60} alt="arcadia logo" />
+          <Image
+            src="/static/images/logo.svg"
+            width={60}
+            height={60}
+            alt="arcadia logo"
+          />
         </div>
         <SmallText text="Rocket League Esports" />
       </div>
@@ -132,6 +161,34 @@ export default function Home() {
       </div>
 
       <div className="featured-lists-wrapper">
+        <ul className="featured-articles-list">
+          <div className="featured-heading-text">Recent News</div>
+          {isLoadingAricles ? (
+            <FeaturedTeamsLoading />
+          ) : (
+            articles.map((article) =>
+              article?.title &&
+              article?.description &&
+              article?._id &&
+              article?.slug ? (
+                <a
+                  href={`https://www.shiftrle.gg/articles/${article.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li>
+                    <div className="featured-small-text">{article.title}</div>
+                    <FinePrint
+                      text={prettyDate(
+                        article.published_at ? article.published_at : null
+                      )}
+                    />
+                  </li>
+                </a>
+              ) : null
+            )
+          )}
+        </ul>
         <ul className="featured-events-list">
           <div className="featured-heading-text">Featured Events</div>
           {isLoadingS || isLoadingA ? (

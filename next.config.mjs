@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "griffon.octane.gg",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "octane-content.s3.amazonaws.com",
+        port: "",
+      },
     ],
   },
 };
