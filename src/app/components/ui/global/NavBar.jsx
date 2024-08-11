@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import SearchButton from "../globalsearch/SearchButton";
 
@@ -15,7 +14,7 @@ const NavBar = () => {
     <>
       <div className="nav-wrapper">
         <Link href={`/`} className="clickable-logo">
-          <Image src="/static/images/logo.svg" width={25} height={25} alt="arcadia logo" className="arcadia-logo" />
+          <img src="/static/images/logo.svg" width="25" height="25" alt="arcadia logo" className="arcadia-logo" />
         </Link>
         <div className="nav-inner-wrapper">
           <div className="nav-item-home">

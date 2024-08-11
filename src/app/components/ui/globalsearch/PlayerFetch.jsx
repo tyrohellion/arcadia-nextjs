@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import PlayerFetchAPI from "../api/FetchPlayers";
 import Link from "next/link";
 
@@ -59,11 +58,11 @@ const PlayerFetch = (props) => {
                     </div>
                   ) : null}
                   {player.team && player.team.image ? (
-                    <Image
+                    <img
                       src={player.team.image}
                       alt="player team"
-                      width={36.8}
-                      height={36.8}
+                      width="36.8"
+                      height="36.8"
                       className="player-team-list-image"
                     />
                   ) : null}

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import EventFetchAPI from "../api/FetchEvents";
 import Link from "next/link";
 import regionFormatter from "../api/regionFormatter";
@@ -47,11 +46,11 @@ const EventFetch = (props) => {
                     )
                   ) : null}
                   {event.image ? (
-                    <Image
+                    <img
                       src={event.image}
                       alt={event.name}
-                      width={40}
-                      height={40}
+                      width="40"
+                      height="40"
                     />
                   ) : null}
                 </div>

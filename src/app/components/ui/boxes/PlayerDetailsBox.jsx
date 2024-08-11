@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import CardHeader from "../text/CardHeader";
 import FinePrint from "../text/FinePrint";
 import SmallText from "../text/SmallText";
@@ -89,7 +88,7 @@ const PlayerDetailsBox = ({ name, country, team, steamID }) => {
                   <div className="margin-right-text-box">
                     <div className="small-text-icon-wrapper">
                       <SmallText text="Ballchasing Info" />
-                      <Image src="/static/images/externallink.png" width={16} height={16} alt="external link icon"/>
+                      <img src="/static/images/externallink.png" width="16" height="16" alt="external link icon"/>
                     </div>
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
@@ -111,7 +110,7 @@ const PlayerDetailsBox = ({ name, country, team, steamID }) => {
                   <div className="margin-right-text-box">
                     <div className="small-text-icon-wrapper">
                       <SmallText text="Rocket League Tracker" />
-                      <Image src="/static/images/externallink.png" width={16} height={16} alt="external link icon"/>
+                      <img src="/static/images/externallink.png" width="16" height="16" alt="external link icon"/>
                     </div>
                   </div>
                   <div className="num-games-player-stats-box-wrapper">
@@ -133,7 +132,7 @@ const PlayerDetailsBox = ({ name, country, team, steamID }) => {
                   <div className="margin-right-text-box">
                     <div className="small-text-icon-wrapper">
                       <SmallText text="Steam Account" />
-                      <Image src="/static/images/externallink.png" width={16} height={16} alt="external link icon"/>
+                      <img src="/static/images/externallink.png" width="16" height="16" alt="external link icon"/>
                     </div>
                   </div>
                   <div className="num-games-player-stats-box-wrapper">

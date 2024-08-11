@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import FinePrint from "../text/FinePrint";
 import SmallTextBlue from "../text/SmallTextBlue";
@@ -14,7 +13,7 @@ const PlayerCardSearch = ({ id, tag, name, image, team, country, role }) => {
           <h2 className="card-small-heading-text">{tag}</h2>
           <FinePrint text={name} />
         </div>
-        <Image src={image} width={50} height={50} alt={team} />
+        <img src={image} width="50" height="50" alt={team} />
         <SmallTextBlue text={team} />
       </div>
       <div className="card-tags-wrapper">

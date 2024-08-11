@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import TeamFetchAPI from "../api/FetchTeams";
 import Link from "next/link";
 
@@ -37,11 +36,11 @@ const TeamFetch = (props) => {
                     <div className="team-region-list-tag">{team.region}</div>
                   ) : null}
                   {team.image ? (
-                    <Image
+                    <img
                       src={team.image}
                       alt="team image"
-                      width={36.8}
-                      height={36.8}
+                      width="36.8"
+                      height="36.8"
                       className="team-list-image"
                     />
                   ) : null}

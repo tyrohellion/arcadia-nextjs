@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import CardHeader from "../text/CardHeader";
 import FinePrint from "../text/FinePrint";
 import SkeletonEventDetailsLoading from "../skeletons/SkeletonEventDetailsLoading";
@@ -33,19 +32,19 @@ const EventStagesBox = ({ stages }) => {
                     <div className="event-stage-text-wrapper">
                       <div className="stage-name-icon-wrapper">
                         <SmallText text={stage?.name || null} />
-                        <Image
+                        <img
                           src="/static/images/externallink.png"
-                          width={16}
-                          height={16}
+                          width="16"
+                          height="16"
                           alt="External Link"
                         />
                       </div>
                       <div className="margin-right-text-box">
                         <div className="time-date-icon-wrapper">
-                          <Image
+                          <img
                             src="/static/images/calendar.png"
-                            width={16}
-                            height={16}
+                            width="16"
+                            height="16"
                             alt="Calendar"
                           />
                           <div className="time-date-stage-wrapper">
@@ -70,10 +69,10 @@ const EventStagesBox = ({ stages }) => {
                         stage.location.country &&
                         stage.location.city ? (
                           <div className="lan-stages-icon-wrapper">
-                            <Image
+                            <img
                               src="/static/images/location.png"
-                              width={16}
-                              height={16}
+                              width="16"
+                              height="16"
                               alt="Location"
                             />
                             <div className="lan-stages-wrapper">

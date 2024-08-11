@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
@@ -85,18 +84,18 @@ const PlayerPage = ({ params }) => {
                 <div className="player-img-name-wrapper">
                   <div className="player-image-wrapper">
                     {player.team && player.team.image ? (
-                      <Image
+                      <img
                         src={player.team.image}
-                        width={70}
-                        height={70}
+                        width="70"
+                        height="70"
                         alt={player.team.name}
                         className="global-small-image"
                       />
                     ) : (
-                      <Image
+                      <img
                         src="/static/images/rocketleague.svg"
-                        width={70}
-                        height={70}
+                        width="70"
+                        height="70"
                         alt={player?.tag}
                         className="global-small-image"
                       />

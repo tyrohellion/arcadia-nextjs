@@ -18,7 +18,6 @@ import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPl
 import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
 import TeamResults from "@/app/components/ui/content/TeamResults";
 import SkeletonTeamEventsLoading from "@/app/components/ui/skeletons/SkeletonTeamEventsLoading";
-import Image from "next/image";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -67,18 +66,18 @@ const TeamPage = ({ params }) => {
               <div className="team-img-name-wrapper">
                 <div className="team-image-wrapper">
                   {team.image ? (
-                    <Image
+                    <img
                       src={team.image}
-                      width={70}
-                      height={70}
+                      width="70"
+                      height="70"
                       alt={team.name ? team.name : "No Team Name Found"}
                       className="global-small-image"
                     />
                   ) : (
-                    <Image
+                    <img
                       src="/static/images/rocketleague.svg"
-                      width={70}
-                      height={70}
+                      width="70"
+                      height="70"
                       alt={team.name ? team.name : "No Team Name Found"}
                       className="global-small-image"
                     />

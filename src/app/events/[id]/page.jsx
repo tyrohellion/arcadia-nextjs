@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import getEventByID from "@/app/components/ui/api/FetchEvent";
 import NormalText from "@/app/components/ui/text/NormalText";
 import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
@@ -61,18 +60,18 @@ const EventPage = ({ params }) => {
               <div className="event-img-tags-wrapper">
                 <div className="event-image-wrapper">
                   {event.image ? (
-                    <Image
+                    <img
                       src={event.image}
-                      width={70}
-                      height={70}
+                      width="70"
+                      height="70"
                       alt={event.name ? event.name : "No Event Name"}
                       className="global-small-image"
                     />
                   ) : (
-                    <Image
+                    <img
                       src="/static/images/rocketleague.svg"
-                      width={70}
-                      height={70}
+                      width="70"
+                      height="70"
                       alt={event.name ? event.name : "No Event Name"}
                       className="global-small-image"
                     />

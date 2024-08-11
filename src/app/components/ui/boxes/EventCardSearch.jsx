@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FinePrintTagWrapped from "../tags/FinePrintTagWrapped";
 import FinePrint from "../text/FinePrint";
 import prettyDate from "../api/prettyDate";
@@ -27,7 +26,7 @@ const EventCardSearch = ({
           <FinePrint text={prizeString} />
           <FinePrint text={prettyDate(date)} />
         </div>
-        <Image src={image} width={50} height={50} alt={name} />
+        <img src={image} width="50" height="50" alt={name} />
       </div>
       <div className="card-tags-wrapper">
         <FinePrintTagWrapped text={region} />

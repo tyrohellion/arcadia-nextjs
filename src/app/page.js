@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import SmallText from "./components/ui/text/SmallText";
 import getLocalDateMinusMonths from "./components/ui/api/getLocalTime";
 import FinePrintTagWrapped from "./components/ui/tags/FinePrintTagWrapped";
@@ -139,10 +138,10 @@ export default function Home() {
       <div className="arcadia-home-header-wrapper">
         <div className="branding-header-wrapper">
           <h1 className="arcadia-home-header">ARCADIA</h1>
-          <Image
+          <img
             src="/static/images/logo.svg"
-            width={60}
-            height={60}
+            width="60"
+            height="60"
             alt="arcadia logo"
           />
         </div>
@@ -231,14 +230,14 @@ export default function Home() {
                 team.team.region === "ME") ? (
                 <Link href={`/teams/${team.team._id}`} key={team.team._id}>
                   <li>
-                    <Image
+                    <img
                       src={
                         team.team.image
                           ? team.team.image
                           : "/static/images/rocketleague.svg"
                       }
-                      width={45}
-                      height={45}
+                      width="45"
+                      height="45"
                       alt={team.team.name}
                     />
                     <div className="featured-small-text">{team.team.name}</div>
