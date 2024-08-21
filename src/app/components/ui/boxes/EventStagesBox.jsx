@@ -50,15 +50,15 @@ const EventStagesBox = ({ stages }) => {
                           <div className="time-date-stage-wrapper">
                             <FinePrint
                               text={
-                                stage?.startDate
-                                  ? prettyTime(stage.startDate)
+                                stage?.start_date
+                                  ? prettyTime(stage.start_date)
                                   : null
                               }
                             />
                             <FinePrint
                               text={
-                                stage?.startDate
-                                  ? prettyDate(stage.startDate)
+                                stage?.start_date
+                                  ? prettyDate(stage.start_date)
                                   : null
                               }
                             />

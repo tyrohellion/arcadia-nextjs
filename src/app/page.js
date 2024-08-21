@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import SmallText from "./components/ui/text/SmallText";
 import getLocalDateMinusMonths from "./components/ui/api/getLocalTime";
 import FinePrintTagWrapped from "./components/ui/tags/FinePrintTagWrapped";
 import tierFormatter from "./components/ui/api/tierFormatter";
@@ -11,11 +10,12 @@ import FeaturedEventsLoading from "./components/ui/skeletons/FeaturedEventsLoadi
 import FeaturedTeamsLoading from "./components/ui/skeletons/FeaturedTeamsLoading";
 import prettyDate from "./components/ui/api/prettyDate";
 import FeaturedNewsLoading from "./components/ui/skeletons/FeaturedNewsLoading";
+import { TextEffect } from "./components/ui/text/TextAnimation";
 
 export default function Home() {
   const [featuredEventsS, setFeaturedEventsS] = useState([]);
   const [featuredEventsA, setFeaturedEventsA] = useState([]);
-  const [articles, setArticles] = useState([]);
+  /* const [articles, setArticles] = useState([]); */
   const [featuredTeams, setFeaturedTeams] = useState([]);
   const [isLoadingS, setIsLoadingS] = useState(true);
   const [isLoadingAricles, setIsLoadingAricles] = useState(true);
@@ -39,6 +39,7 @@ export default function Home() {
     fetchTime();
   }, []);
 
+  /*
   useEffect(() => {
     const fetchArticles = async () => {
       const url = `https://content.octane.gg/articles?_sort=published_at:desc&_limit=12`;
@@ -58,6 +59,7 @@ export default function Home() {
 
     fetchArticles();
   }, []);
+  */
 
   useEffect(() => {
     if (!time) return;
@@ -66,14 +68,14 @@ export default function Home() {
       if (hasFetchedS.current) return;
       hasFetchedS.current = true;
 
-      const url = `https://zsr.octane.gg/events?tier=S&after=${time}`;
+      const url = `https://api.slokh.gg/events?tier=S&after=${time}`;
       console.log("Fetching URL:", url);
 
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error();
         const data = await res.json();
-        setFeaturedEventsS(data.events);
+        setFeaturedEventsS(data.data);
       } catch (error) {
         console.error("Error fetching event:", error);
       } finally {
@@ -91,14 +93,14 @@ export default function Home() {
       if (hasFetchedA.current) return;
       hasFetchedA.current = true;
 
-      const url = `https://zsr.octane.gg/events?tier=A&region=NA&region=EU&region=ME&region=SAM&after=${time}`;
+      const url = `https://api.slokh.gg/events?tier=A&region=NA&region=EU&region=ME&region=SAM&after=${time}`;
       console.log("Fetching URL:", url);
 
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error();
         const data = await res.json();
-        setFeaturedEventsA(data.events.reverse());
+        setFeaturedEventsA(data.data.reverse());
       } catch (error) {
         console.error("Error fetching event:", error);
       } finally {
@@ -114,7 +116,7 @@ export default function Home() {
       if (hasFetchedTeams.current) return;
       hasFetchedTeams.current = true;
 
-      const url = `https://zsr.octane.gg/events/65a82626370e82dfea34e7ad/participants`;
+      const url = `https://api.slokh.gg/events/65a82626370e82dfea34e7ad/participants`;
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error();
@@ -130,8 +132,8 @@ export default function Home() {
     featuredTeams();
   }, []);
 
-  console.log(featuredTeams);
-  console.log(articles);
+  console.log(featuredEventsS);
+  console.log(featuredEventsA);
 
   return (
     <>
@@ -145,7 +147,7 @@ export default function Home() {
             alt="arcadia logo"
           />
         </div>
-        <SmallText text="Rocket League Esports" />
+        <TextEffect>Rocket League Esports</TextEffect>
       </div>
 
       <div className="home-big-buttons-wrapper">
@@ -161,6 +163,7 @@ export default function Home() {
       </div>
 
       <div className="featured-lists-wrapper">
+      {/*
         <ul className="featured-articles-list">
           <div className="featured-heading-text">Recent News</div>
           {isLoadingAricles ? (
@@ -190,6 +193,7 @@ export default function Home() {
             )
           )}
         </ul>
+        */}
         <ul className="featured-events-list">
           <div className="featured-heading-text">Featured Events</div>
           {isLoadingS || isLoadingA ? (

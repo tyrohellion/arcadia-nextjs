@@ -432,6 +432,12 @@ body {
   gap: 0.5rem;
 }
 
+.arcadia-home-header-wrapper p {
+  font-size: 1rem;
+  color: var(--font-color-blue);
+  font-weight: 600;
+}
+
 .arcadia-home-header-wrapper .arcadia-logo-home {
   width: 60px;
   height: 60px;

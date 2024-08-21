@@ -1,23 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import getEventByID from "@/app/components/ui/api/FetchEvent";
-import NormalText from "@/app/components/ui/text/NormalText";
-import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
-import EventDetailsBox from "@/app/components/ui/boxes/EventDetailsBox";
-import prettyDate from "@/app/components/ui/api/prettyDate";
-import prettyTime from "@/app/components/ui/api/prettyTime";
-import regionFormatter from "@/app/components/ui/api/regionFormatter";
-import tierFormatter from "@/app/components/ui/api/tierFormatter";
-import modeFormatter from "@/app/components/ui/api/modeFormatter";
-import SkeletonEventDetailsLoading from "@/app/components/ui/skeletons/SkeletonEventDetailsLoading";
-import EventsChipCarousel from "@/app/components/ui/chips/EventsChipCarousel";
-import SmallHeading from "@/app/components/ui/text/SmallHeading";
-import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
-import RecentMatchesUpcomingEventBox from "@/app/components/ui/boxes/RecentMatchesUpcomingEventBox";
-import EventStagesBox from "@/app/components/ui/boxes/EventStagesBox";
-import EventResults from "@/app/components/ui/content/EventResults";
-import EventParticipantBox from "@/app/components/ui/boxes/EventParticipantBox";
+import NormalText from "../../components/ui/text/NormalText";
+import SkeletonHeader from "../../components/ui/skeletons/SkeletonHeader";
+import EventDetailsBox from "../../components/ui/boxes/EventDetailsBox";
+import prettyDate from "../../components/ui/api/prettyDate";
+import prettyTime from "../../components/ui/api/prettyTime";
+import regionFormatter from "../../components/ui/api/regionFormatter";
+import tierFormatter from "../../components/ui/api/tierFormatter";
+import modeFormatter from "../../components/ui/api/modeFormatter";
+import SkeletonEventDetailsLoading from "../../components/ui/skeletons/SkeletonEventDetailsLoading";
+import EventsChipCarousel from "../../components/ui/chips/EventsChipCarousel";
+import SmallHeading from "../../components/ui/text/SmallHeading";
+import SkeletonRecentMatchesOverviewLoading from "../../components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import RecentMatchesUpcomingEventBox from "../../components/ui/boxes/RecentMatchesUpcomingEventBox";
+import EventStagesBox from "../../components/ui/boxes/EventStagesBox";
+import EventResults from "../../components/ui/content/EventResults";
+import EventParticipantBox from "../../components/ui/boxes/EventParticipantBox";
+import getEventByID from "../../components/ui/api/FetchEvent";
 
 const EventPage = ({ params }) => {
   const { id } = params;
@@ -78,7 +78,9 @@ const EventPage = ({ params }) => {
                   )}
                 </div>
                 <div className="event-names-wrapper">
-                  <SmallHeading text={event.name ? event.name : "No Event Name"} />
+                  <SmallHeading
+                    text={event.name ? event.name : "No Event Name"}
+                  />
                 </div>
               </div>
             </>
@@ -93,11 +95,31 @@ const EventPage = ({ params }) => {
           <div className="event-details-stages-wrapper">
             {event ? (
               <EventDetailsBox
-                startDate={event.startDate ? prettyDate(event.startDate) : "No Event Start Date"}
-                endDate={event.endDate ? prettyDate(event.endDate) : "No Event End Date"}
-                startTime={event.startDate ? prettyTime(event.startDate) : "No Event Start Time"}
-                endTime={event.endDate ? prettyTime(event.endDate) : "No Event Start Time"}
-                region={event.region ? regionFormatter(event.region) : "No Event Region"}
+                startDate={
+                  event.start_date
+                    ? prettyDate(event.start_date)
+                    : "No Event Start Date"
+                }
+                endDate={
+                  event.end_date
+                    ? prettyDate(event.end_date)
+                    : "No Event End Date"
+                }
+                startTime={
+                  event.start_date
+                    ? prettyTime(event.start_date)
+                    : "No Event Start Time"
+                }
+                endTime={
+                  event.end_date
+                    ? prettyTime(event.end_date)
+                    : "No Event Start Time"
+                }
+                region={
+                  event.region
+                    ? regionFormatter(event.region)
+                    : "No Event Region"
+                }
                 mode={event.mode ? modeFormatter(event.mode) : "No Event Mode"}
                 tier={event.tier ? tierFormatter(event.tier) : "No Event Tier"}
               />
