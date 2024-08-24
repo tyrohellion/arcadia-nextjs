@@ -7,7 +7,7 @@ import countryFormatter from "../api/countryFormatter";
 import SkeletonEventsPageResultsLoading from "../skeletons/SkeletonEventsPageResultsLoading";
 
 const buildUrl = (searchInput, countryFilter, page) => {
-  const baseUrl = "https://zsr.octane.gg/players";
+  const baseUrl = "https://api.slokh.gg/players";
   const params = new URLSearchParams();
   if (searchInput) params.set("tag", searchInput);
   if (countryFilter) params.set("country", countryFilter);
@@ -40,12 +40,12 @@ const PlayersSearchPage = () => {
       const data = await response.json();
 
       setResults((prevResults) => {
-        const newResults = [...prevResults, ...data.players];
+        const newResults = [...prevResults, ...data.data];
         return Array.from(new Set(newResults.map((player) => player._id))).map(
           (id) => newResults.find((player) => player._id === id)
         );
       });
-      setHasMore(data.players.length > 0);
+      setHasMore(data.data.length > 0);
     } catch (err) {
       console.error(err);
     } finally {

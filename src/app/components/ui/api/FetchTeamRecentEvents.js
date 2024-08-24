@@ -1,4 +1,4 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
 const FetchTeamRecentEvents = async (id) => {
   let matchesData = [];
@@ -6,11 +6,11 @@ const FetchTeamRecentEvents = async (id) => {
   let finalResult = [];
 
   try {
-    const response = await fetch(`${url}matches?team=${id}&sort=date:desc`);
+    const response = await fetch(`${url}matches?team=${id}&sort=date&order=desc`);
     if (!response.ok)
       throw new Error(`Error fetching player stats: ${response.statusText}`);
     const data = await response.json();
-    matchesData = data.matches;
+    matchesData = data.data;
   } catch (err) {
     console.log(err.message);
   }

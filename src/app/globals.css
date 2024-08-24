@@ -219,6 +219,13 @@ body {
   font-weight: 600;
 }
 
+.event-stats-wrapper,
+.player-stats-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 /* event participants */
 
 .event-participants-wrapper {
@@ -647,6 +654,7 @@ body {
 .nav-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: rgba(26, 27, 32, 0.6);
   backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--button-color);
@@ -658,6 +666,12 @@ body {
   position: fixed;
   top: 0;
   z-index: 19;
+}
+
+.nav-main-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-wrapper .arcadia-logo {
@@ -2584,6 +2598,10 @@ body {
 
   .filter-tag-wrapper {
     top: 6px;
+  }
+  
+  .nav-wrapper p {
+    display: none;
   }
 }
 

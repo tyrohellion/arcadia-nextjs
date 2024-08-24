@@ -17,7 +17,7 @@ const TeamsSearchPage = () => {
   const searchParams = useSearchParams();
 
   const buildUrl = (page) => {
-    const baseUrl = "https://zsr.octane.gg/teams";
+    const baseUrl = "https://api.slokh.gg/teams";
     const params = new URLSearchParams();
     if (searchInput) params.set("name", searchInput);
     params.set("page", page);
@@ -32,7 +32,7 @@ const TeamsSearchPage = () => {
       if (!response.ok) throw new Error("Failed to fetch");
       const data = await response.json();
 
-      const teamsArray = data.teams || [];
+      const teamsArray = data.data || [];
 
       setResults((prevResults) => {
         const existingIds = new Set(prevResults.map((team) => team._id));

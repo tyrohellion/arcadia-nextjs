@@ -51,7 +51,7 @@ const TeamEventsBox = ({ id }) => {
                         <SmallText text={event?.name} />
                         <div className="overview-event-tier-region-wrapper">
                           <FinePrintTierTag tier={event?.tier} />
-                          <FinePrintPrettyDate date={event?.startDate} />
+                          <FinePrintPrettyDate date={event?.start_date} />
                           <FinePrint text={event?.region} />
                         </div>
                       </>

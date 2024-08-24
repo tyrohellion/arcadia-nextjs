@@ -8,11 +8,12 @@ import SkeletonPlayerStatsLoading from "../skeletons/SkeletonPlayerStatsLoading"
 import SkeletonPlayerStatsBox from "../skeletons/SkeletonPlayerStatsBox";
 
 const PlayerStatsBox = ({ id }) => {
-  const [time, setTime] = useState("");
+  // const [time, setTime] = useState("");
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const hasFetched = useRef(false);
 
+  /*
   useEffect(() => {
     const fetchTime = async () => {
       try {
@@ -25,6 +26,7 @@ const PlayerStatsBox = ({ id }) => {
 
     fetchTime();
   }, []);
+  */
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -32,9 +34,9 @@ const PlayerStatsBox = ({ id }) => {
       hasFetched.current = true;
 
       try {
-        const data = await getPlayerStatsOverview(id, time);
-        if (data && data.stats) {
-          setResults(data.stats);
+        const data = await getPlayerStatsOverview(id);
+        if (data) {
+          setResults(data);
         } else {
           console.error("No stats data found in response:", data);
         }
@@ -44,10 +46,10 @@ const PlayerStatsBox = ({ id }) => {
         setIsLoading(false);
       }
     };
-    if (id && time !== "") {
+    if (id !== "") {
       fetchStats();
     }
-  }, [id, time]);
+  }, [id]);
 
   return (
     <>
@@ -57,7 +59,7 @@ const PlayerStatsBox = ({ id }) => {
         <div className="heading-small-box-wrapper">
           <div className="headings-wrapper">
             <CardHeader text="Stats Overview" />
-            <FinePrint text="LAST 6 MONTHS" />
+            <FinePrint text="ALL TIME" />
           </div>
           <ul className="global-small-box">
             {results.map((stats) => (
@@ -78,14 +80,17 @@ const PlayerStatsBox = ({ id }) => {
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="MATCHES" />
-                        <div className="stat-label">{stats?.matches?.total}</div>
+                        <div className="stat-label">
+                          {stats?.matches?.total}
+                        </div>
                       </div>
                     </div>
                     <div
                       className="rating-pill"
                       style={{
                         "--progress":
-                          (stats?.stats?.rating / stats?.games?.total / 1.75) * 100 +
+                          (stats?.stats?.rating / stats?.games?.total / 1.75) *
+                            100 +
                           "%",
                       }}
                     ></div>
@@ -99,9 +104,9 @@ const PlayerStatsBox = ({ id }) => {
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={(stats?.stats?.score / stats?.games?.total).toFixed(
-                            2
-                          )}
+                          text={(
+                            stats?.stats?.score / stats?.games?.total
+                          ).toFixed(2)}
                         />
                         <FinePrint text="SCORE PER GAME" />
                       </div>
@@ -116,7 +121,8 @@ const PlayerStatsBox = ({ id }) => {
                       className="score-pill"
                       style={{
                         "--progress":
-                          (stats?.stats?.score / stats?.games?.total / 650) * 100 +
+                          (stats?.stats?.score / stats?.games?.total / 650) *
+                            100 +
                           "%",
                       }}
                     ></div>
@@ -130,9 +136,9 @@ const PlayerStatsBox = ({ id }) => {
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={(stats?.stats?.goals / stats?.games?.total).toFixed(
-                            2
-                          )}
+                          text={(
+                            stats?.stats?.goals / stats?.games?.total
+                          ).toFixed(2)}
                         />
                         <FinePrint text="GOALS PER GAME" />
                       </div>
@@ -145,7 +151,8 @@ const PlayerStatsBox = ({ id }) => {
                       className="goals-pill"
                       style={{
                         "--progress":
-                          (stats?.stats?.goals / stats?.games?.total / 1.5) * 100 +
+                          (stats?.stats?.goals / stats?.games?.total / 1.5) *
+                            100 +
                           "%",
                       }}
                     ></div>
@@ -175,7 +182,8 @@ const PlayerStatsBox = ({ id }) => {
                       className="shooting-pill"
                       style={{
                         "--progress":
-                          (stats?.stats?.goals / stats?.stats?.shots) * 100 + "%",
+                          (stats?.stats?.goals / stats?.stats?.shots) * 100 +
+                          "%",
                       }}
                     ></div>
                   </div>
@@ -188,13 +196,17 @@ const PlayerStatsBox = ({ id }) => {
                     <div className="stat-name-wrapper">
                       <div className="player-tag-roster">
                         <NormalText
-                          text={`${stats?.stats?.goalParticipation.toFixed(2)}%`}
+                          text={`${stats?.stats?.goalParticipation.toFixed(
+                            2
+                          )}%`}
                         />
                         <FinePrint text="GOAL PART." />
                       </div>
                       <div className="num-games-player-stats-box-wrapper">
                         <FinePrint text="ASSISTS" />
-                        <div className="stat-label">{stats?.stats?.assists}</div>
+                        <div className="stat-label">
+                          {stats?.stats?.assists}
+                        </div>
                       </div>
                     </div>
                     <div
@@ -210,7 +222,9 @@ const PlayerStatsBox = ({ id }) => {
             ))}
           </ul>
         </div>
-      ) : <SkeletonPlayerStatsBox /> }
+      ) : (
+        <SkeletonPlayerStatsBox />
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
 const TeamFetchAPI = async (value) => {
   let results = [];
@@ -7,7 +7,7 @@ const TeamFetchAPI = async (value) => {
     let response = await fetch(`${url + "teams"}?name=${value}`);
     if (!response.ok) throw new Error();
     const data = await response.json();
-    return (results = data.teams);
+    return (results = data.data);
   } catch (err) {
     console.log(err);
   }

@@ -26,7 +26,7 @@ const EventsSearchPage = () => {
   const afterFilter = searchParams.get("after");
 
   const buildUrl = (page) => {
-    const baseUrl = "https://zsr.octane.gg/events";
+    const baseUrl = "https://api.slokh.gg/events";
     const params = new URLSearchParams();
     if (searchInput) params.set("name", searchInput);
     if (regionFilter) params.set("region", regionFilter);
@@ -46,12 +46,12 @@ const EventsSearchPage = () => {
       if (!response.ok) throw new Error("Failed to fetch");
       const data = await response.json();
 
-      if (data.events.length === 0) {
+      if (data.data.length === 0) {
         setHasMore(false);
       }
 
       setResults((prevResults) => {
-        const newResults = [...prevResults, ...data.events];
+        const newResults = [...prevResults, ...data.data];
         return Array.from(new Set(newResults.map((event) => event._id))).map(
           (id) => newResults.find((event) => event._id === id)
         );
@@ -119,7 +119,7 @@ const EventsSearchPage = () => {
               key={event._id || index}
               id={event._id}
               name={event.name || "No Name Yet"}
-              date={event.startDate || "No Start Date Yet"}
+              date={event.start_date || "No Start Date Yet"}
               image={event.image || "/static/images/rocketleague.svg"}
               prize={event.prize?.amount || "No Prize"}
               prizeUnit={event.prize?.currency || null}

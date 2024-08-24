@@ -1,4 +1,4 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
 const getActiveRoster = async (id) => {
 
@@ -6,7 +6,7 @@ const getActiveRoster = async (id) => {
     let response = await fetch(`${url + "players"}?team=${id}`);
     if (!response.ok) throw new Error();
     const data = await response.json();
-    return (data.players);
+    return (data);
   } catch (err) {
     console.log(err);
   }

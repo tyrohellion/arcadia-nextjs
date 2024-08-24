@@ -19,7 +19,7 @@ const ActiveRosterBox = ({ id }) => {
       hasFetched.current = true;
       try {
         const data = await getActiveRoster(id);
-        setResults(data);
+        setResults(data.data);
       } catch (error) {
         console.error("Error fetching active roster:", error);
       } finally {

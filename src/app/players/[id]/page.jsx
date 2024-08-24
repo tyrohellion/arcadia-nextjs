@@ -1,24 +1,25 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import getPlayerByID from "@/app/components/ui/api/Fetchplayer";
-import NormalText from "@/app/components/ui/text/NormalText";
-import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
-import getLocalDateMinusMonths from "@/app/components/ui/api/getLocalTime";
-import PlayerStatsBox from "@/app/components/ui/boxes/PlayerStatsBox";
-import ChipCarousel from "@/app/components/ui/chips/ChipCarousel";
-import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
-import PlayerEventsBox from "@/app/components/ui/boxes/PlayerEventsBox";
-import SkeletonPlayerEventsLoading from "@/app/components/ui/skeletons/SkeletonPlayerEventsLoading";
-import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import PlayerDetailsBox from "@/app/components/ui/boxes/PlayerDetailsBox";
-import countryFormatter from "@/app/components/ui/api/countryFormatter";
-import SmallHeading from "@/app/components/ui/text/SmallHeading";
-import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
-import RecentMatchesPlayerBox from "@/app/components/ui/boxes/RecentMatchesPlayerBox";
-import SkeletonPlayerDetailsLoading from "@/app/components/ui/skeletons/SkeletonPlayerDetailsLoading";
-import PlayerResults from "@/app/components/ui/content/PlayerResults";
-import SkeletonNoRosterBox from "@/app/components/ui/skeletons/SkeletonNoRosterBox";
+import getPlayerByID from "../../components/ui/api/Fetchplayer";
+import NormalText from "../../components/ui/text/NormalText";
+import SkeletonHeader from "../../components/ui/skeletons/SkeletonHeader";
+import getLocalDateMinusMonths from "../../components/ui/api/getLocalTime";
+import PlayerStatsBox from "../../components/ui/boxes/PlayerStatsBox";
+import ChipCarousel from "../../components/ui/chips/ChipCarousel";
+import SkeletonPlayerStatsLoading from "../../components/ui/skeletons/SkeletonPlayerStatsLoading";
+import PlayerEventsBox from "../../components/ui/boxes/PlayerEventsBox";
+import SkeletonPlayerEventsLoading from "../../components/ui/skeletons/SkeletonPlayerEventsLoading";
+import ActiveRosterBox from "../../components/ui/boxes/ActiveRosterBox";
+import PlayerDetailsBox from "../../components/ui/boxes/PlayerDetailsBox";
+import countryFormatter from "../../components/ui/api/countryFormatter";
+import SmallHeading from "../../components/ui/text/SmallHeading";
+import SkeletonRecentMatchesOverviewLoading from "../../components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import SkeletonPlayerDetailsLoading from "../../components/ui/skeletons/SkeletonPlayerDetailsLoading";
+import PlayerResults from "../../components/ui/content/PlayerResults";
+import SkeletonNoRosterBox from "../../components/ui/skeletons/SkeletonNoRosterBox";
+import RecentMatchesPlayerBox from "../../components/ui/boxes/RecentMatchesPlayerBox";
+import FinePrint from "../../components/ui/text/FinePrint";
 
 const PlayerPage = ({ params }) => {
   const { id } = params;
@@ -132,7 +133,7 @@ const PlayerPage = ({ params }) => {
             )}
             {player && player.team ? (
               <ActiveRosterBox
-                id={player.team._id ? player.team._id : null}
+                id={player.team.slug ? player.team.slug : null}
                 teamName={player.team.name ? player.team.name : null}
               />
             ) : (
@@ -141,26 +142,33 @@ const PlayerPage = ({ params }) => {
           </div>
           <div className="player-stats-recent-matches-wrapper">
             {player ? (
-              <PlayerStatsBox id={player._id} />
+              <PlayerStatsBox id={player.slug} />
             ) : (
               <SkeletonPlayerStatsLoading />
             )}
             {player ? (
-              <PlayerEventsBox id={player._id} />
+              <PlayerEventsBox id={player.slug} />
             ) : (
               <SkeletonPlayerEventsLoading />
             )}
           </div>
           <div className="player-events-links-wrapper">
             {player ? (
-              <RecentMatchesPlayerBox id={player._id} />
+              <RecentMatchesPlayerBox id={player.slug} />
             ) : (
               <SkeletonRecentMatchesOverviewLoading />
             )}
           </div>
         </div>
       ) : null}
-      {pageView === "Results" ? <PlayerResults id={id} /> : null}
+      {pageView === "Results" && player ? (
+        <PlayerResults id={player.slug ? player.slug : player._id} />
+      ) : null}
+      {pageView === "Stats" && player ? (
+        <div className="player-stats-wrapper">
+          <FinePrint text="Under Construction" />
+        </div>
+      ) : null}
     </>
   );
 };

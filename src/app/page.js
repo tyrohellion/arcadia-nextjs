@@ -111,6 +111,7 @@ export default function Home() {
     featuredEventsA();
   }, [time]);
 
+  /*
   useEffect(() => {
     const featuredTeams = async () => {
       if (hasFetchedTeams.current) return;
@@ -131,9 +132,7 @@ export default function Home() {
 
     featuredTeams();
   }, []);
-
-  console.log(featuredEventsS);
-  console.log(featuredEventsA);
+  */
 
   return (
     <>
@@ -163,7 +162,7 @@ export default function Home() {
       </div>
 
       <div className="featured-lists-wrapper">
-      {/*
+        {/*
         <ul className="featured-articles-list">
           <div className="featured-heading-text">Recent News</div>
           {isLoadingAricles ? (

@@ -3,11 +3,11 @@ const EventFetchAPI = async (value) => {
 
   try {
     let response = await fetch(
-      `${"https://zsr.octane.gg/events"}?name=${value}`
+      `${"https://api.slokh.gg/events"}?name=${value}`
     );
     if (!response.ok) throw new Error();
     const data = await response.json();
-    return (results = data.events);
+    return (results = data.data);
   } catch (err) {
     console.log(err);
   }

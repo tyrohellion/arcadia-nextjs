@@ -1,4 +1,4 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
 const getFormerMembers = async (id) => {
   let formerBeforeList = [];
@@ -13,7 +13,7 @@ const getFormerMembers = async (id) => {
         );
 
       const data = await response.json();
-      formerBeforeList = data.stats[0].players;
+      formerBeforeList = data[0].players;
     } catch (err) {
       console.log(err.message);
     }
@@ -25,7 +25,7 @@ const getFormerMembers = async (id) => {
       if (!response.ok)
         throw new Error(`Error fetching active roster: ${response.statusText}`);
       const data = await response.json();
-      activeRoster = data.players;
+      activeRoster = data.data;
     } catch (err) {
       console.log(err.message);
     }

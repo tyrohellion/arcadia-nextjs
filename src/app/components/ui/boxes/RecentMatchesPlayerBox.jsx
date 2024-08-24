@@ -51,8 +51,6 @@ const RecentMatchesPlayerBox = ({ id }) => {
     return router.push(`?view=Results`);
   };
 
-  console.log(results);
-
   return (
     <>
       {isLoading ? (
@@ -77,7 +75,9 @@ const RecentMatchesPlayerBox = ({ id }) => {
                         text={result?.blue?.score ? result?.blue?.score : "0"}
                       />
                       <div className="team-name-routing-wrapper">
-                        <Link href={`/teams/${result?.blue?.team?.team?._id}`} />
+                        <Link
+                          href={`/teams/${result?.blue?.team?.team?._id}`}
+                        />
                         <SmallText text={result?.blue?.team?.team?.name} />
                       </div>
                       {result?.blue?.winner ? (
@@ -86,7 +86,9 @@ const RecentMatchesPlayerBox = ({ id }) => {
                     </div>
                     <div className="recent-matches-orange-wrapper">
                       <NormalTextBlue
-                        text={result?.orange?.score ? result?.orange?.score : "0"}
+                        text={
+                          result?.orange?.score ? result?.orange?.score : "0"
+                        }
                       />
                       <div className="team-name-routing-wrapper">
                         <Link

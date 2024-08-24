@@ -1,4 +1,4 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
 const getMatchByID = async (key) => {
 

@@ -1,10 +1,10 @@
-const url = "https://zsr.octane.gg/";
+const url = "https://api.slokh.gg/";
 
-const getPlayerStatsOverview = async (id, time) => {
+const getPlayerStatsOverview = async (id) => {
 
   try {
     const response = await fetch(
-      `${url}stats/players?player=${id}&stat=rating&stat=goals&stat=score&stat=shots&stat=assists&stat=goalParticipation&after=${time}`
+      `${url}stats/players?player=${id}&stat=rating&stat=goals&stat=score&stat=shots&stat=assists&stat=goalParticipation`
     );
     if (!response.ok)
       throw new Error(`Error fetching player stats: ${response.statusText}`);

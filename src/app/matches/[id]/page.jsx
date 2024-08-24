@@ -1,19 +1,19 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import getMatchByID from "@/app/components/ui/api/FetchMatch";
-import prettyDate from "@/app/components/ui/api/prettyDate";
-import prettyTime from "@/app/components/ui/api/prettyTime";
-import SmallText from "@/app/components/ui/text/SmallText";
+import getMatchByID from "../../components/ui/api/FetchMatch";
+import prettyDate from "../../components/ui/api/prettyDate";
+import prettyTime from "../../components/ui/api/prettyTime";
+import SmallText from "../../components/ui/text/SmallText";
 import Link from "next/link";
-import NormalText from "@/app/components/ui/text/NormalText";
-import SmallTextBlue from "@/app/components/ui/text/SmallTextBlue";
-import MatchDetailsBox from "@/app/components/ui/boxes/MatchDetailsBox";
-import regionFormatter from "@/app/components/ui/api/regionFormatter";
-import SkeletonEventDetailsLoading from "@/app/components/ui/skeletons/SkeletonEventDetailsLoading";
-import SkeletonMatchSeriesCard from "@/app/components/ui/skeletons/SkeletonMatchSeriesCard";
-import MatchTeamRostersBlue from "@/app/components/ui/boxes/MatchTeamRostersBlue";
-import MatchTeamRostersOrange from "@/app/components/ui/boxes/MatchTeamRostersOrange";
+import NormalText from "../../components/ui/text/NormalText";
+import SmallTextBlue from "../../components/ui/text/SmallTextBlue";
+import MatchDetailsBox from "../../components/ui/boxes/MatchDetailsBox";
+import regionFormatter from "../../components/ui/api/regionFormatter";
+import SkeletonEventDetailsLoading from "../../components/ui/skeletons/SkeletonEventDetailsLoading";
+import SkeletonMatchSeriesCard from "../../components/ui/skeletons/SkeletonMatchSeriesCard";
+import MatchTeamRostersBlue from "../../components/ui/boxes/MatchTeamRostersBlue";
+import MatchTeamRostersOrange from "../../components/ui/boxes/MatchTeamRostersOrange";
 
 const MatchPage = ({ params }) => {
   const { id } = params;

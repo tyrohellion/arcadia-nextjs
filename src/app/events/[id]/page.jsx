@@ -18,6 +18,7 @@ import EventStagesBox from "../../components/ui/boxes/EventStagesBox";
 import EventResults from "../../components/ui/content/EventResults";
 import EventParticipantBox from "../../components/ui/boxes/EventParticipantBox";
 import getEventByID from "../../components/ui/api/FetchEvent";
+import FinePrint from "../../components/ui/text/FinePrint";
 
 const EventPage = ({ params }) => {
   const { id } = params;
@@ -133,17 +134,27 @@ const EventPage = ({ params }) => {
             )}
           </div>
           {event ? (
-            <RecentMatchesUpcomingEventBox id={id} />
+            <RecentMatchesUpcomingEventBox id={event.slug} />
           ) : (
             <SkeletonRecentMatchesOverviewLoading />
           )}
         </div>
       ) : null}
-      {pageView === "Matches" ? <EventResults id={id} /> : null}
-      {pageView === "Participants" ? (
-        <div className="event-participants-wrapper">
-          <EventParticipantBox id={id} />
+      {pageView === "Matches" && event ? (
+        <EventResults id={event.slug} />
+      ) : null}
+      {pageView === "Stats" && event ? (
+        <div className="event-stats-wrapper">
+          <FinePrint text="Under Construction" />
         </div>
+      ) : null}
+      {pageView === "Participants" ? (
+        <>
+          <div className="event-participants-wrapper">
+            <FinePrint text="Participants are currently down due to API issues" />
+            <EventParticipantBox id={id} />
+          </div>
+        </>
       ) : null}
     </>
   );

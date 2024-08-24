@@ -1,23 +1,23 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import getTeamByID from "@/app/components/ui/api/FetchTeam";
-import NormalText from "@/app/components/ui/text/NormalText";
-import ActiveRosterBox from "@/app/components/ui/boxes/ActiveRosterBox";
-import SkeletonHeader from "@/app/components/ui/skeletons/SkeletonHeader";
-import SkeletonRosterBoxLoading from "@/app/components/ui/skeletons/SkeletonRosterBoxLoading";
-import SmallHeading from "@/app/components/ui/text/SmallHeading";
-import regionFormatter from "@/app/components/ui/api/regionFormatter";
-import SmallTagLowercase from "@/app/components/ui/tags/SmallTagLowercase";
-import RecentMatchesTeamBox from "@/app/components/ui/boxes/RecentMatchesTeamBox";
-import SkeletonRecentMatchesOverviewLoading from "@/app/components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
-import TeamEventsBox from "@/app/components/ui/boxes/TeamEventsBox";
-import TeamChipCarousel from "@/app/components/ui/chips/TeamChipCarousel";
-import TeamStatsBox from "@/app/components/ui/boxes/TeamStatsBox";
-import SkeletonPlayerStatsLoading from "@/app/components/ui/skeletons/SkeletonPlayerStatsLoading";
-import TeamFormerMembersBox from "@/app/components/ui/boxes/TeamFormerMembersBox";
-import TeamResults from "@/app/components/ui/content/TeamResults";
-import SkeletonTeamEventsLoading from "@/app/components/ui/skeletons/SkeletonTeamEventsLoading";
+import getTeamByID from "../../components/ui/api/FetchTeam";
+import NormalText from "../../components/ui/text/NormalText";
+import ActiveRosterBox from "../../components/ui/boxes/ActiveRosterBox";
+import SkeletonHeader from "../../components/ui/skeletons/SkeletonHeader";
+import SkeletonRosterBoxLoading from "../../components/ui/skeletons/SkeletonRosterBoxLoading";
+import SmallHeading from "../../components/ui/text/SmallHeading";
+import regionFormatter from "../../components/ui/api/regionFormatter";
+import SmallTagLowercase from "../../components/ui/tags/SmallTagLowercase";
+import RecentMatchesTeamBox from "../../components/ui/boxes/RecentMatchesTeamBox";
+import SkeletonRecentMatchesOverviewLoading from "../../components/ui/skeletons/SkeletonRecentMatchesOverviewLoading";
+import TeamEventsBox from "../../components/ui/boxes/TeamEventsBox";
+import TeamChipCarousel from "../../components/ui/chips/TeamChipCarousel";
+import TeamStatsBox from "../../components/ui/boxes/TeamStatsBox";
+import SkeletonPlayerStatsLoading from "../../components/ui/skeletons/SkeletonPlayerStatsLoading";
+import TeamFormerMembersBox from "../../components/ui/boxes/TeamFormerMembersBox";
+import TeamResults from "../../components/ui/content/TeamResults";
+import SkeletonTeamEventsLoading from "../../components/ui/skeletons/SkeletonTeamEventsLoading";
 
 const TeamPage = ({ params }) => {
   const { id } = params;
@@ -84,7 +84,9 @@ const TeamPage = ({ params }) => {
                   )}
                 </div>
                 <div className="team-names-wrapper">
-                  <SmallHeading text={team.name ? team.name : "No Team Name Found"} />
+                  <SmallHeading
+                    text={team.name ? team.name : "No Team Name Found"}
+                  />
                   {team.region ? (
                     <SmallTagLowercase text={regionFormatter(team.region)} />
                   ) : (
@@ -104,38 +106,43 @@ const TeamPage = ({ params }) => {
           <div className="boxes-wrapper">
             <div className="team-roster-events-wrapper">
               {team ? (
-                <ActiveRosterBox id={team._id ? team._id : null} teamName={team.name ? team.name : "No Team Name Found"} />
+                <ActiveRosterBox
+                  id={team.slug ? team.slug : null}
+                  teamName={team.name ? team.name : "No Team Name Found"}
+                />
               ) : (
                 <SkeletonRosterBoxLoading />
               )}
               {team ? (
-                <TeamEventsBox id={team._id ? team._id : null} />
+                <TeamEventsBox id={team.slug ? team.slug : null} />
               ) : (
                 <SkeletonTeamEventsLoading />
               )}
             </div>
             <div className="team-stats-other-wrapper">
               {team ? (
-                <TeamStatsBox id={team._id ? team._id : null} />
+                <TeamStatsBox id={team.slug ? team.slug : null} />
               ) : (
                 <SkeletonPlayerStatsLoading />
               )}
 
               {team ? (
-                <TeamFormerMembersBox id={team._id ? team._id : null} />
+                <TeamFormerMembersBox id={team.slug ? team.slug : null} />
               ) : (
                 <SkeletonRosterBoxLoading />
               )}
             </div>
             {team ? (
-              <RecentMatchesTeamBox id={team._id ? team._id : null} />
+              <RecentMatchesTeamBox id={team.slug ? team.slug : null} />
             ) : (
               <SkeletonRecentMatchesOverviewLoading NoData="" />
             )}
           </div>
         </>
       ) : null}
-      {pageView === "Results" ? <TeamResults id={id} /> : null}
+      {pageView === "Results" && team ? (
+        <TeamResults id={team.slug ? team.slug : team._id} />
+      ) : null}
     </>
   );
 };

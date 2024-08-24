@@ -33,7 +33,7 @@ const TeamResults = ({ id }) => {
   const viewFilter = searchParams.get("view");
 
   const buildUrl = (page) => {
-    const baseUrl = `https://zsr.octane.gg/matches?team=${id}&sort=date:desc&perPage=20`;
+    const baseUrl = `https://api.slokh.gg/matches?team=${id}&sort=date&order=desc&perPage=20`;
     const params = new URLSearchParams();
     if (regionFilter) params.set("region", regionFilter);
     if (tierFilter) params.set("tier", tierFilter);
@@ -59,13 +59,13 @@ const TeamResults = ({ id }) => {
 
       console.log("API Response Data:", data);
 
-      if (data.matches && Array.isArray(data.matches)) {
-        if (data.matches.length === 0) {
+      if (data.data && Array.isArray(data.data)) {
+        if (data.data.length === 0) {
           setHasMore(false);
         }
 
         setResults((prevResults) => {
-          const newResults = [...prevResults, ...data.matches];
+          const newResults = [...prevResults, ...data.data];
           return Array.from(new Set(newResults.map((match) => match._id))).map(
             (id) => newResults.find((match) => match._id === id)
           );
